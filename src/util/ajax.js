@@ -38,7 +38,7 @@ service.interceptors.response.use(
                     router.push('error/403');
             }
         }
-        // // console.log(JSON.stringify(error));//console : Error: Request failed with status code 402
+        // console.log(JSON.stringify(error));//console : Error: Request failed with status code 402
         return Promise.reject(error.response.data)
     }
 );

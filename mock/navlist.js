@@ -65,32 +65,13 @@ var data = [
             }
         ]
     },
-    // {
-    //     name: '表格',
-    //     child: [
-    //         {
-    //             path: '/table',
-    //             name: '静态表格',
-    //             permission: ['view','import']
-    //         }
-    //     ]
-    // },
-    // {
-    //     name: '表单',
-    //     child: [
-    //         {
-    //             path: '/form',
-    //             name: '静态表格'
-    //         }
-    //     ]
-    // },
     {
         name: '完整示例',
         child: [
             {
                 path: '/example/table',
                 name: '列表页面',
-                permission: ['outport']
+                permission: ['edit']
             },
             {
                 path: '/example/charts',

@@ -1,7 +1,7 @@
 <template>
     <div class="item">
-        <!-- 如果该组信号的type为0，则代表这是分组信息 -->
-        <div class="title" v-if="itemGroup.name && itemGroup.type == 0">
+        <!-- 如果leaf字段为0，则代表这是分组信息非叶子节点 -->
+        <div class="title" v-if="itemGroup.name && !itemGroup.leaf">
             <el-checkbox :indeterminate="isIndeterminate" v-model="isCheckAll" @change="checkAll" :label="itemGroup.key">{{itemGroup.name}}</el-checkbox>
         </div>
         <!-- 如果该组信号有子信号 -->
@@ -9,13 +9,13 @@
             <el-checkbox-group v-model="signalCheckedList" >
                 <ul>
                     <!-- 循环创建每个信号 -->
-                    <li v-for="signal in itemGroup.child" v-if="signal.name && signal.type == 1">
+                    <li v-for="signal in itemGroup.child" v-if="signal.name && signal.leaf">
                         <el-checkbox :label="signal.key" >{{signal.name}}</el-checkbox>
                     </li>
                 </ul>
             </el-checkbox-group> 
         </div>
-        <template v-for="signal in itemGroup.child" v-if="signal.name && signal.type == 0">
+        <template v-for="signal in itemGroup.child" v-if="signal.name && !signal.leaf">
             <signal-item :itemGroup="signal" :signalList.sync="signalCheckedList"></signal-item>
         </template>
         
@@ -71,7 +71,7 @@
                     if(ele.child && ele.child.length){
                         getSignal(ele.child)
                     }
-                    if(ele.type == "1"){
+                    if(ele.leaf){
                         this.group.child.push(ele.key)
                     }
                 })
