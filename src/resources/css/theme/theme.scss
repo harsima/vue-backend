@@ -1,0 +1,10 @@
+@import './default/default.scss';
+
+// 系统全局设置，不包括具体细节颜色设置
+//-------------------------------
+$systemFontSize: 14px;
+$systemFontFamily: "Helvetica", "Microsoft Yahei", san-serif;
+$systemFontColor: #333;
+$headerHeight: 60px;
+$leftNavWidth: 160px;
+$commomSpace: 10px;

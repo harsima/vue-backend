@@ -1,0 +1,118 @@
+@import '~sysStatic/css/theme/theme.scss';
+
+* {
+    box-sizing: border-box;
+}
+html, body, div, section, header, footer, aside, ul, ol, li, table, tr, th, td, button, input, textarea, select, h1, h2, h3, h4, h5, h6, em, i, strong, p, span, blockquote {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6, em, th, i, strong, input, textarea, button, select {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 100%;
+}
+ul, ol {
+    list-style: none;
+    vertical-align: top;
+}
+table, td, th {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, button, select, textarea {
+    outline: none;
+    background: none;
+}
+textarea {
+    resize: none;
+}
+img, a img {
+    border: none;
+    vertical-align: top;
+}
+a, a:link, a:active, a:visited {
+    text-decoration: none;
+    color: #666;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:hover {
+    color: $themeColor;
+    text-decoration: none;
+}
+html {
+    height: 100%;
+}
+body {
+    font-size: $systemFontSize;
+    font-family: $systemFontFamily;
+    color: $systemFontColor;
+    height: 100%;
+}
+.f-cb:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    content: ".";
+}
+.f-cb {
+    zoom: 1;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.fc {
+    margin: 0 auto;
+}
+.vertical-middle {
+    vertical-align: middle;
+}
+
+/**显示隐藏**/
+
+.hidden {
+    display: none;
+}
+.clear {
+    clear: both;
+}
+.overflow {
+    overflow: hidden;
+}
+
+/**定位**/
+
+.posR {
+    position: relative;
+}
+.posA {
+    position: absolute;
+}
+.posF {
+    position: fixed;
+}
+.fb {
+    font-weight: bold;
+}
+.textL {
+    text-align: left;
+}
+.textC {
+    text-align: center;
+}
+.textR {
+    text-align: right;
+}
+.text2em {
+    text-indent: 2em
+}
+.word-hidden {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
