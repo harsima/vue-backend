@@ -7,9 +7,7 @@ export default {
             Cookies.set('lang', data)
             i18n.locale = data
             state.lang = data
-        } else{
-            
-        }        
+        }      
     },
     changeLayout(state, data){
         if(data){
