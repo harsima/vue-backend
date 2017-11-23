@@ -2,3 +2,4 @@ build/*.js
 config/*.js
 src/assets
 node_modules/
+mock/
