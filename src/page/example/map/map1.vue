@@ -23,10 +23,10 @@ export default {
     }
 }
 </script>
-<style>
-    .map-container{
-        width: 100%;
-        height: 100%;
-    }
+<style scoped>
+.map-container{
+    width: 100%;
+    height: 100%;
+}
 </style>
 

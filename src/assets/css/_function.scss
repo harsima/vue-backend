@@ -1,0 +1,5 @@
+// 去除一个字符串中的单位，返回纯数字, 如12px => 12
+// eg. dropUnit(12px) => 12
+@function dropUnit($number) {
+    @return $number / ($number * 0 + 1);
+}

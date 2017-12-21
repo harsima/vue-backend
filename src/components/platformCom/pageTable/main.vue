@@ -74,12 +74,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import '~sysStatic/css/theme/theme.scss';
-    
-    .page-table-pagination{
-        margin-top: 10px;
-        text-align: left;
-    }
-</style>

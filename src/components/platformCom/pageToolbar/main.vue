@@ -17,16 +17,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import '~sysStatic/css/theme/theme.scss';
-    .toolbar{
-        margin-bottom: $commomSpace;
-        &.right{
-            text-align: right;
-        }
-        &.left{
-            text-align: left;
-        }
-    }
-</style>

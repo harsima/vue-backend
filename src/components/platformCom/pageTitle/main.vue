@@ -11,18 +11,3 @@
         props: ['title']
     }
 </script>
-
-<style lang="scss" scoped>
-    @import '~sysStatic/css/theme/theme.scss';
-    .page-title{
-        height: 46px;
-        margin-bottom: $commomSpace;
-        border-bottom: 1px solid $borderColor;
-        & > strong{
-            line-height: 46px;
-            font-size: 18px;
-            font-weight: bold;
-            color: $systemFontColor
-        }
-    }
-</style>

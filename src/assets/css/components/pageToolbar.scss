@@ -1,0 +1,9 @@
+.toolbar{
+    margin-bottom: $commomSpace;
+    &.right{
+        text-align: right;
+    }
+    &.left{
+        text-align: left;
+    }
+}
