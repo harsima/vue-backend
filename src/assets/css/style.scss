@@ -1,18 +1,16 @@
-// Basic
-@import './_function.scss';
-@import './_mixin.scss';
-@import './variable.scss';
-@import './theme/theme.scss';
-@import './reset.scss';
+@import 'variable';
+@import '_function';
+@import '_mixin';
+@import 'theme/default/default';
+@import 'theme/theme';
+@import 'reset';
 
-// Common
-@import './common/layout.scss';
-@import './common/sidenav.scss';
+@import 'components/pageNotes';
+@import 'components/pageSearch';
+@import 'components/pageSection';
+@import 'components/pageTable';
+@import 'components/pageTitle';
+@import 'components/pageToolbar';
 
-// Components
-@import './components/pageNotes.scss';
-@import './components/pageSearch.scss';
-@import './components/pageSection.scss';
-@import './components/pageTable.scss';
-@import './components/pageTitle.scss';
-@import './components/pageToolbar.scss';
+@import 'common/layout';
+@import 'common/sidenav';
