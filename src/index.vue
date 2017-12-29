@@ -1,9 +1,11 @@
 <template>
-    <div id="app">
+    <div id="app" class="sys-app">
         <router-view></router-view>
     </div>
 </template>
 
-<style>
-@import '~sysStatic/css/style.scss';
-</style>
+<script>
+export default {
+    
+}
+</script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="sys-header">
         <div class="logo">
             <slot name="logo"></slot>
         </div>

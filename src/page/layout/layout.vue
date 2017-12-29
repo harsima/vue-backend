@@ -14,7 +14,7 @@
                 </template>
             </v-header>
         </template>
-        <div class="main-content" :class="layout">
+        <div class="sys-content" :class="layout">
             <router-view></router-view>
         </div>
     </div>

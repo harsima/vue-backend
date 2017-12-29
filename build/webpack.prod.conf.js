@@ -13,6 +13,10 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const env = config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
+    entry: {
+        app: './src/main.prod.js',
+        'theme-default': './src/assets/style/theme-default.scss'
+    },
     module: {
         rules: utils.styleLoaders({
             sourceMap: config.build.productionSourceMap,

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js && node build/themeExtract.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -33,6 +33,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.26.0",
     "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
     "connect-history-api-fallback": "^1.4.0",
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",

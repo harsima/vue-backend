@@ -1,5 +1,5 @@
 <template>
-    <div class="page" v-once>
+    <div class="sys-page" v-once>
         <v-pageTitle title="前言"></v-pageTitle>
         <div class="page-content">
             <v-pageNotes>

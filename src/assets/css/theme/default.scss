@@ -1,3 +1,13 @@
+// Basic Color
+//-------------------------------
+$white: #fff;
+$lighterGray: #eee;
+$lightGray: #ccc;
+$neutralGray: #aaa;
+$gray: #999;
+$darkGray: #666;
+$darkerGray: #333;
+
 // 主题基本颜色
 //-------------------------------
 $themeColor: #1F2D3D;
@@ -5,9 +15,17 @@ $borderColor: #d2d2d2;
 $shadowColor: rgba(0,0,0,0);
 $commonBgColor: #f2f2f2;
 
+// 系统全局设置，不包括具体细节颜色设置
+//-------------------------------
+$systemFontSize: 14px;
+$systemFontFamily: "Helvetica", "Microsoft Yahei", san-serif;
+$systemFontColor: #333;
+$headerHeight: 60px;
+$leftNavWidth: 160px;
+$commomSpace: 10px;
+
 // 组件颜色
 //-------------------------------
-
 // 顶部标题栏颜色
 $headerBgColor: $themeColor;
 $headerBorderColor: none;

@@ -1,0 +1,47 @@
+.sys-header {
+    // position: relative;
+    width: 100%;
+    height: 60px;
+    background: $headerBgColor;
+    z-index: 500;
+    .logo {
+        float: left;
+        height: $headerHeight;
+        line-height: $headerHeight;
+        padding-left: 20px;
+        color: $white;
+        font-size: 20px;
+    }
+    .userInfo {
+        float: right;
+        height: 60px;
+        &>ul {
+            height: 60px;
+            &>li {
+                display: block;
+                float: left;
+                height: 60px;
+                margin-right: 20px;
+                color: $white;
+                .lang {
+                    line-height: 60px;
+                    color: $lightGray;
+                    cursor: pointer;
+                    &.cur {
+                        color: $white;
+                    }
+                }
+                .user {
+                    display: block;
+                    height: 60px;
+                    line-height: 60px;
+                    color: $white;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .editPawDialog{
+        width: 400px;
+    }
+}
