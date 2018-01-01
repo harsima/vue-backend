@@ -91,7 +91,7 @@
         &lt;el-button :type="lang=='zh' ? 'primary': 'text'"  @click="changeLang('zh')"&gt;中文简体&lt;/el-button&gt;
         &lt;el-button :type="lang=='en' ? 'primary': 'text'"  @click="changeLang('en')"&gt;英文&lt;/el-button&gt;
                 
-        import {mapState, mapMutations} from 'Vuex'
+        import {mapState, mapMutations} from 'vuex'
         export default {
             ...
             computed: {
@@ -178,7 +178,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'Vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
     data() {
         return {}
