@@ -43,8 +43,7 @@
                         <strong>字段设置</strong>
                     </h2>
                     <p>在<code>src/lang</code>下所有文件中以key-value格式创建即可。保证在不同文件中key值相同。以下为示例</p>
-                </div>
-                <pre v-pre class="sys-pre"><code>
+                    <pre v-pre class="sys-pre"><code>
         // en.js                
         export default {
             editpassword: 'Edit Password',
@@ -56,11 +55,9 @@
             editpassword: '修改密码',
             logout: '退出登录'
         }
-                </code></pre>
-                <div class="sys-article">
+                    </code></pre>
                     <p>当使用单文件组件中时，需要使用<code>i18n</code>标签。本页字段即写在单文件组件中。</p>
-                </div>
-                <pre v-pre class="sys-pre"><code>
+                    <pre v-pre class="sys-pre"><code>
         &lt;i18n&gt;
         {
             "en": {
@@ -71,7 +68,8 @@
             }
         }
         &lt;/i18n&gt;
-                </code></pre>
+                    </code></pre>
+                </div>
                 <div class="sys-article">
                     <h2>
                         <strong>字段使用</strong>
@@ -83,8 +81,8 @@
                         <strong>语言切换</strong>
                     </h2>
                     <p>全局方法<code>toggleLang()</code>。该方法被注册在vuex，每次执行时同时更新cookie中的lang值。所以只需引入vuex，再进行调用即可。</p>
-                </div>
-                <pre v-pre class="sys-pre"><code>
+                
+                    <pre v-pre class="sys-pre"><code>
         &lt;el-button :type="lang=='zh' ? 'primary': 'text'"  @click="changeLang('zh')"&gt;中文简体&lt;/el-button&gt;
         &lt;el-button :type="lang=='en' ? 'primary': 'text'"  @click="changeLang('en')"&gt;英文&lt;/el-button&gt;
                 
@@ -109,7 +107,8 @@
                 }
             }
         }
-                </code></pre>
+                    </code></pre>
+                </div>
             </v-pageSection>
             <v-pageSection title="配置方法">
 
@@ -118,8 +117,7 @@
                         <strong>默认语言设置</strong>
                     </h2>
                     <p>在<code>src/util/i18n.js</code>中修改如下代码</p>
-                </div>
-                <pre v-pre class="sys-pre"><code>
+                    <pre v-pre class="sys-pre"><code>
         const i18n = new VueI18n({
             // 当前语言环境
     *       locale: 'zh', 
@@ -127,7 +125,8 @@
     *       fallbackLocale: 'zh',
             messages
         })
-                </code></pre>
+                    </code></pre>
+                </div>
                 <div class="sys-article">
                     <h2>
                         <strong>新增语种</strong>
@@ -136,8 +135,8 @@
                         <code>src/lang</code>下新增并编写新的语言js文件。新增的文件需要在
                         <code>src/util/i18n.js</code>进行
                         <code>import</code>引入。</p>
-                </div>
-                <pre v-pre class="sys-pre"><code>
+                
+                    <pre v-pre class="sys-pre"><code>
         ...
     +   // 引入第三方框架多语言文件
     +   import jaElement from 'element-ui/lib/locale/lang/ja'
@@ -167,7 +166,8 @@
     +           ...jaElement
     +       }
         }
-                </code></pre>
+                    </code></pre>
+                </div>
             </v-pageSection>
         </div>
     </div>
