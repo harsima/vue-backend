@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="统一分页插件"></v-pageTitle>
         <div class="page-content">
             <div class="article">

@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="子区域"></v-pageTitle>
         <div class="page-content">
             <v-pageSection title="子区域标题">

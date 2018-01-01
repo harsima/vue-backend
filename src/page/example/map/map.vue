@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <div class="note">
             <v-pageNotes>本层为浮动层。本页实际路径: src/page/example/map.vue</v-pageNotes>
         </div>

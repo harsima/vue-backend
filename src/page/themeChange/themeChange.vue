@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="主题变更"></v-pageTitle>
         <div class="page-content">
             <v-pageSection title="切换布局">

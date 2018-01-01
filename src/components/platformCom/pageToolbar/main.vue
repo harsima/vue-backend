@@ -1,5 +1,5 @@
 <template>
-    <div class="toolbar" :class="align">
+    <div class="sys-toolbar" :class="align">
         <slot></slot>
     </div>
 </template>

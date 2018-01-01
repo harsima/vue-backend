@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="引用说明"></v-pageTitle>
         <div class="page-content">
             <v-pageNotes>

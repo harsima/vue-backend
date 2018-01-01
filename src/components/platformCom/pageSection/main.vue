@@ -1,5 +1,5 @@
 <template>
-    <div class="page-section">
+    <div class="sys-section">
         <div class="title">
             <strong>{{title}}</strong>
         </div>

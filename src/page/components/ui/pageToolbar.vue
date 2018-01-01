@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="工具条"></v-pageTitle>
         <div class="page-content">
             <v-pageToolbar>

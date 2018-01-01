@@ -1,6 +1,6 @@
 <!-- 引用或解释说明组件 -->
 <template>
-    <div class="page-notes">
+    <div class="sys-notes">
         <slot></slot>
     </div>
 </template>

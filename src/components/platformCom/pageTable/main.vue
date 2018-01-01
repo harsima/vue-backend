@@ -1,7 +1,7 @@
 <template>
-    <div class="page-table">
+    <div class="sys-table">
         <slot></slot>
-        <div class="page-table-pagination">
+        <div class="sys-table-pagination">
             <template v-if="pagination">
                 <el-pagination 
                     :layout="pageLayout"

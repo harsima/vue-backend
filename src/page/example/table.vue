@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageSection title="表格综合">
             <v-pageNotes>本页实际路径: src/page/example/table.vue   table根组件为ElementUI。table配置请查看官方文档，table分页请查看“系统组件-功能类-表格分页”</v-pageNotes>
             <!-- 搜索 -->
@@ -28,7 +28,7 @@
             <v-pageToolbar>
                 <el-button type="primary">新增</el-button>
                 <el-button type="primary" v-if="hasPermission('edit')">修改</el-button>
-                <el-button type="primary" @click="filterShow">表头筛选</el-button>
+                <!-- <el-button type="primary" @click="filterShow">表头筛选</el-button> -->
             </v-pageToolbar>
             <!-- 表格体 -->
             <v-pageTable pagination paginationAlign="center">
@@ -36,7 +36,7 @@
                     <el-table-column type="index" label="序号" width="64" align="center"></el-table-column>
                     <el-table-column v-for="(item,index) in tableData.head" :prop="item.key" :label="item.name" sortable :key="index"></el-table-column>
                     <el-table-column label="操作">
-                        <template scope="scope">
+                        <template slot-scope="scope">
                             <el-button v-if="scope.row.operation.indexOf('edit') >= 0" type="text" size="small">查看</el-button>
                             <el-button v-if="scope.row.operation.indexOf('delete') >= 0" type="text" size="small">删除</el-button>
                         </template>
@@ -46,13 +46,13 @@
         </v-pageSection>
         
         <!-- 筛选 -->
-        <table-head-dialog title="表头筛选" :show.sync="dialog.filter.show" :defaultChecked.sync="dialog.filter.checked" :dialogData="dialog.filter.data" @confirm="tableUpdate">
-        </table-head-dialog>
+        <!-- <table-head-dialog title="表头筛选" :show.sync="dialog.filter.show" :defaultChecked.sync="dialog.filter.checked" :dialogData="dialog.filter.data" @confirm="tableUpdate">
+        </table-head-dialog> -->
     </div>
 </template>
 
 <script>
-import tableHeadDialog from 'sysComponents/locale/tableHeadGroup/dialogView'
+// import tableHeadDialog from 'sysComponents/locale/tableHeadGroup/dialogView'
 export default {
     data() {
         return {
@@ -135,8 +135,8 @@ export default {
         search(){
             console.log(`欲提交的数据   车辆型号:${this.searchForm.type}  车辆vin: ${this.searchForm.vin}`)
         }
-    },
-    components: {tableHeadDialog}
+    }
+    // components: {tableHeadDialog}
 }
 
 </script>
