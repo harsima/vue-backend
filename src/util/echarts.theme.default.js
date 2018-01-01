@@ -491,6 +491,4 @@ echarts.registerTheme('westeros', {
     }
 });
 
-
-
 export default echarts

@@ -1,5 +1,4 @@
-build/*.js
-config/*.js
-src/assets
-node_modules/
-mock/
+build/*
+config/*
+src/assets/*
+mock/*

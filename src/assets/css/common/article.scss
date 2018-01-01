@@ -1,0 +1,43 @@
+.sys-article{
+    font-size: $basicFontSize;
+    line-height: $basicFontSize*1.7;
+    margin-bottom: 2*$basicMargin;
+    // padding: 0 16px;
+    h2{
+        font-size: $basicFontSize*1.2;
+    }
+    & > div{
+        margin-bottom: 5px;
+    }
+    p{
+        margin-bottom: 5px;
+    }
+    code{
+        display: inline;
+        padding: 0 6px;
+        margin: 0 6px;
+        font-family: Consolas;
+        background: $themeGray;
+    }
+    pre{
+        display: block;
+        padding: 10px;
+        background-color: $themeGray;
+        code{
+            background-color: none;
+        }
+    }
+    strong{
+        font-weight: bold;
+    }
+    ol{
+        padding-left: 20px;
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+    .notice{
+        padding: 6px;
+        margin-bottom: 5px;
+        background: #ececec;
+    }
+}

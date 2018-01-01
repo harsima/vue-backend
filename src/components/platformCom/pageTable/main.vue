@@ -1,7 +1,7 @@
 <template>
-    <div class="page-table">
+    <div class="sys-table">
         <slot></slot>
-        <div class="page-table-pagination">
+        <div class="sys-table-pagination">
             <template v-if="pagination">
                 <el-pagination 
                     :layout="pageLayout"
@@ -74,12 +74,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import '~sysStatic/css/theme/theme.scss';
-    
-    .page-table-pagination{
-        margin-top: 10px;
-        text-align: left;
-    }
-</style>

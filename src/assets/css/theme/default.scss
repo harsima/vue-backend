@@ -1,0 +1,58 @@
+// 基础颜色
+//-------------------------------
+$white: #fff !default;
+$lighterGray: #eee !default;
+$lightGray: #ccc !default;
+$neutralGray: #aaa !default;
+$gray: #999 !default;
+$darkGray: #666 !default;
+$darkerGray: #333 !default;
+$red: #d45b5b !default;
+
+// 计算属性
+$caculateFontSize: 20px !default;
+
+// 主题颜色
+//-------------------------------
+$themeColor: #283443 !default;
+$themeColorLighter: lighten($themeColor, 5%) !default;
+$themeGray: #f2f2f2 !default;
+$fontColor: $darkerGray !default;
+$linkColor: #42b983 !default;
+$borderColor: #d2d2d2 !default;
+$pageColor: $white !default;
+$shadowColor: rgba(0,0,0,0) !default;
+
+
+// 系统全局设置，不包括具体细节颜色设置
+//-------------------------------
+$basicFontSize: 14px !default;
+$basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif !default;
+$basicFontColor: $fontColor !default;
+$basicMargin: 10px !default;
+$basicPadding: $basicMargin !default;
+$headerHeight: 60px !default;
+$leftNavWidth: 160px !default;
+
+// 组件设置
+//-------------------------------
+
+// login
+$loginBgColor: lighten($themeColor, 2%) !default;
+$loginBtn: #424f60 !default;
+$loginColor: $lightGray;
+
+// header
+$headerBgColor: $themeColor !default;
+$headerBorderColor: none !default;
+$headerShadow: $shadowColor !default;
+$headerColor: #c2c2c2 !default;
+$headerFontSize: 20px !default;
+
+// sidenav
+$sidenavBgColor: $themeColorLighter;
+$sidenavCurrent: #20a0ff !default;
+
+// sysNotes
+$notesBgColor: $lighterGray !default;
+$notesBorderColor: $themeColor !default;

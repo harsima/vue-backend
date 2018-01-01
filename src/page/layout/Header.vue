@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="sys-header">
         <div class="logo">
             <slot name="logo"></slot>
         </div>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'Vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
     data() {
@@ -141,52 +141,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '~sysStatic/css/theme/theme.scss';
-.header {
-    // position: relative;
-    width: 100%;
-    height: 60px;
-    background: $headerBgColor;
-    z-index: 500;
-    .logo {
-        float: left;
-        height: $headerHeight;
-        line-height: $headerHeight;
-        padding-left: 20px;
-        color: $white;
-        font-size: 20px;
-    }
-}
-
-.userInfo {
-    float: right;
-    height: 60px;
-    &>ul {
-        height: 60px;
-        &>li {
-            display: block;
-            float: left;
-            height: 60px;
-            margin-right: 20px;
-            color: $white;
-            .lang {
-                line-height: 60px;
-                color: $lightGray;
-                cursor: pointer;
-                &.cur {
-                    color: $white;
-                }
-            }
-            .user {
-                display: block;
-                height: 60px;
-                line-height: 60px;
-                color: $white;
-                cursor: pointer;
-            }
-        }
-    }
-}
-</style>

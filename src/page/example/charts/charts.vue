@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="图表"></v-pageTitle>
         <v-pageNotes>图表使用echarts组件，详细配置请参考echarts官网文档。</v-pageNotes>
         <v-pageSection title="线形图">

@@ -1,0 +1,16 @@
+// 去除一个字符串中的单位，返回纯数字, 如12px => 12
+// eg. dropUnit(12px) => 12
+@function dropUnit($number) {
+    @return $number / ($number * 0 + 1);
+}
+// 返回图片主题路径
+@function imageURL($url){
+    @return $baseImageURL + $url;
+}
+// px转rem，返回计算后的rem，注意函数只能转换一个值。如20px => 1rem
+// eg. pxTorem(20px) => 1rem
+@function pxTorem($px) {
+    $px: dropUnit($px);
+    $base: dropUnit($baseRem);
+    @return #{$px / $base}rem;
+}

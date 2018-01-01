@@ -1,0 +1,89 @@
+.side-nav {
+    .el-menu{
+        background-color: $sidenavBgColor;
+        z-index: 10;
+    }
+    .full-screen-navBg{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+    }
+    .el-submenu .el-menu-item{
+        min-width: 0;
+    }
+    &.left{
+        position: absolute;
+        top: $headerHeight;
+        bottom: 0;
+        left: 0;
+        width: $leftNavWidth;
+        background: $sidenavBgColor;
+        overflow: auto;
+    }
+    &.top{
+        float: left;
+        margin-left: 20px;
+        & > .el-menu{
+            background-color: transparent;
+            & > .el-menu-item.is-active{
+                border-bottom-color: $sidenavCurrent;
+            }
+            & > .el-submenu > .el-menu{
+                background-color: $sidenavBgColor;
+                // 三级菜单及以后
+                .el-menu{
+                    top: -5px;
+                    left: 100%;
+                    border: none;
+                    box-shadow: none;
+                    z-index: auto;
+                    .el-menu-item:hover{
+                        background-color: $sidenavBgColor;
+                        color: #fff;
+                    }
+                }
+                .el-menu-item{
+                    float: left;
+                    width: 100%;
+                    height: 60px;
+                    line-height: 60px;
+                    background: none;
+                    color: #bfcbd9;
+                    padding: 0 20px;
+                    &:hover{
+                        background-color: $themeColor;
+                    }
+                }
+                .el-submenu__title{
+                    border: none;
+                    &:hover{
+                        background-color: $themeColor;
+                        border:none;
+                    }
+                }
+                .el-submenu{
+                    width: 100%;
+                    &.is-active>.el-submenu__title{
+                        border-bottom-color: transparent;
+                    }
+                    &.is-opened>.el-submenu__title{
+                        background-color: $themeColor;
+                        .el-submenu__icon-arrow{
+                            transform: rotateZ(-90deg);
+                        }
+                    }
+                    &.is-opened>.el-menu{
+                        background-color: $themeColor;
+                    }
+                }
+            }
+            & > .el-submenu.is-active > .el-menu .el-submenu__title{
+                border-bottom-color: transparent;
+            }
+        }
+    }
+    
+}

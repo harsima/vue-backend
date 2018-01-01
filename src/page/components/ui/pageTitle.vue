@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="页面标题"></v-pageTitle>
         <div class="page-content">
             <div class="article">

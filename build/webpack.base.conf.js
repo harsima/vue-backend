@@ -10,7 +10,7 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.dev.js'
     },
     output: {
         path: config.build.assetsRoot,
@@ -24,13 +24,14 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
-            'sysStatic': resolve('src/resources'),
+            'sysStatic': resolve('src/assets'),
             'sysComponents': resolve('src/components/customCom'),
             'sysPage': resolve('src/page')
         }
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.(js|vue)$/,
                 loader: 'eslint-loader',
                 enforce: "pre",

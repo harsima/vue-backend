@@ -1,0 +1,17 @@
+// px转rem，可同时转换多个值。
+// $property  css属性名
+// $values... css属性值
+// eg. @include remCalc(margin,20,10) => margin: 1rem 0.5rem
+@mixin remCalc($property, $values...) {
+    $max: length($values); //返回$values列表的长度值 
+    $remValues: '';
+    $base: dropUnit($baseRem);
+    @for $i from 1 through $max {
+        $value: dropUnit(nth($values, $i));
+        $remValues: #{$remValues + ($value / $base)}rem;
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+    #{$property}: $remValues;
+}

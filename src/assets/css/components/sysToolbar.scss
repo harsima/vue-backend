@@ -1,0 +1,9 @@
+.sys-toolbar{
+    margin-bottom: $basicMargin;
+    &.right{
+        text-align: right;
+    }
+    &.left{
+        text-align: left;
+    }
+}

@@ -1,10 +1,10 @@
 <template>
-    <div class="page">
+    <div class="sys-page">
         <v-pageTitle title="详细鉴权组件"></v-pageTitle>
         <div class="page-content">
-            <div class="article">
+            <div class="sys-article">
                 <p>该组件并非鉴别页面访问权限，实际是鉴别页面内部某些按钮或操作的权限。</p>
-                <p>页面中的某些操作或者某些区块拥有访问等其他权限时，只需要添加<pre>v-if="hasPermission('view')</pre>即可。</p>
+                <p>页面中的某些操作或者某些区块拥有访问等其他权限时，只需要添加<code>v-if="hasPermission('view')</code>即可。</p>
             </div>
             <v-pageSection title="函数说明">
                 <el-table :data="tableData" style="width: 100%">
