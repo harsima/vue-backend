@@ -5,4 +5,10 @@
     border-left: 4px solid $tipsBorderColor;
     background: $tipsBgColor;
     line-height: 22px;
+    a{
+        color: #42b983;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
