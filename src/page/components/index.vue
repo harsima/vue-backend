@@ -7,9 +7,9 @@
             </v-pageNotes>
             <v-pageSection title="使用方法">
                 <div class="sys-article">
-                    <p>系统组件默认使用全局注册，无需再次引入。如果需要按需引入，只需在<pre>src/main.js</pre>中取消对全局组件的引入即可。如下所示</p>
+                    <p>系统组件默认使用全局注册，无需再次引入。如果需要按需引入，只需在<code>src/main.js</code>中取消对全局组件的引入即可。如下所示</p>
                 </div>
-                <pre v-pre><code>
+                <pre v-pre class="sys-pre"><code>
     import Vue from "vue"
     import VueRouter from 'vue-router'
     ...
@@ -18,7 +18,7 @@
     ...
                 </code></pre>
                 <div class="sys-article">
-                    <p>如果需要取消部分全局组件的应用，则修改<pre>src/components/platformCom/install.js</pre>的引入组件即可</p>
+                    <p>如果需要取消部分全局组件的应用，则修改<code>src/components/platformCom/install.js</code>的引入组件即可</p>
                 </div>
             </v-pageSection>
             <v-pageSection title="分类说明">
