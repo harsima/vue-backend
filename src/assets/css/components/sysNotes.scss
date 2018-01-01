@@ -1,14 +1,8 @@
 .sys-notes{
     display: block;
     padding: 15px 10px 15px 14px;
-    margin-bottom: $commomSpace;
-    border-left: 4px solid $tipsBorderColor;
-    background: $tipsBgColor;
+    margin-bottom: $basicMargin;
+    border-left: 4px solid $notesBorderColor;
+    background: $notesBgColor;
     line-height: 22px;
-    a{
-        color: #42b983;
-        &:hover{
-            text-decoration: underline;
-        }
-    }
 }

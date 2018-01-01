@@ -1,42 +1,58 @@
-// Basic Color
+// 基础颜色
 //-------------------------------
-$white: #fff;
-$lighterGray: #eee;
-$lightGray: #ccc;
-$neutralGray: #aaa;
-$gray: #999;
-$darkGray: #666;
-$darkerGray: #333;
+$white: #fff !default;
+$lighterGray: #eee !default;
+$lightGray: #ccc !default;
+$neutralGray: #aaa !default;
+$gray: #999 !default;
+$darkGray: #666 !default;
+$darkerGray: #333 !default;
+$red: #d45b5b !default;
 
-// 主题基本颜色
+// 计算属性
+$caculateFontSize: 20px !default;
+
+// 主题颜色
 //-------------------------------
-$themeColor: #1F2D3D;
-$borderColor: #d2d2d2;
-$shadowColor: rgba(0,0,0,0);
-$commonBgColor: #f2f2f2;
+$themeColor: #283443 !default;
+$themeColorLighter: lighten($themeColor, 5%) !default;
+$themeGray: #f2f2f2 !default;
+$fontColor: $darkerGray !default;
+$linkColor: #42b983 !default;
+$borderColor: #d2d2d2 !default;
+$pageColor: $white !default;
+$shadowColor: rgba(0,0,0,0) !default;
+
 
 // 系统全局设置，不包括具体细节颜色设置
 //-------------------------------
-$systemFontSize: 14px;
-$systemFontFamily: "Helvetica", "Microsoft Yahei", san-serif;
-$systemFontColor: #333;
-$headerHeight: 60px;
-$leftNavWidth: 160px;
-$commomSpace: 10px;
+$basicFontSize: 14px !default;
+$basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif !default;
+$basicFontColor: $fontColor !default;
+$basicMargin: 10px !default;
+$basicPadding: $basicMargin !default;
+$headerHeight: 60px !default;
+$leftNavWidth: 160px !default;
 
-// 组件颜色
+// 组件设置
 //-------------------------------
-// 顶部标题栏颜色
-$headerBgColor: $themeColor;
-$headerBorderColor: none;
-$headerShadow: $shadowColor;
-$headerColor: #c2c2c2;
 
-// 左侧导航颜色
-$sidenavBgColor: #324157;
+// login
+$loginBgColor: lighten($themeColor, 2%) !default;
+$loginBtn: #424f60 !default;
+$loginColor: $lightGray;
 
-// 右侧主体内容背景色
-$mainContentBgColor: #fff;
+// header
+$headerBgColor: $themeColor !default;
+$headerBorderColor: none !default;
+$headerShadow: $shadowColor !default;
+$headerColor: #c2c2c2 !default;
+$headerFontSize: 20px !default;
 
-$tipsBgColor: $commonBgColor;
-$tipsBorderColor: $sidenavBgColor;
+// sidenav
+$sidenavBgColor: $themeColorLighter;
+$sidenavCurrent: #20a0ff !default;
+
+// sysNotes
+$notesBgColor: $lighterGray !default;
+$notesBorderColor: $themeColor !default;

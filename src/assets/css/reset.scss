@@ -30,21 +30,19 @@ img, a img {
     vertical-align: top;
 }
 a, a:link, a:active, a:visited {
-    text-decoration: none;
-    color: #666;
+    color: $linkColor;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 a:hover {
     color: $themeColor;
-    text-decoration: none;
 }
 html {
     height: 100%;
 }
 body {
-    font-size: $systemFontSize;
-    font-family: $systemFontFamily;
-    color: $systemFontColor;
+    font-size: $basicFontSize;
+    font-family: $basicFontFamily;
+    color: $basicFontColor;
     height: 100%;
 }
 .f-cb:after {
@@ -107,7 +105,7 @@ body {
     text-align: right;
 }
 .text2em {
-    text-indent: 2em
+    text-indent: 2em;
 }
 .word-hidden {
     text-overflow: ellipsis;

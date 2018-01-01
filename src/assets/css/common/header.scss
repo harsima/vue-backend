@@ -1,8 +1,8 @@
 .sys-header {
     // position: relative;
     width: 100%;
-    height: 60px;
-    background: $headerBgColor;
+    height: $headerHeight;
+    background-color: $headerBgColor;
     z-index: 500;
     .logo {
         float: left;
@@ -10,21 +10,21 @@
         line-height: $headerHeight;
         padding-left: 20px;
         color: $white;
-        font-size: 20px;
+        font-size: $headerFontSize;
     }
     .userInfo {
         float: right;
-        height: 60px;
+        height: $headerHeight;
         &>ul {
-            height: 60px;
+            height: $headerHeight;
             &>li {
                 display: block;
                 float: left;
-                height: 60px;
+                height: $headerHeight;
                 margin-right: 20px;
                 color: $white;
                 .lang {
-                    line-height: 60px;
+                    line-height: $headerHeight;
                     color: $lightGray;
                     cursor: pointer;
                     &.cur {
@@ -33,8 +33,8 @@
                 }
                 .user {
                     display: block;
-                    height: 60px;
-                    line-height: 60px;
+                    height: $headerHeight;
+                    line-height: $headerHeight;
                     color: $white;
                     cursor: pointer;
                 }

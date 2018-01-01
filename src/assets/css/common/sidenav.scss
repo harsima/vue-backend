@@ -1,5 +1,6 @@
 .side-nav {
     .el-menu{
+        background-color: $sidenavBgColor;
         z-index: 10;
     }
     .full-screen-navBg{
@@ -17,7 +18,7 @@
         position: absolute;
         top: $headerHeight;
         bottom: 0;
-        left: 0px;
+        left: 0;
         width: $leftNavWidth;
         background: $sidenavBgColor;
         overflow: auto;
@@ -28,10 +29,10 @@
         & > .el-menu{
             background-color: transparent;
             & > .el-menu-item.is-active{
-                border-bottom-color: #20a0ff;
+                border-bottom-color: $sidenavCurrent;
             }
             & > .el-submenu > .el-menu{
-                background-color: #324157;
+                background-color: $sidenavBgColor;
                 // 三级菜单及以后
                 .el-menu{
                     top: -5px;
@@ -40,7 +41,7 @@
                     box-shadow: none;
                     z-index: auto;
                     .el-menu-item:hover{
-                        background-color:#223142;
+                        background-color: $sidenavBgColor;
                         color: #fff;
                     }
                 }
@@ -53,13 +54,13 @@
                     color: #bfcbd9;
                     padding: 0 20px;
                     &:hover{
-                        background-color: #1f2d3d;
+                        background-color: $themeColor;
                     }
                 }
                 .el-submenu__title{
                     border: none;
                     &:hover{
-                        background-color:#1f2d3d;
+                        background-color: $themeColor;
                         border:none;
                     }
                 }
@@ -69,13 +70,13 @@
                         border-bottom-color: transparent;
                     }
                     &.is-opened>.el-submenu__title{
-                        background-color: #1f2d3d;
+                        background-color: $themeColor;
                         .el-submenu__icon-arrow{
                             transform: rotateZ(-90deg);
                         }
                     }
                     &.is-opened>.el-menu{
-                        background-color: #1f2d3d;
+                        background-color: $themeColor;
                     }
                 }
             }

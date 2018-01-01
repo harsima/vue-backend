@@ -1,10 +1,10 @@
 .sys-section{
     display: block;
     width: 100%;
-    margin-bottom: $commomSpace*2;
+    margin-bottom: $basicMargin*2;
     & > .title{
         height: 50px;
-        margin-bottom: $commomSpace;
+        margin-bottom: $basicMargin;
         border-bottom: 1px solid $borderColor;
         &::after{
             content: "";
@@ -16,7 +16,6 @@
             font-weight: normal;
             font-size: 18px;
             line-height: 50px;
-            color: $systemFontColor
         }
         &  > .toolbar{
             float: right;
