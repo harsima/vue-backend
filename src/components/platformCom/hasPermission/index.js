@@ -1,14 +1,11 @@
 const hasPermission = {
     // eslint-disable-next-line
     install (Vue, options){
-        Vue.mixin({
-            methods:{
-                hasPermission(data){
-                    let permissionList = this.$route.meta.permission
-                    if(permissionList && permissionList.length && permissionList.includes(data)){
-                        return true
-                    }
-                    return false
+        Vue.directive('hasPermission', {
+            bind(el, binding, vnode){
+                let permissionList = vnode.context.$route.meta.permission
+                if(permissionList && permissionList.length && permissionList.includes(binding.value)){
+                    el.parentNode.removeChild(el)
                 }
             }
         })

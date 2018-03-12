@@ -27,7 +27,7 @@
         <!-- 工具条 -->
         <v-pageToolbar>
             <el-button type="primary">新增</el-button>
-            <el-button type="primary" v-if="hasPermission('edit')">修改</el-button>
+            <el-button type="primary" v-hasPermission="'edit'">修改</el-button>
             <!-- <el-button type="primary" @click="filterShow">表头筛选</el-button> -->
         </v-pageToolbar>
         <!-- 表格体 -->
