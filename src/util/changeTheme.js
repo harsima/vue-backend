@@ -21,9 +21,9 @@ function changeStyle(file){
         hasFile = false;
 
     // 生成当前加载的css地址数组
-    styleList.forEach(el => {
-        urlList.push(el.getAttribute("href"))
-    })
+    for(var i = 0; i < styleList.length; i++){
+        urlList.push(styleList[i].getAttribute("href"))
+    }
 
     // 判断是否有匹配的文件
     matchFileName(urlList, file, function(){
