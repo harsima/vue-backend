@@ -35,7 +35,8 @@ function changeStyle(file){
         // 删除其他主题文件
         urlList.forEach(el => {
             if(window.themeURL.indexOf(el) >= 0){
-                document.querySelectorAll(`link[href="${el}"]`)[0].remove()
+                var item = document.querySelectorAll(`link[href="${el}"]`)[0]
+                item.parentNode.removeChild(item)
             }
         })
         // 插入新style
