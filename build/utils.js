@@ -15,7 +15,7 @@ exports.keepAssetsPath = function(opt) {
         config.build.assetsSubDirectory :
         config.dev.assetsSubDirectory
     
-    const relPath = path.relative(opt.file, opt.assetsPath)
+    const relPath = path.relative(opt.assetsPath, opt.file)
     let subPath = relPath.split("\\").join("/")
     return path.posix.join(assetsSubDirectory, subPath, opt.name)
 }
@@ -48,7 +48,8 @@ exports.cssLoaders = function(options) {
         if (options.extract) {
             return ExtractTextPlugin.extract({
                 use: loaders,
-                fallback: 'vue-style-loader'
+                fallback: 'vue-style-loader',
+                publicPath: '/'
             })
         } else {
             return ['vue-style-loader'].concat(loaders)
