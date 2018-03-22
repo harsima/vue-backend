@@ -10,6 +10,16 @@ exports.assetsPath = function(_path) {
     return path.posix.join(assetsSubDirectory, _path)
 }
 
+exports.keepAssetsPath = function(opt) {
+    const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+        config.build.assetsSubDirectory :
+        config.dev.assetsSubDirectory
+    
+    const relPath = path.relative(opt.file, opt.assetsPath)
+    let subPath = relPath.split("\\").join("/")
+    return path.posix.join(assetsSubDirectory, subPath, opt.name)
+}
+
 exports.cssLoaders = function(options) {
     options = options || {}
 

@@ -17,6 +17,7 @@ $caculateFontSize: 20px !default;
 $themeColor: #283443 !default;
 $themeColorLighter: lighten($themeColor, 5%) !default;
 $themeGray: #f2f2f2 !default;
+$baseImageURL: '~sysStatic/images/default' !default;
 $fontColor: $darkerGray !default;
 $linkColor: #42b983 !default;
 $borderColor: #d2d2d2 !default;
