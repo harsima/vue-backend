@@ -14,7 +14,7 @@ import ElementUI from 'element-ui'
 import i18n from './util/i18n'
 import App from './index'
 
-import './components/platformCom/install'
+import './components/platformCom/install' 
 
 // 注册组件到Vue
 Vue.prototype.$axios = axios;

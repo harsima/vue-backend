@@ -14,7 +14,7 @@ export default {
             state.navbarPosition = data
         }
     },
-    changeTheme(state, data){
+    setThemeColor(state, data){
         state.theme = data
     }
 }

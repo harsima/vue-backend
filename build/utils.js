@@ -16,7 +16,8 @@ exports.keepAssetsPath = function(opt) {
         config.dev.assetsSubDirectory
     
     const relPath = path.relative(opt.assetsPath, opt.file)
-    let subPath = relPath.split("\\").join("/")
+    let subPath = path.dirname(subPath)
+    subPath = subPath.split(path.sep).join("/")
     return path.posix.join(assetsSubDirectory, subPath, opt.name)
 }
 
