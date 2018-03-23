@@ -7,17 +7,17 @@
             <div class="form-group">
                 <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px">
                     <el-form-item prop="name">
-                        <el-input v-model="loginForm.name" type="text" placeholder="账户名"></el-input>
+                        <el-input v-model="loginForm.name" type="text" :placeholder="$t('global.username')"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input v-model="loginForm.password" type="password" placeholder="密码"></el-input>
+                        <el-input v-model="loginForm.password" type="password" :placeholder="$t('global.password')"></el-input>
                     </el-form-item>
                     <el-form-item prop="captcha" v-if="captcha" class="captcha">
                         <el-input v-model="loginForm.captcha" type="text" placeholder="验证码"></el-input>
                         <img src="" alt="">
                     </el-form-item>
-                    <p class="textR">忘记密码？</p>
-                    <a class="btn-login" type="primary" @click="submitForm()">登录</a>
+                    <p class="textR">{{$t('global.forgetPassword')}}</p>
+                    <a class="btn-login" type="primary" @click="submitForm()">{{$t('global.login')}}</a>
                 </el-form>
                 <div v-if="sys_error" class="err-msg">{{sys_error}}</div>
             </div>
@@ -26,7 +26,7 @@
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
             <div class="tip">
-                <p>当前登录结果随机。验证码随便填</p>
+                <p>{{$t('global.loginTip')}}</p>
             </div>
         </div>
     </div>

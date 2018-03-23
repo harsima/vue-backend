@@ -39,7 +39,7 @@ $baseImageURL: '~sysStatic/images/green/';
 //-------------------------------
 
 // login
-$loginBgColor: $themeColor;
+$loginBg: url($baseImageURL+"login.jpg") center center no-repeat;
 $loginBtn: #069e95;
 $loginTextColor: darken($white, 12%);
 $loginErrTextColor: #e5b989;
