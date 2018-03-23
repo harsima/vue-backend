@@ -20,7 +20,6 @@ $borderColor: #d2d2d2 !default;
 $pageColor: $white !default;
 $shadowColor: rgba(0,0,0,0) !default;
 
-
 // 字体及图片设置
 //-------------------------------
 // 设置1rem = 20px。需要与util/rem.js中的值相同
@@ -42,7 +41,14 @@ $baseImageURL: '~sysStatic/images/default/' !default;
 // login
 $loginBgColor: lighten($themeColor, 2%) !default;
 $loginBtn: #424f60 !default;
-$loginColor: $lightGray;
+$loginTextColor: $lightGray !default;
+$loginErrTextColor: $red !default;
+$loginInputErrBg: inherit !default;
+$loginInputBorderColor: rgba(255,255,255,.1) !default;
+$loginInputBg: $themeColor !default;
+$loginInputColor: $loginTextColor !default;
+$loginLangCurBg: #ff6363 !default;
+$loginLangCurColor: $themeColorLighter !default;
 
 // header
 $headerHeight: 60px !default;
@@ -54,7 +60,7 @@ $headerFontSize: 20px !default;
 
 // sidenav
 $leftNavWidth: 160px !default;
-$sidenavBgColor: $themeColorLighter;
+$sidenavBgColor: $themeColorLighter !default;
 $sidenavCurrent: #20a0ff !default;
 
 // sysNotes
