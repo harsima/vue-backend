@@ -25,6 +25,10 @@
                 <span :class="{cur: lang=='zh'}" @click="changeLang('zh')">中</span> | 
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
+            <div class="lang-toggle">
+                <span :class="{cur: theme=='default'}" @click="setTheme('default')">深</span> | 
+                <span :class="{cur: theme=='green'}" @click="setTheme('green')">浅</span>
+            </div>
             <div class="tip">
                 <p>{{$t('global.loginTip')}}</p>
             </div>
@@ -34,6 +38,7 @@
 
 <script>
     import { mapState, mapMutations, mapActions } from 'vuex'
+    import changeTheme from "@/util/changeTheme"
 
     export default {
         data() {
@@ -60,7 +65,8 @@
         },
         computed: {
             ...mapState({
-                lang: state => state.lang
+                lang: state => state.lang,
+                theme: state => state.theme
             }),
             captcha(){
                 if(this.validate) 
@@ -103,6 +109,11 @@
             changeLang(val){
                 if(val == this.lang) return
                 this.toggleLang(val)
+            },
+            setTheme(val){
+                if(val == this.lang) return
+                changeTheme(`theme-${val}`)
+                this.$store.commit("setThemeColor", val)
             }
         }
     }

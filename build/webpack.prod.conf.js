@@ -15,7 +15,8 @@ const env = config.build.env
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
         app: './src/main.prod.js',
-        'theme-default': './src/assets/css/theme-default.scss'
+        'theme-default': './src/assets/css/theme-default.scss',
+        'theme-green': './src/assets/css/theme-green.scss'
     },
     module: {
         rules: utils.styleLoaders({
@@ -68,7 +69,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             minify: false,
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency',
-            excludeChunks: ['theme-default']
+            excludeChunks: ['theme-default', 'theme-green']
         }),
         // keep module.id stable when vender modules does not change
         new webpack.HashedModuleIdsPlugin(),
