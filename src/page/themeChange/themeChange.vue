@@ -36,7 +36,7 @@
                     <pre v-pre class="sys-pre"><code>
 // 增加新的入口，并赋予文件名和路径
 entry: {
-    'theme-default': './src/assets/style/theme-default.scss'
+    'theme-default': './src/assets/css/theme-default.scss'
 }
 
 // 对HtmlWebpackPlugin插件增加忽略chunk设置，防止该chunk被加入到生成后的html中

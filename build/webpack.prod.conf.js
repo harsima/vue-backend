@@ -15,7 +15,7 @@ const env = config.build.env
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
         app: './src/main.prod.js',
-        'theme-default': './src/assets/style/theme-default.scss'
+        'theme-default': './src/assets/css/theme-default.scss'
     },
     module: {
         rules: utils.styleLoaders({

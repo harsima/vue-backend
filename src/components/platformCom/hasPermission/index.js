@@ -1,6 +1,5 @@
 const hasPermission = {
-    // eslint-disable-next-line
-    install (Vue, options){
+    install (Vue){
         Vue.directive('hasPermission', {
             bind(el, binding, vnode){
                 let permissionList = vnode.context.$route.meta.permission

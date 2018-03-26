@@ -13,7 +13,7 @@
                         <el-input v-model="loginForm.password" type="password" :placeholder="$t('global.password')"></el-input>
                     </el-form-item>
                     <el-form-item prop="captcha" v-if="captcha" class="captcha">
-                        <el-input v-model="loginForm.captcha" type="text" placeholder="验证码"></el-input>
+                        <el-input v-model="loginForm.captcha" type="text" :placeholder="$t('global.captcha')"></el-input>
                         <img src="" alt="">
                     </el-form-item>
                     <p class="textR">{{$t('global.forgetPassword')}}</p>
@@ -34,6 +34,7 @@
 
 <script>
     import { mapState, mapMutations, mapActions } from 'vuex'
+
     export default {
         data() {
             return {
@@ -62,7 +63,8 @@
                 lang: state => state.lang
             }),
             captcha(){
-                if(this.validate) this.loginRules.captcha[0].required = true
+                if(this.validate) 
+                    this.loginRules.captcha[0].required = true
                 return this.validate
             }
         },
@@ -80,7 +82,8 @@
                             name: this.loginForm.name,
                             password: this.loginForm.password
                         }
-                        if(this.validate) data.validate = this.loginForm.validate
+                        if(this.validate) 
+                            data.validate = this.loginForm.validate
                         this.loginByEmail(data).then(res => {
                             if(res.data.login){
                                 this.$router.push('home')
