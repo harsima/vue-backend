@@ -9,9 +9,6 @@ $darkGray: #666 !default;
 $darkerGray: #333 !default;
 $red: #d45b5b !default;
 
-// 计算属性
-$caculateFontSize: 20px !default;
-
 // 主题颜色
 //-------------------------------
 $themeColor: #283443 !default;
@@ -23,26 +20,38 @@ $borderColor: #d2d2d2 !default;
 $pageColor: $white !default;
 $shadowColor: rgba(0,0,0,0) !default;
 
-
-// 系统全局设置，不包括具体细节颜色设置
+// 字体及图片设置
 //-------------------------------
+// 设置1rem = 20px。需要与util/rem.js中的值相同
+$baseRem: 20px !default;
+// 非响应式基本字号大小
 $basicFontSize: 14px !default;
+// 响应式基本字号大小
+$baseResponseSize: 1.3rem !default;
 $basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif !default;
 $basicFontColor: $fontColor !default;
 $basicMargin: 10px !default;
 $basicPadding: $basicMargin !default;
-$headerHeight: 60px !default;
-$leftNavWidth: 160px !default;
+// 图片主题路径
+$baseImageURL: '~sysStatic/images/default/' !default;
 
 // 组件设置
 //-------------------------------
 
 // login
-$loginBgColor: lighten($themeColor, 2%) !default;
+$loginBg: url($baseImageURL+"login.jpg") center center no-repeat !default;
 $loginBtn: #424f60 !default;
-$loginColor: $lightGray;
+$loginTextColor: $lightGray !default;
+$loginErrTextColor: $red !default;
+$loginInputErrBg: inherit !default;
+$loginInputBorderColor: rgba(255,255,255,.1) !default;
+$loginInputBg: $themeColor !default;
+$loginInputColor: $loginTextColor !default;
+$loginLangCurBg: #ff6363 !default;
+$loginLangCurColor: $themeColorLighter !default;
 
 // header
+$headerHeight: 60px !default;
 $headerBgColor: $themeColor !default;
 $headerBorderColor: none !default;
 $headerShadow: $shadowColor !default;
@@ -50,7 +59,8 @@ $headerColor: #c2c2c2 !default;
 $headerFontSize: 20px !default;
 
 // sidenav
-$sidenavBgColor: $themeColorLighter;
+$leftNavWidth: 160px !default;
+$sidenavBgColor: $themeColorLighter !default;
 $sidenavCurrent: #20a0ff !default;
 
 // sysNotes

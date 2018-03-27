@@ -17,7 +17,7 @@ import App from './index'
 import './components/platformCom/install'
 
 // 注册组件到Vue
-Vue.prototype.$axios = axios;
+Vue.prototype.$axios = axios
 Vue.use(ElementUI)
 
 new Vue({

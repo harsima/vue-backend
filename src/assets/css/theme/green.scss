@@ -1,0 +1,68 @@
+// 基础颜色
+//-------------------------------
+$white: #fff;
+$lighterGray: #eee;
+$lightGray: #ccc;
+$neutralGray: #aaa;
+$gray: #999;
+$darkGray: #666;
+$darkerGray: #333;
+$red: #d45b5b;
+
+// 主题颜色
+//-------------------------------
+$themeColor: #43aaa4;
+$themeColorLighter: #60c4c3;
+$themeGray: #f9f9f9;
+$fontColor: $darkerGray;
+$linkColor: #5cc2c1;
+$borderColor: #5cc1c0;
+$pageColor: $white;
+$shadowColor: rgba(0,0,0,0);
+
+// 字体及图片设置
+//-------------------------------
+// 设置1rem = 20px。需要与util/rem.js中的值相同
+$baseRem: 20px;
+// 非响应式基本字号大小
+$basicFontSize: 14px;
+// 响应式基本字号大小
+$baseResponseSize: 1.3rem;
+$basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif;
+$basicFontColor: $fontColor;
+$basicMargin: 10px;
+$basicPadding: $basicMargin;
+// 图片主题路径
+$baseImageURL: '~sysStatic/images/green/';
+
+// 组件设置
+//-------------------------------
+
+// login
+$loginBg: url($baseImageURL+"login.jpg") center center no-repeat;
+$loginBtn: #069e95;
+$loginTextColor: darken($white, 12%);
+$loginErrTextColor: #e5b989;
+$loginInputBorderColor: none;
+$loginInputBg: $lighterGray;
+$loginInputErrBg: #ffdede;
+$loginInputColor: $darkGray;
+$loginLangCurBg: darken($loginBtn, 2%);
+$loginLangCurColor: $lighterGray;
+
+// header
+$headerHeight: 60px;
+$headerBgColor: $themeColor;
+$headerBorderColor: none;
+$headerShadow: $shadowColor;
+$headerColor: #c2c2c2;
+$headerFontSize: 20px;
+
+// sidenav
+$leftNavWidth: 160px;
+$sidenavBgColor: $white;
+$sidenavCurrent: #20a0ff;
+
+// sysNotes
+$notesBgColor: $lighterGray;
+$notesBorderColor: $themeColor;

@@ -32,7 +32,7 @@ export default {
      */
     del(name) {
         let exp = new Date(),
-            cval = getCookie(name);
+            cval = this.get(name);
         exp.setTime(exp.getTime() - 1);
         if (cval != null) {
             document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();

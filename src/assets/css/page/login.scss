@@ -1,7 +1,7 @@
 .sys-login{
     width: 100%;
     height: 100%;
-    background: $loginBgColor;
+    background: $loginBg;
 
     .login-area {
         width: 330px;
@@ -23,16 +23,16 @@
         }
         position: relative;
         padding-bottom: 20px;
-        color: $loginColor;
+        color: $loginTextColor;
         overflow: hidden;
         .el-input__inner {
             height: 40px;
             line-height: 40px;
             padding-left: 10px;
-            background-color: $themeColor;
-            border: 1px solid rgba(255,255,255,.1);
+            background-color: $loginInputBg;
+            border: 1px solid $loginInputBorderColor;
             border-radius: 4px;
-            color: $loginColor;
+            color: $loginInputColor;
             font-size: 15px;
             overflow: hidden;
             &:hover{
@@ -45,6 +45,7 @@
         .el-form-item{
             &.is-error .el-input__inner{
                 border-color: $red;
+                background-color: $loginInputErrBg;
             }
             &.captcha input{
                 width: 200px;
@@ -54,7 +55,7 @@
             }
         }
         .el-form-item__error{
-            color: $red;
+            color: $loginErrTextColor;
         }
     }
 
@@ -68,7 +69,7 @@
         background: $loginBtn;
         border: none;
         border-radius: 4px;
-        color: $loginColor;
+        color: $loginTextColor;
         font-size: 18px;
         text-align: center;
         cursor: pointer;
@@ -82,25 +83,25 @@
     }
     .tip{
         margin-top: 10px;
-        color: $loginColor;
+        color: $loginTextColor;
     }
 
     .lang-toggle{
         text-align: center;
-        color: $loginColor;
+        color: $loginTextColor;
         span{
             display: inline-block;
             width: 26px;
             height: 26px;
             line-height: 26px;
             border-radius: 50%;
-            color: $loginColor;
+            color: $loginTextColor;
             font-size: 14px;
             text-align: center;
             cursor: pointer;
             &.cur{
-                background: #ff6363;
-                color: $themeColorLighter;
+                background: $loginLangCurBg;
+                color: $loginLangCurColor;
             }
         }
     }
@@ -111,7 +112,7 @@
         width: 100%;
         height: 80px;
         line-height: 80px;
-        color: $loginColor;
+        color: $loginTextColor;
         font-size: 16px;
         text-align: center;
     }

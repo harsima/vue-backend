@@ -7,17 +7,17 @@
             <div class="form-group">
                 <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left" label-width="0px">
                     <el-form-item prop="name">
-                        <el-input v-model="loginForm.name" type="text" placeholder="账户名"></el-input>
+                        <el-input v-model="loginForm.name" type="text" :placeholder="$t('global.username')"></el-input>
                     </el-form-item>
                     <el-form-item prop="password">
-                        <el-input v-model="loginForm.password" type="password" placeholder="密码"></el-input>
+                        <el-input v-model="loginForm.password" type="password" :placeholder="$t('global.password')"></el-input>
                     </el-form-item>
                     <el-form-item prop="captcha" v-if="captcha" class="captcha">
-                        <el-input v-model="loginForm.captcha" type="text" placeholder="验证码"></el-input>
+                        <el-input v-model="loginForm.captcha" type="text" :placeholder="$t('global.captcha')"></el-input>
                         <img src="" alt="">
                     </el-form-item>
-                    <p class="textR">忘记密码？</p>
-                    <a class="btn-login" type="primary" @click="submitForm()">登录</a>
+                    <p class="textR">{{$t('global.forgetPassword')}}</p>
+                    <a class="btn-login" type="primary" @click="submitForm()">{{$t('global.login')}}</a>
                 </el-form>
                 <div v-if="sys_error" class="err-msg">{{sys_error}}</div>
             </div>
@@ -25,8 +25,12 @@
                 <span :class="{cur: lang=='zh'}" @click="changeLang('zh')">中</span> | 
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
+            <div class="lang-toggle">
+                <span :class="{cur: theme=='default'}" @click="setTheme('default')">深</span> | 
+                <span :class="{cur: theme=='green'}" @click="setTheme('green')">浅</span>
+            </div>
             <div class="tip">
-                <p>当前登录结果随机。验证码随便填</p>
+                <p>{{$t('global.loginTip')}}</p>
             </div>
         </div>
     </div>
@@ -34,6 +38,8 @@
 
 <script>
     import { mapState, mapMutations, mapActions } from 'vuex'
+    import changeTheme from "@/util/changeTheme"
+
     export default {
         data() {
             return {
@@ -59,10 +65,12 @@
         },
         computed: {
             ...mapState({
-                lang: state => state.lang
+                lang: state => state.lang,
+                theme: state => state.theme
             }),
             captcha(){
-                if(this.validate) this.loginRules.captcha[0].required = true
+                if(this.validate) 
+                    this.loginRules.captcha[0].required = true
                 return this.validate
             }
         },
@@ -80,7 +88,8 @@
                             name: this.loginForm.name,
                             password: this.loginForm.password
                         }
-                        if(this.validate) data.validate = this.loginForm.validate
+                        if(this.validate) 
+                            data.validate = this.loginForm.validate
                         this.loginByEmail(data).then(res => {
                             if(res.data.login){
                                 this.$router.push('home')
@@ -100,6 +109,11 @@
             changeLang(val){
                 if(val == this.lang) return
                 this.toggleLang(val)
+            },
+            setTheme(val){
+                if(val == this.lang) return
+                changeTheme(`theme-${val}`)
+                this.$store.commit("setThemeColor", val)
             }
         }
     }
