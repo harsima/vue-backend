@@ -1,13 +1,16 @@
 import Cookies from 'js-cookie'
-import i18n from '@/util/i18n'
 
 export default {
-    changeLang(state, data){
+    setLang(state, data){
         if(data){
-            Cookies.set('lang', data)
-            i18n.locale = data
             state.lang = data
-        }   
+            Cookies.set('lang', data)
+        }
+    },
+    addLangPack(state, data){
+        if(data){
+            state.langPack.push(data)
+        }
     },
     changeLayout(state, data){
         if(data){

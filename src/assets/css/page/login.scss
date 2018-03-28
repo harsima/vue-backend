@@ -18,13 +18,15 @@
     }
 
     .form-group {
-        input::-webkit-input-placeholder{
-            color: #7e9fb0;
-        }
         position: relative;
         padding-bottom: 20px;
         color: $loginTextColor;
         overflow: hidden;
+
+        input::-webkit-input-placeholder{
+            color: #7e9fb0;
+        }
+        
         .el-input__inner {
             height: 40px;
             line-height: 40px;
@@ -35,6 +37,7 @@
             color: $loginInputColor;
             font-size: 15px;
             overflow: hidden;
+
             &:hover{
                 border-color: rgba(255,255,255,.2);
             }
@@ -47,11 +50,18 @@
                 border-color: $red;
                 background-color: $loginInputErrBg;
             }
-            &.captcha input{
-                width: 200px;
-            }
-            &.captcha img{
-                float: right;
+            &.captcha {
+                .el-input{
+                    width: auto;
+                }
+                input{
+                    width: 200px;
+                }
+                img{
+                    float: right;
+                    width: 100px;
+                    height: 40px;
+                }
             }
         }
         .el-form-item__error{
@@ -73,6 +83,7 @@
         font-size: 18px;
         text-align: center;
         cursor: pointer;
+
         &:hover{
             background: darken($loginBtn, 2%)
         }
@@ -89,6 +100,7 @@
     .lang-toggle{
         text-align: center;
         color: $loginTextColor;
+
         span{
             display: inline-block;
             width: 26px;
@@ -99,6 +111,7 @@
             font-size: 14px;
             text-align: center;
             cursor: pointer;
+
             &.cur{
                 background: $loginLangCurBg;
                 color: $loginLangCurColor;

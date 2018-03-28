@@ -18,7 +18,9 @@ import './components/platformCom/install'
 
 // 注册组件到Vue
 Vue.prototype.$axios = axios
-Vue.use(ElementUI)
+Vue.use(ElementUI, {
+    i18n: (key, value) => i18n.t(key, value)
+})
 
 new Vue({
     i18n,

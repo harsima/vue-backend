@@ -59,39 +59,39 @@ const routes = [{
     },
     {
         path: '/login',
-        component: r => require.ensure([], () => r(require('../page/login/login')), 'login')
+        component: () => import(/* webpackChunkName: 'login' */ '../page/login/login')
     },
     {
         path: '/defaultLayout',
-        component: r => require.ensure([], () => r(require('../page/layout/layout')), 'layout'),
+        component: () => import(/* webpackChunkName: 'layout' */ '../page/layout/layout'),
         meta:{
             permission:[]
         },
         // 需要进行用户登录验证
         children: [{
             path: '/home',
-            component: r => require.ensure([], () => r(require('../page/home/home')), 'home'),
+            component: () => import(/* webpackChunkName: 'home' */ '../page/home/home')
         }]
     },
     {
         path: '/error',
-        component: r => require.ensure([], () => r(require('../page/error/error')), 'error'),
+        component: () => import(/* webpackChunkName: 'error' */ '../page/error/error'),
         children: [
             {
                 path: '/error/401',
-                component: r => require.ensure([], () => r(require('../page/error/401')), 'error')
+                component: () => import(/* webpackChunkName: 'error' */ '../page/error/401')
             },
             {
                 path: '/error/403',
-                component: r => require.ensure([], () => r(require('../page/error/403')), 'error')
+                component: () => import(/* webpackChunkName: 'error' */ '../page/error/403')
             },
             {
                 path: '/error/404',
-                component: r => require.ensure([], () => r(require('../page/error/404')), 'error')
+                component: () => import(/* webpackChunkName: 'error' */ '../page/error/404')
             },
             {
                 path: '/error/500',
-                component: r => require.ensure([], () => r(require('../page/error/500')), 'error')
+                component: () => import(/* webpackChunkName: 'error' */ '../page/error/500')
             }
         ]
     }

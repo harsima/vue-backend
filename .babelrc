@@ -6,7 +6,6 @@
   "plugins": [
     "syntax-dynamic-import"
   ],
-  "comments": false,
   "env": {
     "test": {
       "presets": ["env", "stage-2"],

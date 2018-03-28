@@ -1,10 +1,9 @@
-import i18n from '@/util/i18n'
-
-let lang = i18n.locale
+import Cookie from 'js-cookie'
 
 export default {
     // 当前语言模式  zh / en 
-    lang: lang,
+    lang: Cookie.get('lang') || 'zhCN',
+    langPack: ['zhCN'],
     // 导航条位置   left / top
     navbarPosition: 'left',
     // 当前系统主题  default
