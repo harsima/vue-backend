@@ -26,8 +26,8 @@
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
             <div class="lang-toggle">
-                <span :class="{cur: theme=='default'}" @click="setTheme('default')">深</span> | 
-                <span :class="{cur: theme=='green'}" @click="setTheme('green')">浅</span>
+                <span :class="{cur: theme=='default'}" @click="changeTheme('default')">深</span> | 
+                <span :class="{cur: theme=='green'}" @click="changeTheme('green')">浅</span>
             </div>
             <div class="tip">
                 <p>{{$t('global.loginTip')}}</p>
@@ -38,7 +38,7 @@
 
 <script>
     import { mapState, mapActions } from 'vuex'
-    import changeTheme from "@/util/changeTheme"
+    import setTheme from "@/util/setTheme"
 
     export default {
         data() {
@@ -83,7 +83,8 @@
         },
         methods: {
             ...mapActions({
-                loginByEmail: 'user/loginByEmail'
+                loginByEmail: 'user/loginByEmail',
+                loadLang: 'loadLang'
             }),
             submitForm(){
                 this.$refs.loginForm.validate((valid) => {
@@ -92,7 +93,7 @@
                             name: this.loginForm.name,
                             password: this.loginForm.password
                         }
-                        this.$store.dispatch("loginByEmail", data).then(res => {
+                        this.loginByEmail(data).then(res => {
                             if(res.data.login){
                                 this.$router.push('home')
                             } else{
@@ -111,15 +112,14 @@
             },
             changeLang(val){
                 if(val == this.lang) return
-                this.$store.dispatch("loadLang", val).then(() => {
+                this.loadLang(val).then(() => {
                     this.setErrMsg()
                     this.$refs.loginForm.resetFields()
                 })
-                // this.$i18n.locale = val
             },
-            setTheme(val){
+            changeTheme(val){
                 if(val == this.lang) return
-                changeTheme(`theme-${val}`)
+                setTheme(`theme-${val}`)
                 this.$store.commit("setThemeColor", val)
             },
             setErrMsg(){

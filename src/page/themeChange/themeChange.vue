@@ -85,7 +85,7 @@ new HtmlWebpackPlugin({
         },
         methods: {
             changeTheme(data){
-                this.$store.commit("changeLayout", data)
+                this.$store.commit("setLayout", data)
             }
         }
     }

@@ -1,8 +1,6 @@
-import Cookie from 'js-cookie'
-
 export default {
     // 当前语言模式  zh / en 
-    lang: Cookie.get('lang') || 'zhCN',
+    lang: '',
     langPack: [],
     // 导航条位置   left / top
     navbarPosition: 'left',
