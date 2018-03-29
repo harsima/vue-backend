@@ -1,15 +1,15 @@
-import Cookies from 'js-cookie'
-import i18n from '@/util/i18n'
-
 export default {
-    changeLang(state, data){
+    setLang(state, data){
         if(data){
-            Cookies.set('lang', data)
-            i18n.locale = data
             state.lang = data
-        }   
+        }
     },
-    changeLayout(state, data){
+    addLangPack(state, data){
+        if(data){
+            state.langPack.push(data)
+        }
+    },
+    setLayout(state, data){
         if(data){
             state.navbarPosition = data
         }

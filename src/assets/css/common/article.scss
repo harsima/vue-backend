@@ -4,7 +4,8 @@
     margin-bottom: 2*$basicMargin;
     // padding: 0 16px;
     h2{
-        font-size: $basicFontSize*1.2;
+        font-size: $basicFontSize*1.3;
+        padding: $basicPadding 0;
     }
     & > div{
         margin-bottom: 5px;
