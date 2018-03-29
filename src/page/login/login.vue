@@ -111,7 +111,7 @@
             },
             changeLang(val){
                 if(val == this.lang) return
-                this.$store.dispatch("changeLang", val).then(() => {
+                this.$store.dispatch("loadLang", val).then(() => {
                     this.setErrMsg()
                     this.$refs.loginForm.resetFields()
                 })

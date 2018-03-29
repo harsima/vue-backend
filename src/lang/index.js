@@ -1,6 +1,8 @@
-import zhCNLocale from '@/lang/zhCN'
-
 export default {
-    "zhCN": zhCNLocale,
+    // 中文简体
+    "zhCN": {},
+    // 中文繁体
+    "zhTW": {},
+    // 英文
     "en": {}
 }
