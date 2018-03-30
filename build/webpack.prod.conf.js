@@ -15,7 +15,7 @@ const env = config.build.env
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
         app: './src/main.prod.js',
-        'theme-default': './src/assets/css/theme-default.scss',
+        'theme-dark': './src/assets/css/theme-dark.scss',
         'theme-green': './src/assets/css/theme-green.scss'
     },
     module: {

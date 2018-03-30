@@ -17,8 +17,8 @@ export default {
     // 初次加载时，可通过接口获取用户的主题信息，或者通过按钮触发，或者直接加载默认主题
     mounted() {
         this.$nextTick(() => {
-            setTheme("theme-default")
-            this.$store.commit("setThemeColor", "default")
+            setTheme("theme-dark")
+            this.$store.commit("setThemeColor", "dark")
         })
     }
 }

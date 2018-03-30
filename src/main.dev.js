@@ -4,7 +4,7 @@ import '../mock/index.js'
 
 import 'babel-polyfill'
 import 'element-ui/lib/theme-default/index.css'
-import 'sysStatic/css/theme-default.scss'
+import 'sysStatic/css/theme-green.scss'
 
 import Vue from "vue"
 import router from './router'
