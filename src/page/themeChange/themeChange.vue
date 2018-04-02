@@ -17,17 +17,20 @@
                 </div>
             </v-pageSection>
             <v-pageSection title="切换主题颜色">
-                <v-pageNotes><p>本项目使用sass编写，所以变更主题方式相对简单。不过由于切换主题功能原理的限制，该功能当前仅能用于生产环境，开发环境时需要进行手动修改引入的主题文件。主题切换详细实现原理请查看：<a href="http://blog.csdn.net/harsima/article/details/78934405"> Vue + ElementUI 手撸后台管理网站基本框架(四)主题切换</a></p></v-pageNotes>
+                <v-pageNotes><p>本项目使用sass编写，所以变更主题方式相对简单。因时间原因，第二套主题(grenn)仅为功能示例。由于切换主题功能原理的限制，该功能当前仅能用于生产环境，开发环境时需要进行手动修改引入的主题文件。主题切换详细实现原理请查看：<a href="http://blog.csdn.net/harsima/article/details/78934405"> Vue + ElementUI 手撸后台管理网站基本框架(四)主题切换</a></p></v-pageNotes>
                 <div class="sys-article">
                     <h2><strong>主题创建</strong></h2>
                     <pre v-pre class="sys-pre"><code>
 # 复制基础变量文件 (src/assets/css/theme/default.scss)，重命名为 blue.scss 并修改内部变量
 # 在 src/assets/css 目录中创建新的主题入口文件 theme-blue.scss，并做如下引入
+# 如果该主题为深色主题，并且希望在导航中使用element-ui的深色主题，则在该主题文件名中必须包含dark字段，如theme-blue-dark.scss
 
-// 引入新主题变量文件
-@import './theme/blue'
-// 引入默认主题
-@import './theme-default'
+// 第三方主题
+@import 'element-ui/lib/theme-default/index.css';
+
+// 项目主题
+@import './theme/default';
+@import 'base';
                     </code></pre>
                 </div>
                 <div class="sys-article">
@@ -49,13 +52,13 @@ new HtmlWebpackPlugin({
                     <h2><strong>使用及调试</strong></h2>
                     <p>在需要进行主题更换的页面中写入以下代码即可。</p>
                     <pre v-pre class="sys-pre"><code>
-# 使用主题切换的方法示例，需要保证changeTheme()中的参数与主题文件名保持一致
-@import changeTheme from '@/util/changeTheme'
+# 使用主题切换的方法示例，需要保证setTheme()中的参数与主题文件名保持一致
+@import setTheme from '@/util/setTheme'
 
-// 直接在按钮处或页面加载时直接使用changeTheme()方法即可
+// 直接在按钮处或页面加载时直接使用setTheme()方法即可
                     </code></pre>
                     <p><strong>开发中切换主题</strong></p>
-                    <p>因为主题文件是打包后才生成的，所以在开发环境中，主题切换并不好用，只能通过手动修改sass主题文件的方式来做切换。手动切换请在<code>main.dev.js</code>中引入css即可。</p>
+                    <p>因为主题文件是打包后才生成的，所以在开发环境中，主题切换并不好用，只能通过手动修改sass主题文件的方式来做切换。手动切换请在<code>main.dev.js</code>中引入scss即可。</p>
                     <p><strong>开发中调试打包后的主题是否正确</strong></p>
                     <p>基于上面的原因，如果你需要查看打包后的主题是否正确，切换功能是否能够正常使用，那么你需要先将工程打包一次，然后将生成的主题文件放置到项目根目录中的<code>static</code>文件夹，然后在<code>main.dev.js</code>中去掉所有的主题引用，在<code>index.html</code>替换成打包后的html文件。期间请保证文件目录正确。</p>
                 </div>

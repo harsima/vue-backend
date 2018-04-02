@@ -18,7 +18,7 @@ export default {
     mounted() {
         this.$nextTick(() => {
             setTheme("theme-dark")
-            this.$store.commit("setThemeColor", "dark")
+            this.$store.commit("setThemeColor", "theme-dark")
         })
     }
 }
