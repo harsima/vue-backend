@@ -11,6 +11,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import whiteList from './directAccess'
 import asyncRouter from './asyncRouter'
+import Auth from '@/util/auth'
+import { Message } from 'element-ui'
 
 // 页面刷新时，重新赋值token
 if (Cookies.get('token')) {
@@ -97,7 +99,6 @@ const routes = [{
     }
 ]
 
-
 const router = new VueRouter({
     mode: 'history',
     routes: routes
@@ -109,7 +110,7 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
     
     // 判断用户是否登录
-    if (Cookies.get('token')) {
+    if (Auth.isLogin()) {
         // 如果当前处于登录状态，并且跳转地址为login，则自动跳回系统首页
         // 这种情况出现在手动修改地址栏地址时
         if (to.path === '/login') {
@@ -150,8 +151,13 @@ router.beforeEach((to, from, next) => {
             console.log('该页面无需登录即可访问')
             next()
         } else {
-            console.log('请重新登录')
             router.replace('/login')
+            // 如果store中有token，同时Cookie中没有登录状态
+            if(store.state.user.token){
+                Message({
+                    message: '登录超时，请重新登录'
+                })
+            }
             NProgress.done()
         }
     }

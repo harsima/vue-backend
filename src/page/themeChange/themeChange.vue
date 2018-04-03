@@ -86,6 +86,14 @@ new HtmlWebpackPlugin({
                 return this.$store.state.navbarPosition
             }
         },
+        mounted(){
+            this.$axios({
+                url: '/charts',
+                methods: 'get'
+            }).then((res) => {
+                console.log(res)
+            })
+        },
         methods: {
             changeTheme(data){
                 this.$store.commit("setLayout", data)

@@ -1,8 +1,8 @@
-import '../mock/index.js'
-
+// 生产环境中注释掉以下语句
+import 'sysStatic/css/theme-green.scss'
 import 'babel-polyfill'
-// 开发环境中注释掉以下语句
-// import 'sysStatic/css/theme-green.scss'
+
+import '../mock/index.js'
 
 import Vue from "vue"
 import ElementUI from 'element-ui'
@@ -19,7 +19,6 @@ Vue.prototype.$axios = axios
 Vue.use(ElementUI, {
     i18n: (key, value) => i18n.t(key, value)
 })
-
 new Vue({
     i18n,
     axios,
