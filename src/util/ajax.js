@@ -11,7 +11,7 @@ var getTokenLock = false
 var CancelToken = axios.CancelToken
 var cancel
 
-function checkToken(conf,callback){
+function checkToken(callback){
     // 检测Token是否过期
     if(!Auth.hasToken()){
         // 如果Token过期后直接请求后台获取新Token
@@ -24,21 +24,24 @@ function checkToken(conf,callback){
             } else {
                 getTokenLock = true
                 store.dispatch("user/getNewToken").then(() => {
+                    console.log("已获取新token")
                     callback()
                     getTokenLock = false
                 })
             }
         }
-        // 如果Token过期后跳转到授权页面
-        if(Auth.tokenTimeoutMethod == "jumpAuthPage"){
-            // 跳转到固定的授权页面并中断当前请求
-            cancel()
-            if(router.currentRoute.path != '/login'){
-                router.push('/login')
+        // 如果Token过期后跳转到授权页面，授权页面不能是login否则路由冲突
+        if(Auth.tokenTimeoutMethod == "jumpAuthPage" && Auth.isLogin()){
+            if(router.currentRoute.path != '/auth'){
+                // 跳转到固定的授权页面并中断当前请求
+                cancel()
+                console.log("请求已中断")
+                router.push('/auth')
             }
         }
     } else {
-        checkToken(callback)
+        console.log("未过期直接回调")
+        callback()
     }
 }
 
@@ -57,7 +60,7 @@ service.interceptors.request.use(
         config.cancelToken = new CancelToken(function executor(c) {
             cancel = c;
         })
-        checkToken(config, function(){
+        checkToken(function(){
             Auth.setLoginStatus()
             config.headers.Authorization = `${store.state.user.token}`
         })
@@ -85,8 +88,8 @@ service.interceptors.response.use(
                         type: 'error'
                     })
             }
+            return Promise.reject(error.response.data)
         }
-        return Promise.reject(error.response.data)
     }
 );
 

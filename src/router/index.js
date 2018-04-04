@@ -1,8 +1,3 @@
-// 路由控制
-// {
-//     path: 路由地址,
-//     component: r => require.ensure([], () => r(require('路由页面')), '打包后的文件名'),
-// }
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
@@ -96,6 +91,10 @@ const routes = [{
                 component: () => import(/* webpackChunkName: 'error' */ '../page/error/500')
             }
         ]
+    },
+    {
+        path: '/auth',
+        component: () => import(/* webpackChunkName: 'auth' */ '../page/auth')
     }
 ]
 

@@ -88,8 +88,12 @@ new HtmlWebpackPlugin({
         },
         mounted(){
             this.$axios({
-                url: '/charts',
-                methods: 'get'
+                url: '/charts'
+            }).then((res) => {
+                console.log(res)
+            })
+            this.$axios({
+                url: '/getToken'
             }).then((res) => {
                 console.log(res)
             })

@@ -4,7 +4,7 @@ const authToken = {
     // 当Token超时后采取何种策略
     // jumpAuthPage  每次请求时判断Token是否超时，若超时则跳转到授权页面
     // getNewToken  每次请求时判断Token是否超时，若超时则获取新Token
-    tokenTimeoutMethod: 'getNewToken',
+    tokenTimeoutMethod: 'jumpAuthPage',
     
     // 在Cookie中记录登录状态的key
     loginKey: 'isLogin',
@@ -21,8 +21,8 @@ const authToken = {
 
     // 设置Token
     setToken: function(token){
-        // 30分钟内没有新请求则意味着登录超时
-        var maxAge = new Date(new Date().getTime() + 1 * 60 * 1000)
+        // 设置token，并填写有效期
+        var maxAge = new Date(new Date().getTime() + 30 * 1000)
         Cookies.set('token', token, {
             expires: maxAge
         })
@@ -30,7 +30,7 @@ const authToken = {
 
     // 设置登录状态
     setLoginStatus: function(){
-        // 30分钟内没有新请求则意味着登录超时
+        // 设置超时登录时间，在该时间范围内没有任何请求操作则自动删除
         var maxAge = new Date(new Date().getTime() + 30 * 60 * 1000)
         Cookies.set(this.loginKey, 'true', {
             expires: maxAge

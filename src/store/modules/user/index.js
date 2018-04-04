@@ -40,8 +40,10 @@ const actions = {
             }).then(res => {
                 const data = res.data
                 if(data.login){
+                    commit('setName', data.name)
                     commit('setToken', data.token)
                     Cookies.set('lang', rootState.lang)
+                    Cookies.set('userName', encodeURIComponent(data.name))
                 }
                 resolve(res)
             }).catch(err => {
@@ -52,6 +54,7 @@ const actions = {
     // 登出
     logout({commit}) {
         return new Promise((resolve) => {
+            commit('setName', '')
             commit('setToken', '')
             resolve()
         })
@@ -60,6 +63,7 @@ const actions = {
     relogin({commit}){
         return new Promise((resolve) => {
             // 重新登录后，根据Token进行重新登录
+            commit('setName', decodeURIComponent(Cookies.get('userName')))
             commit('setToken', Cookies.get('token'))
             resolve()
         })
@@ -71,7 +75,7 @@ const actions = {
                 url: '/getToken',
                 method: 'get',
                 param: {
-                    token: state.user.token
+                    token: state.token
                 }
             }).then((res) =>{
                 commit("setToken", res.data.token)
