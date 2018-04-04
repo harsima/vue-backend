@@ -4,8 +4,9 @@ import login from './login'
 import echarts from './echarts'
 import table from './table'
 import groupList from './groupList'
+import getToken from './getToken'
 
-let data = [].concat(navlist, login, echarts, table, groupList)
+let data = [].concat(navlist, login, echarts, table, groupList, getToken)
 
 data.forEach(function(res){
     Mock.mock(res.path, res.data)

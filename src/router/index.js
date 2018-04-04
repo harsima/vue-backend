@@ -1,8 +1,3 @@
-// 路由控制
-// {
-//     path: 路由地址,
-//     component: r => require.ensure([], () => r(require('路由页面')), '打包后的文件名'),
-// }
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
@@ -11,6 +6,8 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import whiteList from './directAccess'
 import asyncRouter from './asyncRouter'
+import Auth from '@/util/auth'
+import { Message } from 'element-ui'
 
 // 页面刷新时，重新赋值token
 if (Cookies.get('token')) {
@@ -94,9 +91,12 @@ const routes = [{
                 component: () => import(/* webpackChunkName: 'error' */ '../page/error/500')
             }
         ]
+    },
+    {
+        path: '/auth',
+        component: () => import(/* webpackChunkName: 'auth' */ '../page/auth')
     }
 ]
-
 
 const router = new VueRouter({
     mode: 'history',
@@ -109,7 +109,7 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
     
     // 判断用户是否登录
-    if (Cookies.get('token')) {
+    if (Auth.isLogin()) {
         // 如果当前处于登录状态，并且跳转地址为login，则自动跳回系统首页
         // 这种情况出现在手动修改地址栏地址时
         if (to.path === '/login') {
@@ -150,8 +150,13 @@ router.beforeEach((to, from, next) => {
             console.log('该页面无需登录即可访问')
             next()
         } else {
-            console.log('请重新登录')
             router.replace('/login')
+            // 如果store中有token，同时Cookie中没有登录状态
+            if(store.state.user.token){
+                Message({
+                    message: '登录超时，请重新登录'
+                })
+            }
             NProgress.done()
         }
     }

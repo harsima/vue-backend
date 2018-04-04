@@ -26,8 +26,8 @@
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
             <div class="lang-toggle">
-                <span :class="{cur: theme=='default'}" @click="changeTheme('default')">深</span> | 
-                <span :class="{cur: theme=='green'}" @click="changeTheme('green')">浅</span>
+                <span :class="{cur: theme=='theme-dark'}" @click="changeTheme('theme-dark')">深</span> | 
+                <span :class="{cur: theme=='theme-green'}" @click="changeTheme('theme-green')">浅</span>
             </div>
             <div class="tip">
                 <p>{{$t('global.loginTip')}}</p>
@@ -119,7 +119,7 @@
             },
             changeTheme(val){
                 if(val == this.lang) return
-                setTheme(`theme-${val}`)
+                setTheme(val)
                 this.$store.commit("setThemeColor", val)
             },
             setErrMsg(){

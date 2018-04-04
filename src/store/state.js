@@ -4,8 +4,8 @@ export default {
     langPack: [],
     // 导航条位置   left / top
     navbarPosition: 'left',
-    // 当前系统主题  default
-    theme: 'default',
+    // 当前系统主题  dark
+    theme: 'dark',
     // 通知框等需要自动消失的时间
     duration: 5000
 }

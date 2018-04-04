@@ -17,13 +17,6 @@ const asyncRouter = [
         component: r => require.ensure([], () => r(require('../page/table/table')), 'table')
     },
     {
-        path: '/form',
-        meta:{
-            permission:[]
-        },
-        component: r => require.ensure([], () => r(require('../page/form/form')), 'form'),
-    },
-    {
         path: '/components',
         meta:{
             permission:[]

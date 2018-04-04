@@ -10,7 +10,7 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        app: './src/main.dev.js'
+        app: './src/main.js'
     },
     output: {
         path: config.build.assetsRoot,
@@ -48,7 +48,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                include: [resolve('src'), resolve('test')]
+                include: [resolve('src'), resolve('test'), resolve('mock')]
             },
             // {
             //     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

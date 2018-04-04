@@ -1,5 +1,6 @@
-// 引入新主题变量
-@import './theme/green';
+// 第三方主题
+@import '~sysStatic/libs/theme/green/index.css';
 
-// 引入默认主题
-@import 'theme-default';
+// 项目主题
+@import './theme/green';
+@import 'base';
