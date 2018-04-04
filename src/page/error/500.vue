@@ -6,11 +6,11 @@
 </template>
 
 <script>
-    export default {
-        methods: {
-            back(){
-                this.$router.replace('home')
-            }
+export default {
+    methods: {
+        back(){
+            this.$router.replace('home')
         }
     }
+}
 </script>

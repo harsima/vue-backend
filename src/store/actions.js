@@ -24,5 +24,5 @@ export default {
         commit('setLang', lang)
         Cookies.set('lang', lang)
         return Promise.resolve(lang)
-    },
+    }
 }

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageNotes'
-    }
+export default {
+    name: 'vPageNotes'
+}
 </script>

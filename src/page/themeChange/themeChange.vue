@@ -74,71 +74,73 @@ new HtmlWebpackPlugin({
         </div>
     </div>
 </template>
-<script>
-    export default{
-        data(){
-            return {
 
-            }
-        },
-        computed: {
-            layout(){
-                return this.$store.state.navbarPosition
-            }
-        },
-        mounted(){
-            this.$axios({
-                url: '/charts'
-            }).then((res) => {
-                console.log(res)
-            })
-            this.$axios({
-                url: '/getToken'
-            }).then((res) => {
-                console.log(res)
-            })
-        },
-        methods: {
-            changeTheme(data){
-                this.$store.commit("setLayout", data)
-            }
+<script>
+export default{
+    data(){
+        return {
+
+        }
+    },
+    computed: {
+        layout(){
+            return this.$store.state.navbarPosition
+        }
+    },
+    mounted(){
+        this.$axios({
+            url: '/charts'
+        }).then((res) => {
+            console.log(res)
+        })
+        this.$axios({
+            url: '/getToken'
+        }).then((res) => {
+            console.log(res)
+        })
+    },
+    methods: {
+        changeTheme(data){
+            this.$store.commit("setLayout", data)
         }
     }
+}
 </script>
+
 <style lang="scss" scoped>
-    .layout-list{
-        &:after{
-            clear: both;
-            overflow: hidden;
+.layout-list{
+    &:after{
+        clear: both;
+        overflow: hidden;
+    }
+    ul{
+        padding: 5px;
+        overflow: hidden;
+    }
+    ul li{
+        float: left;
+        width: 160px;
+        height: 160px;
+        background: #fff;
+        margin-right: 20px;
+        padding: 10px;
+        box-shadow: 0 0 3px #ccc;
+        &:hover, &.cur:hover{
+            box-shadow: 0 0 10px #ccc;
         }
-        ul{
-            padding: 5px;
-            overflow: hidden;
+        &.cur{
+            border: 1px solid #ccc;
+            box-shadow: none;
         }
-        ul li{
-            float: left;
-            width: 160px;
-            height: 160px;
-            background: #fff;
-            margin-right: 20px;
-            padding: 10px;
-            box-shadow: 0 0 3px #ccc;
-            &:hover, &.cur:hover{
-                box-shadow: 0 0 10px #ccc;
-            }
-            &.cur{
-                border: 1px solid #ccc;
-                box-shadow: none;
-            }
-            img{
-                width: 140px;
-            }
-            p{
-                height: 40px;
-                line-height: 40px;
-                text-align: center;
-                font-size: 14px;
-            }
+        img{
+            width: 140px;
+        }
+        p{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 14px;
         }
     }
+}
 </style>

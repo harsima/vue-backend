@@ -21,56 +21,56 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageTable',
-        props: {
-            pagination: Boolean,
-            paginationAlign: String,
-            pageSize:  {
-                type: Number,
-                default: function () {
-                    return 10
-                }
-            },
-            paginationTotal: {
-                type: Number,
-                default: function () {
-                    return 10
-                }
-            },
-            sizeChange: {
-                type: Function,
-                default: function(){
-                    return null
-                }
-            },
-            pageChange: {
-                type: Function,
-                default: function(){
-                    return null
-                }
-            },
-            pageLayout: {
-                default: function (){
-                    return 'total, sizes, prev, pager, next, jumper'
-                }
+export default {
+    name: 'vPageTable',
+    props: {
+        pagination: Boolean,
+        paginationAlign: String,
+        pageSize:  {
+            type: Number,
+            default: function () {
+                return 10
             }
         },
-        computed: {
-            align(){
-                let res;
-                switch(this.paginationAlign){
-                    case 'right': 
-                        res = 'textR'
-                        break
-                    case 'center': 
-                        res = 'textC'
-                        break
-                    default:
-                        res = ''
-                }
-                return res
+        paginationTotal: {
+            type: Number,
+            default: function () {
+                return 10
+            }
+        },
+        sizeChange: {
+            type: Function,
+            default: function(){
+                return null
+            }
+        },
+        pageChange: {
+            type: Function,
+            default: function(){
+                return null
+            }
+        },
+        pageLayout: {
+            default: function (){
+                return 'total, sizes, prev, pager, next, jumper'
             }
         }
+    },
+    computed: {
+        align(){
+            let res;
+            switch(this.paginationAlign){
+                case 'right': 
+                    res = 'textR'
+                    break
+                case 'center': 
+                    res = 'textC'
+                    break
+                default:
+                    res = ''
+            }
+            return res
+        }
     }
+}
 </script>

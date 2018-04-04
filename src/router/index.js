@@ -135,9 +135,6 @@ router.beforeEach((to, from, next) => {
                 // 如果跳转页面存在于路由中则进入，否则跳转到404
                 // 因为可以通过改变url值进行访问，所以必须有该判断
                 if(to.matched.length){
-                    if(whiteList.indexOf(to.path) < 0){
-                        // store.dispatch('user/actionlog', to)
-                    }
                     next()
                 } else{
                     router.replace('/error/404')

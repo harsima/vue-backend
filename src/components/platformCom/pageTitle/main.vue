@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageTitle',
-        props: ['title']
-    }
+export default {
+    name: 'vPageTitle',
+    props: ['title']
+}
 </script>

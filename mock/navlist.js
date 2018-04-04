@@ -31,26 +31,16 @@ var data = [
                         name: '页面标题'
                     },
                     {
-                        name: '测试类1',
-                        child: [
-                            {
-                                path: '/components/pageSection',
-                                name: '子区域'
-                            }
-                        ]
+                        path: '/components/pageSection',
+                        name: '子区域'
                     },
                     {
                         path: '/components/pageSearch',
                         name: '搜索条'
                     },
                     {
-                        name: '测试类2',
-                        child: [
-                            {
-                                path: '/components/pageToolbar',
-                                name: '工具条'
-                            }
-                        ]
+                        path: '/components/pageToolbar',
+                        name: '工具条'
                     }
                 ]
             },

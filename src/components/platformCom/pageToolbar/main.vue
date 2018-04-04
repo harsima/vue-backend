@@ -5,15 +5,15 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageToolbar',
-        props: {
-            align: {
-                type: String,
-                default: function(){
-                    return 'right'
-                }
+export default {
+    name: 'vPageToolbar',
+    props: {
+        align: {
+            type: String,
+            default: function(){
+                return 'right'
             }
         }
     }
+}
 </script>

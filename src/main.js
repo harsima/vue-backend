@@ -1,9 +1,8 @@
 // 生产环境中注释掉以下语句
-import 'sysStatic/css/theme-green.scss'
-import 'babel-polyfill'
-
+import 'sysStatic/css/theme-dark.scss'
 import '../mock/index.js'
 
+import 'babel-polyfill'
 import Vue from "vue"
 import ElementUI from 'element-ui'
 import router from './router'

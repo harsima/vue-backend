@@ -15,6 +15,7 @@ export default {
     components: {map1}
 }
 </script>
+
 <style lang="scss" scoped>
 #container{
     width: 100%;
@@ -28,4 +29,3 @@ export default {
     z-index: 1000;
 }
 </style>
-
