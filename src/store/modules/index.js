@@ -1,7 +1,7 @@
 import user from './user'
-import permission from './permission'
+import auth from './auth'
 
 export default {
     user: user,
-    permission: permission
+    auth: auth
 }

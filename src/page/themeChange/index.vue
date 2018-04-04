@@ -87,18 +87,6 @@ export default{
             return this.$store.state.navbarPosition
         }
     },
-    mounted(){
-        this.$axios({
-            url: '/charts'
-        }).then((res) => {
-            console.log(res)
-        })
-        this.$axios({
-            url: '/getToken'
-        }).then((res) => {
-            console.log(res)
-        })
-    },
     methods: {
         changeTheme(data){
             this.$store.commit("setLayout", data)

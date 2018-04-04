@@ -31,7 +31,7 @@ export default {
                 url: '/charts',
                 method: 'get',
             }).then(res => {
-                this.chartData = res.data
+                this.chartData = res
             }).catch(err => {
                 this.$message.error(`获取数据失败，失败码：${err.response.status}`)
             })

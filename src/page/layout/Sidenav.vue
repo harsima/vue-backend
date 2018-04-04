@@ -20,7 +20,7 @@ export default {
     props: ['layout'],
     computed:{
         ...mapState({
-            navList: state => state.permission.list
+            navList: state => state.auth.permissionList
         }),
         onRoutes(){
             return this.$route.path

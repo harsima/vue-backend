@@ -66,15 +66,15 @@ export default {
     },
     methods: {
         // 获取table数据
-        getTableData(data) {
+        getTableData() {
             this.$axios({
                 url: '/tableData',
                 type: 'post',
-                data: data
+                data: {}
             }).then(res => {
                 this.tableData.loading = false
-                this.tableData.head = res.data.head
-                this.tableData.body = res.data.body
+                this.tableData.head = res.head
+                this.tableData.body = res.body
             }).catch(err => {
                 this.$message.error(`获取数据失败，失败码：${err.response.status}`)
             })

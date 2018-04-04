@@ -83,27 +83,23 @@ export default {
     },
     methods: {
         ...mapActions({
-            loginByEmail: 'user/loginByEmail',
+            login: 'auth/loginByEmail',
             loadLang: 'loadLang'
         }),
         submitForm(){
             this.$refs.loginForm.validate((valid) => {
                 if (valid) {
-                    let data = {
+                    this.login({
                         name: this.loginForm.name,
                         password: this.loginForm.password
-                    }
-                    this.loginByEmail(data).then(res => {
-                        if(res.data.login){
+                    }).then(res => {
+                        if(res.login){
                             this.$router.push('home')
-                        } else{
-                            // 正常业务中，连续登录3次失败应该使用校验码。这里只做演示用途，实际中需要修改
-                            this.sysMsg = res.data.message
+                        } else {
+                            this.sysMsg = res.message
                             this.captcha.show = true
-                            this.captcha.src = res.data.captcha
+                            this.captcha.src = res.captcha
                         }
-                    }).catch(err => {
-                        this.sysMsg = err.response.data
                     })
                 } else {
                     return false
@@ -112,6 +108,7 @@ export default {
         },
         changeLang(val){
             if(val == this.lang) return
+            // 切换语言后重新加载语言包，并对重置登陆表单
             this.loadLang(val).then(() => {
                 this.setErrMsg()
                 this.$refs.loginForm.resetFields()

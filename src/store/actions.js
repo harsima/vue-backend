@@ -1,5 +1,4 @@
 import i18n from '@/util/i18n'
-import Cookies from 'js-cookie'
 
 export default {
     loadLang({dispatch, commit, state}, lang) {
@@ -11,7 +10,6 @@ export default {
                 i18n.locale = lang
                 commit('addLangPack', lang)
                 commit('setLang', lang)
-                Cookies.set('lang', lang)
                 return lang
             }).catch(() => {
                 dispatch('loadLang', i18n.fallbackLocale).then((lang) => {
@@ -22,7 +20,6 @@ export default {
         }
         i18n.locale = lang
         commit('setLang', lang)
-        Cookies.set('lang', lang)
         return Promise.resolve(lang)
     }
 }

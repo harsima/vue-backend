@@ -1,8 +1,13 @@
+import Cookies from 'js-cookie'
+
 export default {
     setLang(state, data){
         if(data){
-            state.lang = data
+            Cookies.set('lang', data)
+        } else{
+            Cookies.remove('lang')
         }
+        state.lang = data
     },
     addLangPack(state, data){
         if(data){

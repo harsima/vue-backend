@@ -83,4 +83,7 @@ var data = [
     }
 ]
 
-export default data
+export default [{
+    path: '/user/navlist',
+    data: data
+}]

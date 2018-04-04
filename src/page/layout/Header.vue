@@ -103,12 +103,15 @@ export default {
     },
     methods: {
         ...mapActions({
-            sysLogout: 'user/logout',
+            sysLogout: 'auth/logout',
             loadLang: 'loadLang'
         }),
         changeLang(val) {
             if (val == this.lang) return
-            this.loadLang(val)
+            // 改变语言后，因为表单校验的错误提示或者后台返回的信息等问题，需要进行页面刷新
+            this.loadLang(val).then(() => {
+                window.location.reload()
+            })
         },
         userOperation(command){
             switch(command){

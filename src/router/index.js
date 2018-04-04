@@ -4,7 +4,7 @@ import store from '../store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import staticRoute from './staticRoute'
-import { asyncRoute, redirectRoute} from './asyncRoute'
+import { asyncLayout, asyncRoute, redirectRoute} from './asyncRoute'
 import whiteList from './whiteList'
 import Auth from '@/util/auth'
 import { Message } from 'element-ui'
@@ -12,7 +12,7 @@ import { Message } from 'element-ui'
 NProgress.configure({ showSpinner: false });
 
 /**
- * 根据返回的菜单列表为某个路由添加数据级权限（在前端即按钮操作权限）
+ * 根据返回的菜单列表确认异步路由
  * @param {array} permission 权限列表（菜单列表）
  * @param {array} asyncRoute 异步路由对象
  */
@@ -26,16 +26,18 @@ function routerMatch(permission, router){
                     // 递归
                     addPermision(item.child)
                 }
-                router.children.forEach((s) => {
+                router.forEach((s) => {
                     if(s.path == item.path){
                         s.meta.permission = item.permission
+                        asyncLayout[0].children.push(s)
                         return
                     }
                 })
             })
         }
+        asyncLayout[0].children = []
         addPermision(permission)
-        resolve(router)
+        resolve(asyncLayout)
         console.timeEnd("匹配函数执行时间：")
     })
 }
@@ -60,30 +62,20 @@ router.beforeEach((to, from, next) => {
             router.replace('/home')
         } else {
             // 页面跳转前先判断是否存在权限列表，如果存在则直接跳转，如果没有则请求一次
-            if (store.state.permission.list.length === 0) {
+            if (store.state.auth.permissionList.length === 0) {
                 // 获取权限列表，如果失败则跳回登录页重新登录
-                store.dispatch('permission/getPermission').then(res => {
+                store.dispatch('auth/getPermission').then(res => {
                     // 匹配并生成需要添加的路由对象
                     routerMatch(res, asyncRoute).then(res => {
                         console.log(res)
                         router.addRoutes(res)
                         router.addRoutes(redirectRoute)
+                        console.log(router)
                         next(to.path)
-                    })
-                }).catch(() => {
-                    console.log('登录错误')
-                    store.dispatch('user/logout').then(() => {
-                        router.replace('/login')
                     })
                 })
             } else {
-                // 如果跳转页面存在于路由中则进入，否则跳转到404
-                // 因为可以通过改变url值进行访问，所以必须有该判断
-                if(to.matched.length){
-                    next()
-                } else{
-                    router.replace('/error/404')
-                }
+                next()
             }
         }
     } else {

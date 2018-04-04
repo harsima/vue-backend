@@ -23,7 +23,7 @@ function checkToken(callback){
                 }, 500)
             } else {
                 getTokenLock = true
-                store.dispatch("user/getNewToken").then(() => {
+                store.dispatch("auth/getNewToken").then(() => {
                     console.log("已获取新token")
                     callback()
                     getTokenLock = false
@@ -74,7 +74,7 @@ service.interceptors.request.use(
 // http response 拦截器
 // 针对响应代码确认跳转到对应页面
 service.interceptors.response.use(
-    response => response,
+    response => response.data,
     error => {
         if (error.response) {
             switch (error.response.status) {
@@ -90,6 +90,7 @@ service.interceptors.response.use(
             }
             return Promise.reject(error.response.data)
         }
+        console.log(error)
     }
 );
 
