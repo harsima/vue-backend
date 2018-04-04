@@ -1,106 +1,50 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
-import Cookies from 'js-cookie'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-import whiteList from './directAccess'
-import asyncRouter from './asyncRouter'
+import staticRoute from './staticRoute'
+import { asyncRoute, redirectRoute} from './asyncRoute'
+import whiteList from './whiteList'
 import Auth from '@/util/auth'
 import { Message } from 'element-ui'
 
-// 页面刷新时，重新赋值token
-if (Cookies.get('token')) {
-    store.dispatch('user/relogin')
-}
 NProgress.configure({ showSpinner: false });
-Vue.use(VueRouter)
 
 /**
- * 根据权限匹配路由
+ * 根据返回的菜单列表为某个路由添加数据级权限（在前端即按钮操作权限）
  * @param {array} permission 权限列表（菜单列表）
- * @param {array} asyncRouter 异步路由对象
+ * @param {array} asyncRoute 异步路由对象
  */
-function routerMatch(permission, asyncRouter){
+function routerMatch(permission, router){
     return new Promise((resolve) => {
-        const routers = asyncRouter[0]
-        // 创建路由
-        function createRouter(permission){
+        console.time("匹配函数执行时间：")
+        // 创建需要校验的参数数组
+        function addPermision(permission){
             permission.forEach((item) => {
                 if(item.child && item.child.length){
                     // 递归
-                    createRouter(item.child)
+                    addPermision(item.child)
                 }
-                let path = item.path
-                // 循环异步路由，将符合权限列表的路由加入到routers中
-                asyncRouter.find(function(s){
-                    if(s.path == path){
+                router.children.forEach((s) => {
+                    if(s.path == item.path){
                         s.meta.permission = item.permission
-                        routers.children.push(s)
                         return
                     }
                 })
             })
         }
-
-        createRouter(permission)
-        resolve([routers])
+        addPermision(permission)
+        resolve(router)
+        console.timeEnd("匹配函数执行时间：")
     })
 }
 
-// 默认路由表，不需要权限
-const routes = [{
-        path: '/',
-        // 重定向
-        redirect: '/home'
-    },
-    {
-        path: '/login',
-        component: () => import(/* webpackChunkName: 'login' */ '../page/login/login')
-    },
-    {
-        path: '/defaultLayout',
-        component: () => import(/* webpackChunkName: 'layout' */ '../page/layout/layout'),
-        meta:{
-            permission:[]
-        },
-        // 需要进行用户登录验证
-        children: [{
-            path: '/home',
-            component: () => import(/* webpackChunkName: 'home' */ '../page/home/home')
-        }]
-    },
-    {
-        path: '/error',
-        component: () => import(/* webpackChunkName: 'error' */ '../page/error/error'),
-        children: [
-            {
-                path: '/error/401',
-                component: () => import(/* webpackChunkName: 'error' */ '../page/error/401')
-            },
-            {
-                path: '/error/403',
-                component: () => import(/* webpackChunkName: 'error' */ '../page/error/403')
-            },
-            {
-                path: '/error/404',
-                component: () => import(/* webpackChunkName: 'error' */ '../page/error/404')
-            },
-            {
-                path: '/error/500',
-                component: () => import(/* webpackChunkName: 'error' */ '../page/error/500')
-            }
-        ]
-    },
-    {
-        path: '/auth',
-        component: () => import(/* webpackChunkName: 'auth' */ '../page/auth')
-    }
-]
+Vue.use(VueRouter)
 
 const router = new VueRouter({
     mode: 'history',
-    routes: routes
+    routes: staticRoute
 })
 
 // 路由跳转前验证
@@ -108,7 +52,7 @@ router.beforeEach((to, from, next) => {
     // 开启进度条
     NProgress.start();
     
-    // 判断用户是否登录
+    // 判断用户是否处于登录状态
     if (Auth.isLogin()) {
         // 如果当前处于登录状态，并且跳转地址为login，则自动跳回系统首页
         // 这种情况出现在手动修改地址栏地址时
@@ -120,9 +64,10 @@ router.beforeEach((to, from, next) => {
                 // 获取权限列表，如果失败则跳回登录页重新登录
                 store.dispatch('permission/getPermission').then(res => {
                     // 匹配并生成需要添加的路由对象
-                    routerMatch(res, asyncRouter).then(res => {
-                        // console.log(res)
+                    routerMatch(res, asyncRoute).then(res => {
+                        console.log(res)
                         router.addRoutes(res)
+                        router.addRoutes(redirectRoute)
                         next(to.path)
                     })
                 }).catch(() => {
