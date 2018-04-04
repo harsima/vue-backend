@@ -1,6 +1,11 @@
 # Vue + ElementUI 后台管理系统框架
 
->本框架为后台管理类系统解决方案，其中包含很多后台管理中的必备功能。当前版本仅供学习交流，框架中vue及webpack版本会随时更新，尽量采用平滑升级策略，修改部分全局或打包配置完成，如果更改过大，版本号将自动增加，并提供之前版本的release，所以如果注重稳定的话，请在生产环境中谨慎使用。
+## **相关教程**
+- [Vue + ElementUI 手撸后台管理网站基本框架(零)前言篇](http://blog.csdn.net/harsima/article/details/77946562)
+- [Vue + ElementUI 手撸后台管理网站基本框架(一)创建项目](http://blog.csdn.net/harsima/article/details/77949623)
+- [Vue + ElementUI 手撸后台管理网站基本框架(二)权限控制](http://blog.csdn.net/harsima/article/details/77949448)
+- [Vue + ElementUI 手撸后台管理网站基本框架(三)登录及系统菜单加载](http://blog.csdn.net/harsima/article/details/77949465)
+- [Vue + ElementUI 手撸后台管理网站基本框架(四)主题切换](http://blog.csdn.net/harsima/article/details/78934405)
 
 ## **功能列表**
 - 登录登出
@@ -31,7 +36,6 @@ npm run build --report
 
 
 ## **项目结构**
-本项目的开发代码目录结构如下，在编码时请按照规则放置代码
 
 ``` bash
 ./root

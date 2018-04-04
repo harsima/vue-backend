@@ -14,7 +14,7 @@ NProgress.configure({ showSpinner: false });
 /**
  * 根据返回的菜单列表确认异步路由
  * @param {array} permission 权限列表（菜单列表）
- * @param {array} asyncRoute 异步路由对象
+ * @param {array} router 异步路由对象
  */
 function routerMatch(permission, router){
     return new Promise((resolve) => {
@@ -67,10 +67,8 @@ router.beforeEach((to, from, next) => {
                 store.dispatch('auth/getPermission').then(res => {
                     // 匹配并生成需要添加的路由对象
                     routerMatch(res, asyncRoute).then(res => {
-                        console.log(res)
                         router.addRoutes(res)
                         router.addRoutes(redirectRoute)
-                        console.log(router)
                         next(to.path)
                     })
                 })
