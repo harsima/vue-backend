@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '../store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import { Message } from 'element-ui'
+import Auth from '@/util/auth'
+import store from '../store'
 import staticRoute from './staticRoute'
 import { asyncLayout, asyncRoute, redirectRoute} from './asyncRoute'
 import whiteList from './whiteList'
-import Auth from '@/util/auth'
-import { Message } from 'element-ui'
 
 NProgress.configure({ showSpinner: false });
 

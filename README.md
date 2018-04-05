@@ -82,5 +82,25 @@ npm run build --report
 ├── ...
 ```
 
+## Nginx简单部署配置
+```
+...
+# 以上保持默认配置即可
+
+server {
+    listen       9090;
+    server_name  localhost;
+    # 项目文件目录
+    root   html/vue-backend;
+    index  index.html index.htm;
+
+    location / {
+        # vue-router使用history模式下的必须配置
+        try_files $uri $uri/ /index.html;
+        index index.html;
+    }
+}
+```
+
 ## 其他
 欢迎反馈及探讨各种问题，同时请注意issue规则
