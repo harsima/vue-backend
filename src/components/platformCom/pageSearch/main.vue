@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageSearch'
-    }
+export default {
+    name: 'vPageSearch'
+}
 </script>

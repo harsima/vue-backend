@@ -16,7 +16,7 @@
                     </el-dropdown>
                 </li>
                 <li>
-                    <span class="lang" :class="{cur: lang=='zh'}" @click="changeLang('zh')">中</span>
+                    <span class="lang" :class="{cur: lang=='zhCN'}" @click="changeLang('zhCN')">中</span>
                     <span>/</span>
                     <span class="lang" :class="{cur: lang=='en'}" @click="changeLang('en')">EN</span>
                 </li>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
     data() {
@@ -102,15 +102,16 @@ export default {
         })
     },
     methods: {
-        ...mapMutations({
-            toggleLang: 'changeLang'
-        }),
         ...mapActions({
-            sysLogout: 'user/logout'
+            sysLogout: 'auth/logout',
+            loadLang: 'loadLang'
         }),
         changeLang(val) {
             if (val == this.lang) return
-            this.toggleLang(val)
+            // 改变语言后，因为表单校验的错误提示或者后台返回的信息等问题，需要进行页面刷新
+            this.loadLang(val).then(() => {
+                window.location.reload()
+            })
         },
         userOperation(command){
             switch(command){

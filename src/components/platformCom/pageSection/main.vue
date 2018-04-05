@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    export default {
-        name: 'vPageSection',
-        props: ['title']
-    }
+export default {
+    name: 'vPageSection',
+    props: ['title']
+}
 </script>

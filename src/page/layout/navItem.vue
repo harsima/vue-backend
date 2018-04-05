@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    export default {
-        name: 'navItem',
-        props: ['item','navIndex']
-    }
+export default {
+    name: 'navItem',
+    props: ['item','navIndex']
+}
 </script>

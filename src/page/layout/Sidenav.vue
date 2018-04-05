@@ -1,6 +1,6 @@
 <template>
     <div class="side-nav" :class="layout">
-        <el-menu router ref="navbar" :default-active="onRoutes" :mode="navMode" menu-trigger="click" theme="dark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
+        <el-menu router ref="navbar" :default-active="onRoutes" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
             <nav-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-item>
         </el-menu>
         <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
@@ -20,7 +20,7 @@ export default {
     props: ['layout'],
     computed:{
         ...mapState({
-            navList: state => state.permission.list
+            navList: state => state.auth.permissionList
         }),
         onRoutes(){
             return this.$route.path
@@ -32,6 +32,9 @@ export default {
             if(this.layout == "top"){
                 return "horizontal"
             }
+        },
+        isDark(){
+            return this.$store.state.theme.indexOf("dark") >= 0 ? 'dark' : 'light'
         }
     },
     methods: {

@@ -1,14 +1,12 @@
-import i18n from '@/util/i18n'
-
-let lang = i18n.locale
-
 export default {
     // 当前语言模式  zh / en 
-    lang: lang,
+    lang: '',
+    // 已经加载的语言包
+    langPack: [],
     // 导航条位置   left / top
     navbarPosition: 'left',
-    // 当前系统主题  default / BBA / darkBlue
-    theme: 'default',
+    // 当前系统主题  dark
+    theme: ''
     // 通知框等需要自动消失的时间
-    duration: 5000
+    // duration: 5000
 }
