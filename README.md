@@ -1,5 +1,7 @@
 # Vue + ElementUI 后台管理系统框架
 
+> 这里是项目最开始的版本，依赖库使用的是webpack3.x + element1.x。以后针对于该版本和基于element1.x版本的修改会集中在这里。
+
 ## **相关教程**
 - [Vue + ElementUI 手撸后台管理网站基本框架(零)前言篇](http://blog.csdn.net/harsima/article/details/77946562)
 - [Vue + ElementUI 手撸后台管理网站基本框架(一)创建项目](http://blog.csdn.net/harsima/article/details/77949623)
