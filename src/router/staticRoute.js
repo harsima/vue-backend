@@ -21,7 +21,7 @@ const staticRoute = [
     },
     {
         path: '/error',
-        component: Layout,
+        component: () => import(/* webpackChunkName: 'error' */ '../page/error'),
         children: [
             {
                 path: '401',

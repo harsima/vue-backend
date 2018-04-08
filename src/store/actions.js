@@ -10,7 +10,7 @@ export default {
                 i18n.locale = lang
                 commit('addLangPack', lang)
                 commit('setLang', lang)
-                return lang
+                return Promise.resolve(lang)
             }).catch(() => {
                 dispatch('loadLang', i18n.fallbackLocale).then((lang) => {
                     console.warn(`未找到对应语言包，已加载默认语言：${lang}`);

@@ -60,7 +60,7 @@ npm run build --report
 │   │   │   ├── *.vue                       // vue文件
 │   │   │   ├── ...                                                  
 │   ├── util                                // 通用工具
-│   │   ├── http.js                         // ajax全局设置
+│   │   ├── ajax.js                         // axios全局设置
 │   │   ├── i18n.js                         // 国际化全局设置
 │   │   ├── amap.js                         // 高德地图注册
 │   │   ├── ...
