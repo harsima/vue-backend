@@ -18,7 +18,6 @@ NProgress.configure({ showSpinner: false });
  */
 function routerMatch(permission, router){
     return new Promise((resolve) => {
-        console.time("匹配函数执行时间：")
         // 创建需要校验的参数数组
         function addPermision(permission){
             permission.forEach((item) => {
@@ -38,7 +37,6 @@ function routerMatch(permission, router){
         asyncLayout[0].children = []
         addPermision(permission)
         resolve(asyncLayout)
-        console.timeEnd("匹配函数执行时间：")
     })
 }
 
