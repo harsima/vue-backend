@@ -1,8 +1,8 @@
 <template>
     <div class="sys-page">
-        <v-pageTitle title="主题变更"></v-pageTitle>
+        <app-title title="主题变更"></app-title>
         <div class="page-content">
-            <v-pageSection title="切换布局">
+            <app-section title="切换布局">
                 <div class="layout-list">
                     <ul>
                         <li :class="layout == 'top' ? 'cur' : ''" @click="changeTheme('top')">
@@ -15,9 +15,9 @@
                         </li>
                     </ul>
                 </div>
-            </v-pageSection>
-            <v-pageSection title="切换主题颜色">
-                <v-pageNotes><p>本项目使用sass编写，所以变更主题方式相对简单。因时间原因，第二套主题(grenn)仅为功能示例。由于切换主题功能原理的限制，该功能当前仅能用于生产环境，开发环境时需要进行手动修改引入的主题文件。主题切换详细实现原理请查看：<a href="http://blog.csdn.net/harsima/article/details/78934405"> Vue + ElementUI 手撸后台管理网站基本框架(四)主题切换</a></p></v-pageNotes>
+            </app-section>
+            <app-section title="切换主题颜色">
+                <app-notes><p>本项目使用sass编写，所以变更主题方式相对简单。因时间原因，第二套主题(grenn)仅为功能示例。由于切换主题功能原理的限制，该功能当前仅能用于生产环境，开发环境时需要进行手动修改引入的主题文件。主题切换详细实现原理请查看：<a href="http://blog.csdn.net/harsima/article/details/78934405"> Vue + ElementUI 手撸后台管理网站基本框架(四)主题切换</a></p></app-notes>
                 <div class="sys-article">
                     <h2><strong>主题创建</strong></h2>
                     <pre v-pre class="sys-pre"><code>
@@ -70,7 +70,7 @@ new HtmlWebpackPlugin({
                     <p><strong>2. 整理好自己和他人的主题文件，千万不要重名！</strong></p>
                     <p>因为所有的CSS将通过一个文件进行整合和调用，所以CSS的命名问题仍然会是一个巨大的考验和风险，这在写CSS（CSS Module暂时没研究，不清楚有没有良好的命名空间解决方案）</p>
                 </div>
-            </v-pageSection>
+            </app-section>
         </div>
     </div>
 </template>

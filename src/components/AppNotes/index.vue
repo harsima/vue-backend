@@ -1,4 +1,3 @@
-<!-- 引用或解释说明组件 -->
 <template>
     <div class="sys-notes">
         <slot></slot>
@@ -7,6 +6,6 @@
 
 <script>
 export default {
-    name: 'vPageNotes'
+    name: 'AppNotes'
 }
 </script>

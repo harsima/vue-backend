@@ -1,7 +1,7 @@
 <template>
     <div class="side-nav" :class="layout">
         <el-menu router ref="navbar" :default-active="onRoutes" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
-            <nav-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-item>
+            <nav-bar-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-bar-item>
         </el-menu>
         <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import navItem from './navItem'
+import NavBarItem from './NavBarItem'
 
 export default {
     data() {
@@ -85,6 +85,6 @@ export default {
             }
         }
     },
-    components: { navItem }
+    components: { NavBarItem }
 }
 </script>
