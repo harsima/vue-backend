@@ -6,6 +6,6 @@
 
 <script>
 export default {
-    name: 'vPageSearch'
+    name: 'AppSearch'
 }
 </script>

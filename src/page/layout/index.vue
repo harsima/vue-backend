@@ -1,18 +1,18 @@
 <template>
     <div class="wrapper">
         <template v-if="layout =='left'">
-            <v-header v-once>
+            <header-bar v-once>
                 <p slot="logo">VueJS模板系统</p>
-            </v-header>
-            <v-sidenav :layout="layout"></v-sidenav>
+            </header-bar>
+            <nav-bar :layout="layout"></nav-bar>
         </template>
         <template v-if="layout == 'top'">
-            <v-header>
+            <header-bar>
                 <p slot="logo">VueJS模板系统</p>
                 <template slot="topnav">
-                    <v-sidenav :layout="layout"></v-sidenav>
+                    <nav-bar :layout="layout"></nav-bar>
                 </template>
-            </v-header>
+            </header-bar>
         </template>
         <div class="sys-content" :class="layout">
             <router-view></router-view>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import vHeader from './Header.vue'
-import vSidenav from './Sidenav.vue'
+import HeaderBar from './HeaderBar'
+import NavBar from './NavBar'
 
 export default {
     data(){
@@ -35,8 +35,8 @@ export default {
         }
     },
     components:{
-        vHeader,
-        vSidenav
+        HeaderBar,
+        NavBar
     }
 }
 </script>

@@ -9,13 +9,6 @@ const asyncLayout = [
 
 const asyncRoute = [
     {
-        path: '/table',
-        meta:{
-            permission:[]
-        },
-        component: () => import(/* webpackChunkName: 'table' */ '../page/table')
-    },
-    {
         path: '/components',
         meta:{
             permission:[]

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'vPageToolbar',
+    name: 'AppToolbar',
     props: {
         align: {
             type: String,

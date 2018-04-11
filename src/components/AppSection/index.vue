@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'vPageSection',
+    name: 'AppSection',
     props: ['title']
 }
 </script>
