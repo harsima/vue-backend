@@ -50,6 +50,7 @@ const actions = {
             commit('setToken', '')
             commit('setPermissionList', [])
             commit('user/setName', '', { root: true })
+            commit('tagNav/removeTagNav', '', {root: true})
             resolve()
         })
     },
