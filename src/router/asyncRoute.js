@@ -10,6 +10,7 @@ const asyncLayout = [
 const asyncRoute = [
     {
         path: '/components',
+        name: 'components',
         meta:{
             permission:[]
         },
@@ -17,6 +18,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageNotes',
+        name: 'comPageNotes',
         meta:{
             permission:[]
         },
@@ -24,6 +26,7 @@ const asyncRoute = [
     },
     {
         path: '/components/permission',
+        name: 'comPermission',
         meta:{
             permission:[]
         },
@@ -31,6 +34,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageTable',
+        name: 'comPageTable',
         meta:{
             permission:[]
         },
@@ -38,6 +42,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageSearch',
+        name: 'comPageSearch',
         meta:{
             permission:[]
         },
@@ -45,6 +50,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageSection',
+        name: 'comPageSection',
         meta:{
             permission:[]
         },
@@ -52,6 +58,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageTitle',
+        name: 'comPageTitle',
         meta:{
             permission:[]
         },
@@ -59,6 +66,7 @@ const asyncRoute = [
     },
     {
         path: '/components/pageToolbar',
+        name: 'comPageToolbar',
         meta:{
             permission:[]
         },
@@ -66,6 +74,7 @@ const asyncRoute = [
     },
     {
         path: '/example/table',
+        name: 'table',
         meta:{
             permission:[]
         },
@@ -73,6 +82,7 @@ const asyncRoute = [
     },
     {
         path: '/example/charts',
+        name: 'charts',
         meta:{
             permission:[]
         },
@@ -80,6 +90,7 @@ const asyncRoute = [
     },
     {
         path: '/example/map',
+        name: 'map',
         meta:{
             permission:[]
         },
@@ -87,6 +98,7 @@ const asyncRoute = [
     },
     {
         path: '/i18n',
+        name: 'i18n',
         meta:{
             permission:[]
         },
@@ -94,6 +106,7 @@ const asyncRoute = [
     },
     {
         path: '/theme',
+        name: 'theme',
         meta:{
             permission:[]
         },

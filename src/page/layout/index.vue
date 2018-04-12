@@ -15,7 +15,9 @@
             </header-bar>
         </template>
         <div class="sys-content" :class="layout">
-            <router-view></router-view>
+            <keep-alive :include="tagNavList">
+                <router-view></router-view>
+            </keep-alive>
         </div>
     </div>
 </template>
@@ -32,7 +34,13 @@ export default {
     computed: {
         layout(){
             return this.$store.state.navbarPosition
+        },
+        tagNavList(){
+            return this.$store.state.tagNav.tagNavList.join(",")
         }
+    },
+    mounted(){
+        this.$store.commit("tagNav/addTagNav", this.$route.name)
     },
     components:{
         HeaderBar,
