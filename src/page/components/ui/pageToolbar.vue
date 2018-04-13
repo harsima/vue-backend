@@ -28,6 +28,7 @@
 
 <script>
 export default {
+    name: 'comPageToolbar',
     data() {
         return {
             tableData: [

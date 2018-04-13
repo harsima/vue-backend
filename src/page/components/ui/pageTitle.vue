@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'comPageTitle',
     data() {
         return {
             tableData: [

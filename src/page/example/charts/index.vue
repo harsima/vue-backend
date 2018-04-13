@@ -15,6 +15,7 @@
 import Chart1 from './Chart1'
 
 export default {
+    name: 'exampleChart',
     data(){
         return {
             chartData: []

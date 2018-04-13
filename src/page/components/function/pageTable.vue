@@ -26,6 +26,7 @@
 
 <script>
 export default {
+    name: 'comPageTable',
     data() {
         return {
             tableData: [

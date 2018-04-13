@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'comPageSearch',
     data() {
         return {
             tableData: [

@@ -7,7 +7,6 @@ const staticRoute = [
     },
     {
         path: '/login',
-        name: 'login',
         component: () => import(/* webpackChunkName: 'index' */ '../page/login')
     },
     {
@@ -16,8 +15,7 @@ const staticRoute = [
         children: [
             {
                 path: '',
-                name: 'home',
-                component: () => import(/* webpackChunkName: 'home' */ '../page/home')
+                component: () => import(/* webpackChunkName: 'home' */ '../page/home'),
             }
         ]
     },

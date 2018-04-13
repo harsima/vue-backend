@@ -108,6 +108,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
+    name: 'i18n',
     data() {
         return {}
     },
