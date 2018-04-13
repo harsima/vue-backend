@@ -34,21 +34,12 @@
                         <li>登录/注销</li>
                         <li>权限控制</li>
                         <li>自动登录</li>
-                        <li>操作日志记录（Ajax请求，当前全部失败）</li>
                         <li>错误页面</li>
                         <li>国际化设置及切换</li>
-                        <li>主题切换（90%完成）</li>
+                        <li>主题切换</li>
                         <li>表格组件</li>
                         <li>echart</li>
                         <li>高德地图</li>
-                        <!-- <li>图标字体(todo)</li>
-                        <li>图片上传(todo)</li>
-                        <li>树形菜单(todo)</li>
-                        <li>系统历史更新(todo)</li>
-                        <li>维护页面(todo)</li>
-                        <li>富文本编辑器(todo)</li> -->
-                        <li>过渡动效(todo)</li>
-                        <li>安全策略(todo)</li>
                     </ol>
                 </div>
             </app-section>
@@ -84,3 +75,9 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'home'
+}
+</script>

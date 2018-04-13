@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'comPageNotes',
     data() {
         return {
             tableData: [

@@ -22,6 +22,7 @@
 
 <script>
 export default {
+    name: 'comPermission',
     data() {
         return {
             tableData: [

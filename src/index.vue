@@ -11,9 +11,10 @@ import Cookie from 'js-cookie'
 export default {
     created(){
         // 首次加载/刷新时从Cookie中获取Token
+        // TODO BUG FIX: 因引入了token自动刷新机制，所以不能再判断token，而需要判断isLogin
         if (Cookie.get('token')) {
             this.$store.dispatch('auth/relogin')
-        }
+        } 
         // 加载默认语言包
         let defLang = Cookie.get('lang') || this.$i18n.locale
         this.$store.dispatch("loadLang", defLang)

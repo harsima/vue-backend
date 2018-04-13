@@ -77,11 +77,7 @@ new HtmlWebpackPlugin({
 
 <script>
 export default{
-    data(){
-        return {
-
-        }
-    },
+    name: 'themeChange',
     computed: {
         layout(){
             return this.$store.state.navbarPosition
