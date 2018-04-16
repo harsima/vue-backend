@@ -1,7 +1,8 @@
 <template>
     <div class="tag-nav">
-        <scroll-bar>
-            <router-link class="tag-nav-item" :class="isActive(item) ? 'cur' : ''" v-for="(item, index) in tagNavList" :to="item.path" :key="index">
+        <scroll-bar ref="scrollBar">
+            <router-link ref="tag" class="tag-nav-item" :class="isActive(item) ? 'cur' : ''" v-for="(item, index) in tagNavList" 
+            :to="item.path" :key="index">
                 {{getTagName(item.path)}}
                 <span class='el-icon-close' @click.prevent.stop="closeTheTag(item)"></span>
             </router-link>
@@ -25,6 +26,7 @@ export default {
     watch: {
         $route(){
             this.addTagNav()
+            this.scrollToCurTag()
         }
     },
     methods: {
@@ -56,6 +58,16 @@ export default {
             }
             loopGetName(this.$store.state.auth.permissionList)
             return res
+        },
+        scrollToCurTag(){
+            this.$nextTick(() =>{
+                for (let item of this.$refs.tag) {
+                    if (item.to === this.$route.path) {
+                        this.$refs.scrollBar.scrollToCurTag(item.$el)
+                        break
+                    }
+                }
+            })
         }
     },
     components: {ScrollBar}
@@ -67,7 +79,7 @@ export default {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 50px;
+    height: 51px;
     padding: 10px;
     background: #eee;
     border-bottom: 1px solid #ccc;
@@ -97,6 +109,11 @@ export default {
             background-color: #b4bccc;
             color: #fff;
         }
+    }
+    &.cur{
+        background: #42b983;
+        border: none;
+        color: #fff;
     }
 }
 </style>
