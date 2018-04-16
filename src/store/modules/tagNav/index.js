@@ -25,7 +25,7 @@ const mutations = {
                 }
             }
             
-            let index = state.cachedPageName.indexOf(data.path)
+            let index = state.cachedPageName.indexOf(data.name)
             if(index >= 0){
                 state.cachedPageName.splice(index, 1)
             }
