@@ -9,10 +9,9 @@ import setTheme from "@/util/setTheme"
 import Cookie from 'js-cookie'
 
 export default {
-    created(){
+    beforeMount(){
         // 首次加载/刷新时从Cookie中获取Token
-        // TODO BUG FIX: 因引入了token自动刷新机制，所以不能再判断token，而需要判断isLogin
-        if (Cookie.get('token')) {
+        if (Cookie.get('isLogin')) {
             this.$store.dispatch('auth/relogin')
         } 
         // 加载默认语言包
