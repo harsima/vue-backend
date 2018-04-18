@@ -4,7 +4,7 @@
             <router-link ref="tag" class="tag-nav-item" :class="isActive(item) ? 'cur' : ''" v-for="(item, index) in tagNavList" 
             :to="item.path" :key="index">
                 {{getTagName(item.path)}}
-                <span class='el-icon-close' @click.prevent.stop="closeTheTag(item)"></span>
+                <span class='el-icon-close' @click.prevent.stop="closeTheTag(item, index)"></span>
             </router-link>
         </scroll-bar>
     </div>
@@ -14,6 +14,11 @@
 import ScrollBar from 'sysComponents/ScrollBar'
 
 export default {
+    data(){
+        return {
+            defaultPage: '/home'
+        }
+    },
     computed: {
         tagNavList(){
             return this.$store.state.tagNav.cachedPageList
@@ -40,8 +45,20 @@ export default {
         isActive(item){
             return item.path === this.$route.path
         },
-        closeTheTag(item){
+        closeTheTag(item, index){
+            // 当关闭当前页面的Tag时，则自动加载前一个Tag所属的页面
+            // 如果没有前一个Tag，则加载默认页面
             this.$store.commit("tagNav/removeTagNav", item)
+            if(this.$route.path == item.path){
+                if(index){
+                    this.$router.push(this.tagNavList[index-1].path)
+                } else {
+                    this.$router.push(this.defaultPage)
+                    if(this.$route.path == "/home"){
+                        this.addTagNav()
+                    }
+                }
+            } 
         },
         getTagName(path){
             var res;
