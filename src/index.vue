@@ -12,8 +12,9 @@ export default {
     beforeMount(){
         // 首次加载/刷新时从Cookie中获取Token
         if (Cookie.get('isLogin')) {
+            console.log("重新登录")
             this.$store.dispatch('auth/relogin')
-        } 
+        }
         // 加载默认语言包
         let defLang = Cookie.get('lang') || this.$i18n.locale
         this.$store.dispatch("loadLang", defLang)

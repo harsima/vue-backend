@@ -3,7 +3,7 @@
         <scroll-bar ref="scrollBar">
             <router-link ref="tag" class="tag-nav-item" :class="isActive(item) ? 'cur' : ''" v-for="(item, index) in tagNavList" 
             :to="item.path" :key="index">
-                {{getTagName(item.path)}}
+                {{item.title}}
                 <span class='el-icon-close' @click.prevent.stop="closeTheTag(item, index)"></span>
             </router-link>
         </scroll-bar>
@@ -39,7 +39,8 @@ export default {
             // 如果需要缓存则必须使用组件自身的name，而不是router的name
             this.$store.commit("tagNav/addTagNav", {
                 name: this.$router.getMatchedComponents()[1].name,
-                path: this.$route.path
+                path: this.$route.path,
+                title: this.$route.meta.name
             })
         },
         isActive(item){
@@ -59,22 +60,6 @@ export default {
                     }
                 }
             } 
-        },
-        getTagName(path){
-            var res;
-            function loopGetName(list){
-                for( var v of list ){
-                    if(v.path === path) {
-                        res = v.name
-                        return
-                    } else if(v.child){
-                        loopGetName(v.child)
-                    }
-                    
-                }
-            }
-            loopGetName(this.$store.state.auth.permissionList)
-            return res
         },
         scrollToCurTag(){
             this.$nextTick(() =>{

@@ -48,6 +48,7 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
     
     // 判断用户是否处于登录状态
+    // debugger
     if (Auth.isLogin()) {
         // 如果当前处于登录状态，并且跳转地址为login，则自动跳回系统首页
         // 这种情况出现在手动修改地址栏地址时
