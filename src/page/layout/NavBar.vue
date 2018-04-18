@@ -1,6 +1,6 @@
 <template>
     <div class="side-nav" :class="layout">
-        <el-menu router ref="navbar" :default-active="onRoutes" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
+        <el-menu router ref="navbar" :default-active="defActive" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
             <nav-bar-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-bar-item>
         </el-menu>
         <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-// import { mapState } from 'vuex'
+import { mapState } from 'vuex'
 import NavBarItem from './NavBarItem'
 
 export default {
@@ -17,12 +17,12 @@ export default {
             navBgShow: false
         }
     },
-    props: ['navList','layout'],
+    props: ['layout'],
     computed:{
-        // ...mapState({
-        //     navList: state => state.auth.permissionList
-        // }),
-        onRoutes(){
+        ...mapState({
+            navList: state => state.auth.navList
+        }),
+        defActive(){
             return this.$route.path
         },
         navMode(){

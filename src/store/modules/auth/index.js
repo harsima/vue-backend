@@ -4,10 +4,15 @@ import Auth from '@/util/auth'
 
 const state = {
     token: '',
+    navList: [],
     permissionList: []
 }
 
 const mutations = {
+    setNavList: (state, data) => {
+        state.navList = data
+    },
+
     setPermissionList: (state, data) => {
         state.permissionList = data
     },
@@ -82,20 +87,21 @@ const actions = {
     },
 
     // 获取该用户的菜单列表
-    getNavList(){
+    getNavList({commit}){
         return new Promise((resolve) =>{
             axios({
                 url: '/user/navlist',
                 methods: 'post',
                 data: {}
             }).then((res) => {
+                commit("setNavList", res)
                 resolve(res)
             })
         })
     },
 
     // 将菜单列表扁平化形成权限列表
-    getPermissionList({commit}, arr){
+    getPermissionList({commit, state}){
         return new Promise((resolve) =>{
             let permissionList = []
             // 将菜单数据扁平化为一级
@@ -108,7 +114,7 @@ const actions = {
                     }
                 }
             }
-            flatNavList(arr)
+            flatNavList(state.navList)
             commit("setPermissionList", permissionList)
             resolve(permissionList)
         })
