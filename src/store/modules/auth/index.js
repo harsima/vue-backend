@@ -61,10 +61,19 @@ const actions = {
     },
 
     // 重新登录
-    relogin({commit}){
+    relogin({dispatch, commit, state}){
         return new Promise((resolve) => {
             // 根据Token进行重新登录
-            commit('setToken', Cookies.get('token'))
+            let token = Cookies.get('token')
+            if(!token){
+                // 这里需要根据实际情况确认token刷新协议
+                // 若直接使用时因state.token不存在，将无法获得新的token
+                dispatch("getNewToken").then(() => {
+                    commit('setToken', state.token)
+                })
+            } else {
+                commit('setToken', token)
+            }
             commit('user/setName', decodeURIComponent(Cookies.get('userName')), { root: true })
             resolve()
         })
