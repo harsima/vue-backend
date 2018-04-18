@@ -8,13 +8,16 @@ import store from '../store'
 import staticRoute from './staticRoute'
 import whiteList from './whiteList'
 
+var permissionList = []
+
 function initRoute(router){
     return new Promise((resolve) => {
-        if(store.state.auth.permissionList.length == 0){
+        if(permissionList.length == 0){
             console.log("没有权限数据，正在获取")
             store.dispatch('auth/getNavList').then(() => {
                 store.dispatch('auth/getPermissionList').then((res) => {
                     console.log("权限列表生成完毕")
+                    permissionList = res
                     res.forEach(function(v){
                         let routeItem = router.match(v.path)
                         if(routeItem){
@@ -61,7 +64,7 @@ router.beforeEach((to, from, next) => {
             initRoute(router).then(() => {
                 let isPermission = false
                 console.log("进入权限判断")
-                store.state.auth.permissionList.forEach((v) => {
+                permissionList.forEach((v) => {
                     // 判断跳转的页面是否在权限列表中
                     if(v.path == to.fullPath){
                         isPermission = true

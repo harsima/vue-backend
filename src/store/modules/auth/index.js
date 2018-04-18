@@ -4,17 +4,12 @@ import Auth from '@/util/auth'
 
 const state = {
     token: '',
-    navList: [],
-    permissionList: []
+    navList: []
 }
 
 const mutations = {
     setNavList: (state, data) => {
         state.navList = data
-    },
-
-    setPermissionList: (state, data) => {
-        state.permissionList = data
     },
 
     setToken: (state, data) => {
@@ -53,7 +48,6 @@ const actions = {
     logout({commit}) {
         return new Promise((resolve) => {
             commit('setToken', '')
-            commit('setPermissionList', [])
             commit('user/setName', '', { root: true })
             commit('tagNav/removeTagNav', '', {root: true})
             resolve()
@@ -110,7 +104,7 @@ const actions = {
     },
 
     // 将菜单列表扁平化形成权限列表
-    getPermissionList({commit, state}){
+    getPermissionList({state}){
         return new Promise((resolve) =>{
             let permissionList = []
             // 将菜单数据扁平化为一级
@@ -124,7 +118,6 @@ const actions = {
                 }
             }
             flatNavList(state.navList)
-            commit("setPermissionList", permissionList)
             resolve(permissionList)
         })
     }
