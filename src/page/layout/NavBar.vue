@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 import NavBarItem from './NavBarItem'
 
 export default {
@@ -17,11 +17,11 @@ export default {
             navBgShow: false
         }
     },
-    props: ['layout'],
+    props: ['navList','layout'],
     computed:{
-        ...mapState({
-            navList: state => state.auth.permissionList
-        }),
+        // ...mapState({
+        //     navList: state => state.auth.permissionList
+        // }),
         onRoutes(){
             return this.$route.path
         },

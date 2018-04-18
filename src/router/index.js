@@ -6,39 +6,9 @@ import { Message } from 'element-ui'
 import Auth from '@/util/auth'
 import store from '../store'
 import staticRoute from './staticRoute'
-import { asyncLayout, asyncRoute, redirectRoute} from './asyncRoute'
 import whiteList from './whiteList'
 
 NProgress.configure({ showSpinner: false });
-
-/**
- * 根据返回的菜单列表确认异步路由
- * @param {array} permission 权限列表（菜单列表）
- * @param {array} router 异步路由对象
- */
-function routerMatch(permission, router){
-    return new Promise((resolve) => {
-        // 创建需要校验的参数数组
-        function addPermision(permission){
-            permission.forEach((item) => {
-                if(item.child && item.child.length){
-                    // 递归
-                    addPermision(item.child)
-                }
-                router.forEach((s) => {
-                    if(s.path == item.path){
-                        s.meta.permission = item.permission
-                        asyncLayout[0].children.push(s)
-                        return
-                    }
-                })
-            })
-        }
-        asyncLayout[0].children = []
-        addPermision(permission)
-        resolve(asyncLayout)
-    })
-}
 
 Vue.use(VueRouter)
 
@@ -59,20 +29,7 @@ router.beforeEach((to, from, next) => {
         if (to.path === '/login') {
             router.replace('/home')
         } else {
-            // 页面跳转前先判断是否存在权限列表，如果存在则直接跳转，如果没有则请求一次
-            if (store.state.auth.permissionList.length === 0) {
-                // 获取权限列表，如果失败则跳回登录页重新登录
-                store.dispatch('auth/getPermission').then(res => {
-                    // 匹配并生成需要添加的路由对象
-                    routerMatch(res, asyncRoute).then(res => {
-                        router.addRoutes(res)
-                        router.addRoutes(redirectRoute)
-                        next(to.path)
-                    })
-                })
-            } else {
-                next()
-            }
+            next()
         }
     } else {
         // 如果是免登陆的页面则直接进入，否则跳转到登录页面
