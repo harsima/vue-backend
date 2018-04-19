@@ -11,19 +11,19 @@
 </i18n>
 <template>
     <div class="sys-page">
-        <v-pageTitle title="国际化插件"></v-pageTitle>
-        <v-pageNotes>
+        <app-title title="国际化插件"></app-title>
+        <app-notes>
             <p>本页实际路径：src/page/i18n/i18n.vue</p>
             <p>本系统使用vue-i18n作为语言国际化插件，未进行二次封装。点此查看插件官方文档：
                 <a target="_blank" href="http://kazupon.github.io/vue-i18n/en"> http://kazupon.github.io/vue-i18n/en</a>
             </p>
             <p>本系统国际化不完全，仅有点击账户名时“修改密码”及“退出”文字可以切换，部分ElementUI自带组件也会切换。当然你也可以右上角的语言切换按钮进行切换。</p>
-        </v-pageNotes>
+        </app-notes>
         <div class="page-content">
             <div class="sys-article">
                 <p>本系统的国际化采用语言包懒加载策略。在系统启动时，根据状态及配置项，页面仅加载对应的语言。当切换语言环境时，对语言包进行懒加载，同时自动判别是否已经加载过该语言包文件。在构建生产环境时会对每种语言进行单独打包。</p>
             </div>
-            <v-pageSection title="使用方法" v-once>
+            <app-section title="使用方法" v-once>
                 <div class="sys-article">
                     <h2>创建及配置语言包</h2>
                     <p>在<code>src/lang</code>下，创建语言包对应的语言文件，以key-value格式进行存储。保证在不同文件中key值相同。具体可参考<code>src/lang</code>中的对应代码。以下为示例</p>
@@ -98,7 +98,7 @@
         }
                     </code></pre>
                 </div>
-            </v-pageSection>
+            </app-section>
 
             
         </div>
@@ -108,6 +108,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 export default {
+    name: 'i18n',
     data() {
         return {}
     },

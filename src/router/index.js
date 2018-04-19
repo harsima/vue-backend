@@ -6,41 +6,37 @@ import { Message } from 'element-ui'
 import Auth from '@/util/auth'
 import store from '../store'
 import staticRoute from './staticRoute'
-import { asyncLayout, asyncRoute, redirectRoute} from './asyncRoute'
 import whiteList from './whiteList'
 
-NProgress.configure({ showSpinner: false });
+var permissionList = []
 
-/**
- * 根据返回的菜单列表确认异步路由
- * @param {array} permission 权限列表（菜单列表）
- * @param {array} router 异步路由对象
- */
-function routerMatch(permission, router){
+function initRoute(router){
     return new Promise((resolve) => {
-        console.time("匹配函数执行时间：")
-        // 创建需要校验的参数数组
-        function addPermision(permission){
-            permission.forEach((item) => {
-                if(item.child && item.child.length){
-                    // 递归
-                    addPermision(item.child)
-                }
-                router.forEach((s) => {
-                    if(s.path == item.path){
-                        s.meta.permission = item.permission
-                        asyncLayout[0].children.push(s)
-                        return
-                    }
+        if(permissionList.length == 0){
+            console.log("没有权限数据，正在获取")
+            store.dispatch('auth/getNavList').then(() => {
+                store.dispatch('auth/getPermissionList').then((res) => {
+                    console.log("权限列表生成完毕")
+                    permissionList = res
+                    res.forEach(function(v){
+                        let routeItem = router.match(v.path)
+                        if(routeItem){
+                            routeItem.meta.permission = v.permission ? v.permission : []
+                            routeItem.meta.name = v.name
+                        }
+                    })
+                    resolve()
                 })
             })
+        } else{
+            console.log("已有权限数据")
+            resolve()
         }
-        asyncLayout[0].children = []
-        addPermision(permission)
-        resolve(asyncLayout)
-        console.timeEnd("匹配函数执行时间：")
     })
 }
+
+
+NProgress.configure({ showSpinner: false });
 
 Vue.use(VueRouter)
 
@@ -55,26 +51,32 @@ router.beforeEach((to, from, next) => {
     NProgress.start();
     
     // 判断用户是否处于登录状态
+    // debugger
     if (Auth.isLogin()) {
         // 如果当前处于登录状态，并且跳转地址为login，则自动跳回系统首页
         // 这种情况出现在手动修改地址栏地址时
         if (to.path === '/login') {
-            router.replace('/home')
+            next({path: "/home", replace: true})
+        } else if(to.path.indexOf("/error") >= 0){
+            // 防止因重定向到error页面造成beforeEach死循环
+            next()
         } else {
-            // 页面跳转前先判断是否存在权限列表，如果存在则直接跳转，如果没有则请求一次
-            if (store.state.auth.permissionList.length === 0) {
-                // 获取权限列表，如果失败则跳回登录页重新登录
-                store.dispatch('auth/getPermission').then(res => {
-                    // 匹配并生成需要添加的路由对象
-                    routerMatch(res, asyncRoute).then(res => {
-                        router.addRoutes(res)
-                        router.addRoutes(redirectRoute)
-                        next(to.path)
-                    })
+            initRoute(router).then(() => {
+                let isPermission = false
+                console.log("进入权限判断")
+                permissionList.forEach((v) => {
+                    // 判断跳转的页面是否在权限列表中
+                    if(v.path == to.fullPath){
+                        isPermission = true
+                    }
                 })
-            } else {
-                next()
-            }
+                // 没有权限时跳转到401页面
+                if(!isPermission){
+                    next({path: "/error/401", replace: true})
+                } else {
+                    next()
+                }
+            })
         }
     } else {
         // 如果是免登陆的页面则直接进入，否则跳转到登录页面
@@ -82,7 +84,7 @@ router.beforeEach((to, from, next) => {
             console.log('该页面无需登录即可访问')
             next()
         } else {
-            router.replace('/login')
+            next({path: "/login", replace: true})
             // 如果store中有token，同时Cookie中没有登录状态
             if(store.state.user.token){
                 Message({

@@ -1,12 +1,12 @@
 <template>
     <div class="sys-page">
-        <v-pageTitle title="统一分页插件"></v-pageTitle>
+        <app-title title="统一分页插件"></app-title>
         <div class="page-content">
             <div class="article">
                 <p>该组件为ElementUI的分页组件二次封装，以实现统一的分页设置。分页所有方法统一继承自ElementUI</p>
             </div>
-            <v-pageTable pagination></v-pageTable>
-            <v-pageSection title="函数说明">
+            <table-mixin pagination></table-mixin>
+            <app-section title="函数说明">
                 <el-table :data="tableData" style="width: 100%">
                     <el-table-column prop="name" label="组件使用">
                     </el-table-column>
@@ -19,18 +19,19 @@
                     <el-table-column prop="paramType" label="参数类型">
                     </el-table-column>
                 </el-table>
-            </v-pagesection>
+            </app-section>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    name: 'comPageTable',
     data() {
         return {
             tableData: [
                 {
-                    name: '<v-pageTable></v-pageTable>',
+                    name: '<table-mixin></table-mixin>',
                     detail: '统一table',
                     param: 'pagination',
                     paramDetail: '是否有分页',

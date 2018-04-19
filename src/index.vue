@@ -9,9 +9,10 @@ import setTheme from "@/util/setTheme"
 import Cookie from 'js-cookie'
 
 export default {
-    created(){
+    beforeMount(){
         // 首次加载/刷新时从Cookie中获取Token
-        if (Cookie.get('token')) {
+        if (Cookie.get('isLogin')) {
+            console.log("重新登录")
             this.$store.dispatch('auth/relogin')
         }
         // 加载默认语言包

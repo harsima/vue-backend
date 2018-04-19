@@ -1,13 +1,13 @@
 <template>
     <div class="sys-page" v-once>
-        <v-pageTitle title="前言"></v-pageTitle>
+        <app-title title="前言"></app-title>
         <div class="page-content">
-            <v-pageNotes>
+            <app-notes>
                 <p>本项目以VueJS作为核心，ElementUI为UI框架，制作的大型单页面管理系统。本项目实现完全前后端分离，前端高度组件化、模块化，良好的解决了前端开发过程中面对的各种难题。</p>
                 <p>本框架拥有完整的登录/注销过程、权限加载及校验、自动重新登录、XSS防注入（待做）、XSRF解决方案、页面加载进度条等前后端分离必备功能。</p>
                 <p>在使用本框架前，请详细了解VueJS全家桶（vuejs + vuex + vue-router）及webpack使用方法，ES6语法规范。</p>
-            </v-pageNotes>
-            <v-pageSection title="什么是VueJS，为什么选用VueJS？">
+            </app-notes>
+            <app-section title="什么是VueJS，为什么选用VueJS？">
                 <div class="sys-article">
                     <p>VueJS是当前流行的MVVM框架之一，其着重解决VM层，拥有轻量级、易上手、文档全、性能高的优点。 ueJS社区正蓬勃发展，是2016年发展最火速的前端框架。 因其轻量的关系，可以让它完全融入到之前的任何项目中，但个人仍然推荐使用它的单文件组件进行开发。 VueJS提供了一套完整的前端组件化、模块化编程方案，让前端组件化变的无比轻松。 结合Webpack的代码分割/合并、压缩、打包、热重载等功能更能实现一定程度的前端开发工程化。</p>
                     <p>与VueJS使用场景相同的框架还有ReactJS和AngularJS。其中ReactJS是生态最丰富的最完善的前端框架，其开创性的JSX语言为以后的前端框架造成了相当大的影响。 并且ReactJS拥有成熟的移动端开发框架——React Native，可以在学习一次后写各个平台的移动端应用。VueJS 2.0版很大程度上借鉴了ReactJS。</p>
@@ -27,32 +27,23 @@
                         Vue则本身就处于上升期间，近期Weex（Vue版的React Native）已经进入Apache基金会项目孵化器，项目的维护正式走上正轨。
                     </p>
                 </div>
-            </v-pageSection>
-            <v-pageSection title="当前框架实现的功能">
+            </app-section>
+            <app-section title="当前框架实现的功能">
                 <div class="sys-article">
                     <ol>
                         <li>登录/注销</li>
                         <li>权限控制</li>
                         <li>自动登录</li>
-                        <li>操作日志记录（Ajax请求，当前全部失败）</li>
                         <li>错误页面</li>
                         <li>国际化设置及切换</li>
-                        <li>主题切换（90%完成）</li>
+                        <li>主题切换</li>
                         <li>表格组件</li>
                         <li>echart</li>
                         <li>高德地图</li>
-                        <!-- <li>图标字体(todo)</li>
-                        <li>图片上传(todo)</li>
-                        <li>树形菜单(todo)</li>
-                        <li>系统历史更新(todo)</li>
-                        <li>维护页面(todo)</li>
-                        <li>富文本编辑器(todo)</li> -->
-                        <li>过渡动效(todo)</li>
-                        <li>安全策略(todo)</li>
                     </ol>
                 </div>
-            </v-pageSection>
-            <v-pageSection title="框架涉及技术栈">
+            </app-section>
+            <app-section title="框架涉及技术栈">
                 <div class="sys-article">
                     <p><strong>你必须了解以下技术栈，否则无法基于该框架编写程序</strong></p>
                     <p>VueJS： <a target="_blank" href="http://cn.vuejs.org/">http://cn.vuejs.org/</a>&nbsp;&nbsp;&nbsp;——核心框架，必须掌握</p>
@@ -80,7 +71,13 @@
                     <p>MDN： <a target="_blank" href="https://developer.mozilla.org/zh-CN/">https://developer.mozilla.org/zh-CN/</a>&nbsp;&nbsp;&nbsp;——Mozilla基金会建立的Web技术网站</p>
                     <p>NodeJS： <a target="_blank" href="http://nodejs.cn/api/">http://nodejs.cn/api/</a>&nbsp;&nbsp;&nbsp;——运行于服务器端的JS引擎。想实现某些类似Webpack或者Gulp功能时需要学习一下。做服务端必学</p>
                 </div>
-            </v-pageSection>
+            </app-section>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'home'
+}
+</script>

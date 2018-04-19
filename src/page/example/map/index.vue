@@ -1,8 +1,5 @@
 <template>
     <div class="sys-page">
-        <div class="note">
-            <v-pageNotes>本层为浮动层。本页实际路径: src/page/example/map.vue</v-pageNotes>
-        </div>
         <div id="container">
             <map1></map1>
         </div>
@@ -10,9 +7,10 @@
 </template>
 
 <script>
-import map1 from './map1'
+import Map1 from './Map1'
 export default {
-    components: {map1}
+    name: 'exampleMap',
+    components: {Map1}
 }
 </script>
 

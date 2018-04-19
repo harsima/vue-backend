@@ -1,42 +1,46 @@
 <template>
     <div class="wrapper">
         <template v-if="layout =='left'">
-            <v-header v-once>
+            <header-bar v-once>
                 <p slot="logo">VueJS模板系统</p>
-            </v-header>
-            <v-sidenav :layout="layout"></v-sidenav>
+            </header-bar>
+            <nav-bar :layout="layout"></nav-bar>
         </template>
         <template v-if="layout == 'top'">
-            <v-header>
+            <header-bar>
                 <p slot="logo">VueJS模板系统</p>
                 <template slot="topnav">
-                    <v-sidenav :layout="layout"></v-sidenav>
+                    <nav-bar :layout="layout"></nav-bar>
                 </template>
-            </v-header>
+            </header-bar>
         </template>
         <div class="sys-content" :class="layout">
-            <router-view></router-view>
+            <tag-nav></tag-nav>
+            <keep-alive :include="tagNavList">
+                <router-view></router-view>
+            </keep-alive>
         </div>
     </div>
 </template>
 
 <script>
-import vHeader from './Header.vue'
-import vSidenav from './Sidenav.vue'
+import HeaderBar from './HeaderBar'
+import NavBar from './NavBar'
+import TagNav from './TagNav'
 
 export default {
-    data(){
-        return {
-        }
-    },
     computed: {
         layout(){
             return this.$store.state.navbarPosition
+        },
+        tagNavList(){
+            return this.$store.state.tagNav.cachedPageName
         }
     },
     components:{
-        vHeader,
-        vSidenav
+        HeaderBar,
+        NavBar,
+        TagNav
     }
 }
 </script>

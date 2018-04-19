@@ -4,12 +4,12 @@ import Auth from '@/util/auth'
 
 const state = {
     token: '',
-    permissionList: []
+    navList: []
 }
 
 const mutations = {
-    setPermissionList: (state, data) => {
-        state.permissionList = data
+    setNavList: (state, data) => {
+        state.navList = data
     },
 
     setToken: (state, data) => {
@@ -48,17 +48,26 @@ const actions = {
     logout({commit}) {
         return new Promise((resolve) => {
             commit('setToken', '')
-            commit('setPermissionList', [])
             commit('user/setName', '', { root: true })
+            commit('tagNav/removeTagNav', '', {root: true})
             resolve()
         })
     },
 
     // 重新登录
-    relogin({commit}){
+    relogin({dispatch, commit, state}){
         return new Promise((resolve) => {
             // 根据Token进行重新登录
-            commit('setToken', Cookies.get('token'))
+            let token = Cookies.get('token')
+            if(!token){
+                // 这里需要根据实际情况确认token刷新协议
+                // 若直接使用时因state.token不存在，将无法获得新的token
+                dispatch("getNewToken").then(() => {
+                    commit('setToken', state.token)
+                })
+            } else {
+                commit('setToken', token)
+            }
             commit('user/setName', decodeURIComponent(Cookies.get('userName')), { root: true })
             resolve()
         })
@@ -80,17 +89,36 @@ const actions = {
         })
     },
 
-    // 获取该用户的权限列表——即菜单列表
-    getPermission({commit}){
+    // 获取该用户的菜单列表
+    getNavList({commit}){
         return new Promise((resolve) =>{
             axios({
                 url: '/user/navlist',
                 methods: 'post',
                 data: {}
             }).then((res) => {
-                commit('setPermissionList', res)
+                commit("setNavList", res)
                 resolve(res)
             })
+        })
+    },
+
+    // 将菜单列表扁平化形成权限列表
+    getPermissionList({state}){
+        return new Promise((resolve) =>{
+            let permissionList = []
+            // 将菜单数据扁平化为一级
+            function flatNavList(arr){
+                for(let v of arr){
+                    if(v.child && v.child.length){
+                        flatNavList(v.child)
+                    } else{
+                        permissionList.push(v)
+                    }
+                }
+            }
+            flatNavList(state.navList)
+            resolve(permissionList)
         })
     }
 }

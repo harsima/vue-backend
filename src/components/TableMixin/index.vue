@@ -22,7 +22,7 @@
 
 <script>
 export default {
-    name: 'vPageTable',
+    name: 'TableMixin',
     props: {
         pagination: Boolean,
         paginationAlign: String,

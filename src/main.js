@@ -11,7 +11,8 @@ import axios from './util/ajax'
 import i18n from './util/i18n'
 import App from './index'
 
-import './components/platformCom/install'
+import './components/install'
+import './plugins/install'
 
 // 注册组件到Vue
 Vue.prototype.$axios = axios
