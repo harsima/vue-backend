@@ -3,7 +3,7 @@
         <el-menu router ref="navbar" :default-active="defActive" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
             <nav-bar-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-bar-item>
         </el-menu>
-        <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
+        <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="selectMenu"></div>
     </div>
 </template>
 
@@ -40,29 +40,13 @@ export default {
     watch: {
         // 当通过TagNav来激活页面时也执行一次selectMenu
         $route(){
-            let path = this.$route.path
-            let indexPath = this.$refs.navbar.items[path].indexPath
-            this.selectMenu(path, indexPath)
+            this.selectMenu()
         }
     },
     methods: {
         // eslint-disable-next-line
-        selectMenu(index, indexPath){
-            /**
-             * 在选择父级菜单时自动关闭其下所有子菜单
-             * 选择时获取点击菜单的父级index，并计算得到该index在已打开菜单中的索引值，
-             * 关闭位于当前打开菜单中该索引值之后的全部菜单
-             */
-            // 获取当前打开的所有菜单
+        selectMenu(){            
             let openMenu = this.$refs.navbar.openedMenus.concat([])
-            // 获取点击菜单的父级index，如果当前点击的是根节点，则直接关闭所有打开菜单
-            let nowMenuPath = indexPath.length > 1 ? indexPath[indexPath.length-2] : ""
-            if(nowMenuPath){
-                // 获取父级index在数组中索引，关闭其后所有的菜单
-                let menuIndex = openMenu.indexOf(nowMenuPath)
-                openMenu = openMenu.slice(menuIndex+1)
-            } 
-            // 关闭菜单
             openMenu = openMenu.reverse()
             openMenu.forEach((ele) => {
                 this.$refs.navbar.closeMenu(ele)
@@ -77,17 +61,6 @@ export default {
             }
         },
         closeMenu(){
-            if(this.navMode == 'horizontal'){
-                this.navBgShow = false
-            }
-        },
-        closeAll(){
-            console.log("背景遮罩图")
-            let openMenu = this.$refs.navbar.openedMenus.concat([])
-            openMenu = openMenu.reverse()
-            openMenu.forEach((ele) => {
-                this.$refs.navbar.closeMenu(ele)
-            })
             if(this.navMode == 'horizontal'){
                 this.navBgShow = false
             }
