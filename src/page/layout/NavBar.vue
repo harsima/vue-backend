@@ -37,6 +37,14 @@ export default {
             return this.$store.state.theme.indexOf("dark") >= 0 ? 'dark' : 'light'
         }
     },
+    watch: {
+        // 当通过TagNav来激活页面时也执行一次selectMenu
+        $route(){
+            let path = this.$route.path
+            let indexPath = this.$refs.navbar.items[path].indexPath
+            this.selectMenu(path, indexPath)
+        }
+    },
     methods: {
         // eslint-disable-next-line
         selectMenu(index, indexPath){
@@ -46,14 +54,9 @@ export default {
              * 关闭位于当前打开菜单中该索引值之后的全部菜单
              */
             // 获取当前打开的所有菜单
-            let openMenu = this.$refs.navbar.openedMenus.concat([])
-            // 获取点击菜单的父级index，如果当前点击的是根节点，则直接关闭所有打开菜单
-            let nowMenuPath = indexPath.length > 1 ? indexPath[indexPath.length-2] : ""
-            if(nowMenuPath){
-                // 获取父级index在数组中索引，关闭其后所有的菜单
-                let menuIndex = openMenu.indexOf(nowMenuPath)
-                openMenu = openMenu.slice(menuIndex+1)
-            } 
+            let openedMenus = this.$refs.navbar.openedMenus
+            let openMenu = openedMenus.slice(0, openedMenus.length-1)
+            
             // 关闭菜单
             openMenu = openMenu.reverse()
             openMenu.forEach((ele) => {
