@@ -21,7 +21,7 @@ export default {
     },
     computed: {
         tagNavList(){
-            return this.$store.state.tagNav.cachedPageList
+            return this.$store.state.tagNav.openedPageList
         }
     },
     mounted(){
