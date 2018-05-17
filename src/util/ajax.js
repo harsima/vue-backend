@@ -1,5 +1,5 @@
 /**
- * axios全局配置，包括验证校验及错误处理
+ * axios全局配置
  */
 import axios from 'axios'
 import store from '../store'
@@ -7,19 +7,26 @@ import router from '../router'
 import { Message } from 'element-ui'
 import Auth from '@/util/auth'
 
-var getTokenLock = false
-var CancelToken = axios.CancelToken
-var cancel
+var getTokenLock = false,
+    CancelToken = axios.CancelToken,
+    requestList = []
 
-function checkToken(callback){
-    // 检测Token是否过期
+/**
+ * Token校验
+ * @param {function} cancel - 中断函数
+ * @param {function} callback -  回调
+ * @description 校验Token是否过期，如果Token过期则根据配置采用不同方法获取新Token
+ *              自动获取Token：过期时自动调用获取Token接口。注意：当有任一请求在获取Token时，其余请求将顺延，直至新Token获取完毕
+ *              跳转授权Token：过期时中断当前所有请求并跳转到对应页面获取Token。注意：跳转页面授权最佳实现应在授权页面点击触发
+ */
+function checkToken(cancel, callback){
     if(!Auth.hasToken()){
-        // 如果Token过期后直接请求后台获取新Token
+        // 自动获取Token
         if(Auth.tokenTimeoutMethod == "getNewToken"){
             // 如果当前有请求正在获取Token
             if(getTokenLock){
                 setTimeout(function(){
-                    checkToken(callback)
+                    checkToken(cancel, callback)
                 }, 500)
             } else {
                 getTokenLock = true
@@ -30,19 +37,35 @@ function checkToken(callback){
                 })
             }
         }
-        // 如果Token过期后跳转到授权页面，授权页面不能是login否则路由冲突
+        // 跳转授权Token
         if(Auth.tokenTimeoutMethod == "jumpAuthPage" && Auth.isLogin()){
             if(router.currentRoute.path != '/auth'){
-                // 跳转到固定的授权页面并中断当前请求
+                // TODO 无法保证一定会中断所有请求
                 cancel()
-                console.log("请求已中断")
                 router.push('/auth')
             }
         }
     } else {
-        console.log("未过期直接回调")
         callback()
     }
+}
+
+/**
+ * 阻止短时间内的重复请求
+ * @param {string} url - 当前请求地址
+ * @param {function} c - 中断请求函数
+ * @description 每个请求发起前先判断当前请求是否存在于RequestList中，
+ *              如果存在则取消该次请求，如果不存在则加入RequestList中，
+ *              当请求完成后500ms时，清除RequestList中对应的该请求。
+ */
+function stopRepeatRequest(url, c){
+    for( let i = 0; i < requestList.length; i++){
+        if(requestList[i] == url){
+            c()
+            return
+        }
+    }
+    requestList.push(url)
 }
 
 // 超时设置
@@ -57,13 +80,15 @@ const service = axios.create({
 // 每次请求都为http头增加Authorization字段，其内容为token
 service.interceptors.request.use(
     config => {
+        let cancel
         config.cancelToken = new CancelToken(function executor(c) {
             cancel = c;
         })
-        checkToken(function(){
+        checkToken(cancel, function(){
             Auth.setLoginStatus()
             config.headers.Authorization = `${store.state.user.token}`
         })
+        stopRepeatRequest(config.url, cancel)
         return config
     },
     err => {
@@ -74,9 +99,22 @@ service.interceptors.request.use(
 // http response 拦截器
 // 针对响应代码确认跳转到对应页面
 service.interceptors.response.use(
-    response => response.data,
+    response => {
+        for( let i = 0; i < requestList.length; i++){
+            if(requestList[i] == response.config.url){
+                // 注意，不能保证500ms必定执行，详情请了解JS的异步机制
+                setTimeout(function(){
+                    requestList.splice(i,1)
+                }, 500)
+                break
+            }
+        }
+        return Promise.resolve(response.data)
+    },
     error => {
-        if (error.response) {
+        if(axios.isCancel(error)){
+            return Promise.reject("Ajax Abort: 该请求在axios拦截器中被中断")
+        } else if (error.response) {
             switch (error.response.status) {
                 case 401:
                     router.push('error/401');
@@ -90,7 +128,6 @@ service.interceptors.response.use(
             }
             return Promise.reject(error.response.data)
         }
-        console.log(error)
     }
 );
 
