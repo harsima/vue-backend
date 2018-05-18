@@ -1,14 +1,3 @@
-<i18n>
-{
-    "en": {
-        "test": "This is test text. This page's international language use single file components. "
-    },
-    "zh": {
-        "test": "这是测试文字。本页的国际化设置使用的单文件组件形式。"
-    }
-}
-
-</i18n>
 <template>
     <div class="sys-page">
         <app-title title="国际化插件"></app-title>
