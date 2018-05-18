@@ -34,7 +34,7 @@ export default {
             }).then(res => {
                 this.chartData = res
             }).catch(err => {
-                this.$message.error(`获取数据失败，失败码：${err.response.status}`)
+                console.warn(`获取数据失败。${err}`)
             })
         }
     },
