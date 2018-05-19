@@ -54,21 +54,24 @@ const actions = {
         })
     },
 
-    // 重新登录
+    // 重新获取用户信息及Token
+    // TODO: 这里不需要提供用户名和密码，实际中请根据接口自行修改
     relogin({dispatch, commit, state}){
         return new Promise((resolve) => {
             // 根据Token进行重新登录
-            let token = Cookies.get('token')
+            let token = Cookies.get('token'),
+                userName = Cookies.get('userName')
+
+            // 重新登录时校验Token是否存在，若不存在则获取
             if(!token){
-                // 这里需要根据实际情况确认token刷新协议
-                // 若直接使用时因state.token不存在，将无法获得新的token
                 dispatch("getNewToken").then(() => {
                     commit('setToken', state.token)
                 })
             } else {
                 commit('setToken', token)
             }
-            commit('user/setName', decodeURIComponent(Cookies.get('userName')), { root: true })
+            // 刷新/关闭浏览器再进入时获取用户名
+            commit('user/setName', decodeURIComponent(userName), { root: true })
             resolve()
         })
     },

@@ -8,7 +8,9 @@ const state = {
 const mutations = {
     setName: (state, data) => {
         if(data){
-            Cookies.set('userName', encodeURIComponent(data))
+            Cookies.set('userName', encodeURIComponent(data), {
+                expires: 365
+            })
         } else {
             Cookies.remove('userName')
         }
