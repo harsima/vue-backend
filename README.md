@@ -1,5 +1,8 @@
 # Vue + ElementUI 后台管理系统框架
 
+## **在线预览**
+[https://harsima.github.io/vue-backend](https://harsima.github.io/vue-backend)
+
 ## **相关教程**
 - [Vue + ElementUI 手撸后台管理网站基本框架(零)前言篇](http://blog.csdn.net/harsima/article/details/77949609)
 - [Vue + ElementUI 手撸后台管理网站基本框架(一)创建项目](http://blog.csdn.net/harsima/article/details/77949623)
