@@ -1,5 +1,6 @@
 .side-nav {
     .el-menu{
+        border-right: none;
         background-color: $sidenavBgColor;
         z-index: 10;
     }
@@ -23,6 +24,10 @@
         background-color: $sidenavBgColor;
         border-right: $sidenavBorder;
         overflow: auto;
+        .el-menu-item.is-active{
+            background-color: $--menu-item-hover-fill;
+            color: $--menu-item-color;
+        }
     }
     &.top{
         float: left;
