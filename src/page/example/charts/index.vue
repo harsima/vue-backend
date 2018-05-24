@@ -23,7 +23,6 @@ export default {
     },
     mounted(){
         this.$nextTick(() => {
-            console.log(1)
             this.getChartData()
         })
     },
@@ -33,7 +32,6 @@ export default {
                 url: '/charts',
                 method: 'get',
             }).then(res => {
-                console.log(res)
                 this.chartData = res
             }).catch(err => {
                 console.warn(`获取数据失败。${err}`)

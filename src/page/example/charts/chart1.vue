@@ -52,7 +52,7 @@ export default {
         chartsInit(){
             // 创建图表对象
             if(!this.chart.target){
-                this.chart.target = echarts.init(document.getElementById('chart1'))
+                this.chart.target = echarts.init(document.getElementById('chart1'), 'westeros')
             }
             // 绘制默认图表
             this.chart.target.setOption(this.chart.option)
