@@ -103,8 +103,6 @@ export default{
     }
     ul li{
         float: left;
-        width: 160px;
-        height: 160px;
         background: #fff;
         margin-right: 20px;
         padding: 10px;

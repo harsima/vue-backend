@@ -84,6 +84,7 @@ router.beforeEach((to, from, next) => {
             console.log('该页面无需登录即可访问')
             next()
         } else {
+            console.warn('当前未处于登录状态，请登录')
             next({path: "/login", replace: true})
             // 如果store中有token，同时Cookie中没有登录状态
             if(store.state.user.token){
