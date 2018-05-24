@@ -1,6 +1,3 @@
-* {
-    box-sizing: border-box;
-}
 html, body, div, section, header, footer, aside, ul, ol, li, table, tr, th, td, button, input, textarea, select, h1, h2, h3, h4, h5, h6, em, i, strong, p, span, blockquote {
     margin: 0;
     padding: 0;
@@ -45,17 +42,6 @@ body {
     color: $basicFontColor;
     height: 100%;
 }
-.f-cb:after {
-    display: block;
-    clear: both;
-    visibility: hidden;
-    height: 0;
-    overflow: hidden;
-    content: ".";
-}
-.f-cb {
-    zoom: 1;
-}
 .fl {
     float: left;
 }
@@ -70,12 +56,15 @@ body {
 }
 
 /**显示隐藏**/
-
 .hidden {
     display: none;
 }
-.clear {
+.clear:after {
+    content: "";
+    display: block;
     clear: both;
+    visibility: hidden;
+    height: 0;
 }
 .overflow {
     overflow: hidden;

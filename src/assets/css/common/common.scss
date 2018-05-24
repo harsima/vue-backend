@@ -9,6 +9,7 @@
     padding: 10px;
     overflow-x: hidden;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 .sys-error-page,
 .sys-full-page{
@@ -21,7 +22,7 @@
     top: $headerHeight;
     right: 0;
     bottom: 0;
-    padding-top: 50px;
+    padding-top: 57px;
     &.left{
         left: $leftNavWidth;
     }

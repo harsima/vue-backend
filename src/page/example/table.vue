@@ -31,7 +31,7 @@
         </app-toolbar>
         <!-- 表格体 -->
         <table-mixin pagination paginationAlign="center">
-            <el-table v-loading="tableData.loading" :data="tableData.body" border style="width: 100%" :default-sort="{prop: 'date', order: 'descending'}">
+            <el-table v-loading="tableData.loading" :data="tableData.body" border :default-sort="{prop: 'date', order: 'descending'}">
                 <el-table-column type="index" label="序号" width="64" align="center"></el-table-column>
                 <el-table-column v-for="(item,index) in tableData.head" :prop="item.key" :label="item.name" sortable :key="index"></el-table-column>
                 <el-table-column label="操作">

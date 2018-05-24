@@ -12,7 +12,8 @@ $red: #d45b5b !default;
 // 主题颜色
 //-------------------------------
 $themeColor: #52bab5 !default;
-$themeColorLighter: #60c4c3 !default;
+$themeColorLighter: lighten($themeColor, 30%) !default;
+$themeColorDarken: darken($themeColor, 8%) !default;
 $themeGray: #f9f9f9 !default;
 $fontColor: $darkerGray !default;
 $linkColor: #5cc2c1 !default;
@@ -60,8 +61,11 @@ $headerFontSize: 20px !default;
 
 // sidenav
 $leftNavWidth: 160px !default;
+$topNavItemColor: $white !default;
+$topNavItemHoverBg: $themeColorDarken !default;
+$topNavItemActiveBg: $themeColorLighter !default;
+$topSubNavItemColor: $themeColorDarken !default;
 $sidenavBgColor: #f4f4f4 !default;
-$sidenavCurrent: #20a0ff !default;
 $sidenavBorder: 1px solid $lightGray !default;
 
 // sysNotes

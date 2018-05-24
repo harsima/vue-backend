@@ -1,3 +1,11 @@
+/* 二三级菜单 */
+.el-menu--horizontal{
+    .el-menu-item:not(.is-disabled):hover,
+    .el-submenu__title:hover{
+        color: $topSubNavItemColor;
+        background-color: $topNavItemActiveBg;
+    }    
+}
 .side-nav {
     .el-menu{
         border-right: none;
@@ -28,66 +36,39 @@
             background-color: $--menu-item-hover-fill;
             color: $--menu-item-color;
         }
+        box-sizing: border-box;
     }
     &.top{
         float: left;
         margin-left: 20px;
         & > .el-menu{
             background-color: transparent;
-            & > .el-menu-item.is-active{
-                border-bottom-color: $sidenavCurrent;
-            }
-            & > .el-submenu > .el-menu{
-                background-color: $sidenavBgColor;
-                // 三级菜单及以后
-                .el-menu{
-                    top: -5px;
-                    left: 100%;
-                    border: none;
-                    box-shadow: none;
-                    z-index: auto;
-                    .el-menu-item:hover{
-                        background-color: $sidenavBgColor;
-                        color: #fff;
-                    }
+            /* 无下级菜单的menu-item */
+            & > .el-menu-item{
+                color: $topNavItemColor;
+                &:hover{
+                    background-color: $topNavItemHoverBg;
                 }
-                .el-menu-item{
-                    float: left;
-                    width: 100%;
-                    height: 60px;
-                    line-height: 60px;
-                    background: none;
-                    color: #bfcbd9;
-                    padding: 0 20px;
-                    &:hover{
-                        background-color: $themeColor;
-                    }
-                }
-                .el-submenu__title{
-                    border: none;
-                    &:hover{
-                        background-color: $themeColor;
-                        border:none;
-                    }
-                }
-                .el-submenu{
-                    width: 100%;
-                    &.is-active>.el-submenu__title{
-                        border-bottom-color: transparent;
-                    }
-                    &.is-opened>.el-submenu__title{
-                        background-color: $themeColor;
-                        .el-submenu__icon-arrow{
-                            transform: rotateZ(-90deg);
-                        }
-                    }
-                    &.is-opened>.el-menu{
-                        background-color: $themeColor;
-                    }
+                &.is-active{
+                    background-color: transparent;
+                    border-bottom-color: $topNavItemActiveBg;
                 }
             }
-            & > .el-submenu.is-active > .el-menu .el-submenu__title{
-                border-bottom-color: transparent;
+            /* 有下级菜单的menu-item */
+            & > .el-submenu{
+                & > .el-submenu__title{
+                    color: $topNavItemColor;
+                    & > .el-submenu__icon-arrow{
+                        color: $topNavItemColor;
+                    }
+                }
+                &:hover .el-submenu__title{
+                    background-color: $topNavItemHoverBg;
+                }
+                &.is-active > .el-submenu__title{
+                    background-color: transparent;
+                    border-bottom-color: $topNavItemActiveBg;
+                }
             }
         }
     }
