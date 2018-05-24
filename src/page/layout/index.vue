@@ -15,7 +15,7 @@
             </header-bar>
         </template>
         <div class="sys-content" :class="layout">
-            <tag-nav></tag-nav>
+            <!-- <tag-nav></tag-nav> -->
             <keep-alive :include="tagNavList">
                 <router-view></router-view>
             </keep-alive>

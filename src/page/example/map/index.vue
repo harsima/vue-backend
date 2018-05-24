@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Map1 from './Map1'
+import Map1 from './map1'
 export default {
     name: 'exampleMap',
     components: {Map1}

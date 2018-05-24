@@ -115,6 +115,7 @@ service.interceptors.response.use(
     },
     error => {
         if(axios.isCancel(error)){
+            console.log(error)
             return Promise.reject("Ajax Abort: 该请求在axios拦截器中被中断")
         } else if (error.response) {
             switch (error.response.status) {

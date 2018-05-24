@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import lodash from 'lodash'
 import echarts from 'echarts'
 import '@/util/echarts.theme.default'
 
@@ -12,7 +11,6 @@ export default {
         return {
             chart: {
                 target: null,
-                data: [],
                 option: {
                     tooltip: {
                         trigger: 'axis',
@@ -26,16 +24,10 @@ export default {
                     yAxis: {
                         type: 'value',
                         min: 0,
-                        max: 100,
+                        max: 100
                     },
-                    series: [
-                        {
-                            name: '邮件营销',
-                            type: 'line',
-                            stack: '总量',
-                            data: [0,0,0,0,0,0,0]
-                        }
-                    ]
+                    // 必须为空 https://github.com/apache/incubator-echarts/issues/7768
+                    series: []
                 }
             }
         }
@@ -46,11 +38,8 @@ export default {
     watch: {
         chartData(){
             if(this.chartData.length){
-                return this.chart.data = this.chartData
+                this.draw()  
             }
-        },
-        'chart.data'(){
-            this.draw()
         }
     },
     mounted(){
@@ -63,7 +52,7 @@ export default {
         chartsInit(){
             // 创建图表对象
             if(!this.chart.target){
-                this.chart.target = echarts.init(document.getElementById('chart1'), 'westeros')
+                this.chart.target = echarts.init(document.getElementById('chart1'))
             }
             // 绘制默认图表
             this.chart.target.setOption(this.chart.option)
@@ -74,11 +63,12 @@ export default {
             let option = {
                 series: [
                     {
-                        data: this.chart.data
+                        name: '邮件营销',
+                        type: 'line',
+                        data: this.chartData
                     }
                 ]
             }
-            lodash.defaultsDeep(option, this.chart.option)
             this.chart.target.setOption(option)
         }
     }
