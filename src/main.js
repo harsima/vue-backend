@@ -1,5 +1,5 @@
 // 生产环境中注释掉以下语句
-import 'sysStatic/css/theme-default.scss'
+// import 'sysStatic/css/theme-default.scss'
 import '../mock/index.js'
 
 import 'babel-polyfill'
