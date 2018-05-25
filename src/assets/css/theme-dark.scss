@@ -1,6 +1,11 @@
-/** 第三方主题 **/
-@import "~element-ui/lib/theme-chalk/index.css";
+/** 主题样式 **/
+@import './theme/dark';
+@import "../libs/element-variables-dark";
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+/** 默认样式 **/
+@import './theme/default';
+@import "~element-ui/packages/theme-chalk/src/index";
 
 /** 项目主题 **/
-@import './theme/dark';
 @import 'base';

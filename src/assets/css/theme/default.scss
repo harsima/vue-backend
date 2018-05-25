@@ -1,5 +1,8 @@
-// 基础颜色
-//-------------------------------
+$themeColor: #52bab5 !default;
+$baseImageURL: '~sysStatic/images/default/' !default;
+
+/* 基础颜色
+-------------------------- */
 $white: #fff !default;
 $lighterGray: #eee !default;
 $lightGray: #ccc !default;
@@ -9,39 +12,41 @@ $darkGray: #666 !default;
 $darkerGray: #333 !default;
 $red: #d45b5b !default;
 
-// 主题颜色
-//-------------------------------
-$themeColor: #52bab5 !default;
 $themeColorLighter: lighten($themeColor, 30%) !default;
 $themeColorDarken: darken($themeColor, 8%) !default;
 $themeGray: #f9f9f9 !default;
-$fontColor: $darkerGray !default;
-$linkColor: #5cc2c1 !default;
+
 $borderColor: #5cc1c0 !default;
 $pageColor: $white !default;
-$shadowColor: rgba(0,0,0,0) !default;
+$transparent: rgba(0,0,0,0) !default;
+$shadowColor: rgba($lightGray, .3) !default;
 
-// 字体及图片设置
-//-------------------------------
-// 设置1rem = 20px。需要与util/rem.js中的值相同
-$baseRem: 20px !default;
-// 非响应式基本字号大小
-$basicFontSize: 14px !default;
-// 响应式基本字号大小
-$baseResponseSize: 1.3rem !default;
-$basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif !default;
-$basicFontColor: $fontColor !default;
-$basicMargin: 10px !default;
+
+/* 基本设置
+-------------------------- */
+$basicSpace: 10px !default;
+$basicMargin: $basicSpace !default;
 $basicPadding: $basicMargin !default;
-// 图片主题路径
-$baseImageURL: '~sysStatic/images/default/' !default;
 
-// 组件设置
-//-------------------------------
 
-// login
+/* 字体设置
+-------------------------- */
+/* 设置1rem = 20px。需要与util/rem.js中的值相同 */
+$fontRem: 20px !default;
+/* 非响应式基本字号大小 */
+$fontSize: 14px !default;
+/* 响应式基本字号大小 16px = 1.3rem*/
+$fontResponseSize: 1.3rem !default;
+$fontFamily: "Helvetica", "Microsoft Yahei", san-serif !default;
+$fontColor: $darkerGray !default;
+$linkColor: $themeColor !default;
+
+
+/* 组件设置
+-------------------------- */
+/* login */
 $loginBg: url($baseImageURL+"login.jpg") center center no-repeat !default;
-$loginBtn: #069e95 !default;
+$loginBtn: $themeColorDarken !default;
 $loginTextColor: darken($white, 12%) !default;
 $loginErrTextColor: #e5b989 !default;
 $loginInputBorderColor: none !default;
@@ -51,23 +56,28 @@ $loginInputColor: $darkGray !default;
 $loginLangCurBg: darken($loginBtn, 2%) !default;
 $loginLangCurColor: $lighterGray !default;
 
-// header
+/* header */
 $headerHeight: 60px !default;
 $headerBgColor: $themeColor !default;
 $headerBorderColor: none !default;
-$headerShadow: $shadowColor !default;
-$headerColor: #c2c2c2 !default;
+$headerShadow: $transparent !default;
+$headerColor: white !default;
 $headerFontSize: 20px !default;
 
-// sidenav
+/* nav */
+$leftNavBg: #f4f4f4 !default;
 $leftNavWidth: 160px !default;
-$topNavItemColor: $white !default;
-$topNavItemHoverBg: $themeColorDarken !default;
-$topNavItemActiveBg: $themeColorLighter !default;
-$topSubNavItemColor: $themeColorDarken !default;
-$sidenavBgColor: #f4f4f4 !default;
-$sidenavBorder: 1px solid $lightGray !default;
+$leftNavColor: $fontColor !default;
+$leftNavBorder: 1px solid $lightGray !default;
 
-// sysNotes
+$topNavItemColor: $headerColor !default;
+$topNavItemHoverBg: darken($headerBgColor, 8%) !default;
+$topNavItemActiveBg: $themeColorLighter !default;
+
+$topSubNavBg: $white !default;
+$topSubNavItemColor: $themeColorDarken !default;
+$topSubNavItemHover: darken($topSubNavBg, 5%) !default;
+
+/* sysNotes */
 $notesBgColor: $lighterGray !default;
 $notesBorderColor: $themeColor !default;

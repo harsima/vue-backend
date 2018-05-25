@@ -1,10 +1,9 @@
 .sys-article{
-    font-size: $basicFontSize;
-    line-height: $basicFontSize*1.7;
+    font-size: $fontSize;
+    line-height: $fontSize*1.7;
     margin-bottom: 2*$basicMargin;
-    // padding: 0 16px;
     h2{
-        font-size: $basicFontSize*1.3;
+        font-size: $fontSize*1.3;
         padding: $basicPadding 0;
     }
     & > div{

@@ -5,7 +5,7 @@
 @mixin remCalc($property, $values...) {
     $max: length($values); //返回$values列表的长度值 
     $remValues: '';
-    $base: dropUnit($baseRem);
+    $base: dropUnit($fontRem);
     @for $i from 1 through $max {
         $value: dropUnit(nth($values, $i));
         $remValues: #{$remValues + ($value / $base)}rem;

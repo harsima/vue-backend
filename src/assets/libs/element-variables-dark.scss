@@ -6,4 +6,4 @@ $--color-primary: $themeColor;
 
 /* Menu
 --------------------------*/
-$--menu-item-hover-fill: rgba($themeColor, .38);
+$--menu-item-hover-fill: $themeColorDarken;

@@ -9,7 +9,7 @@
         height: $headerHeight;
         line-height: $headerHeight;
         padding-left: 20px;
-        color: $white;
+        color: $headerColor;
         font-size: $headerFontSize;
     }
     .userInfo {
@@ -18,24 +18,20 @@
         &>ul {
             height: $headerHeight;
             &>li {
-                display: block;
-                float: left;
+                display: inline-block;
                 height: $headerHeight;
+                line-height: $headerHeight;
                 margin-right: 20px;
-                color: $white;
+                color: $headerColor;
                 .lang {
-                    line-height: $headerHeight;
-                    color: $lightGray;
+                    color: darken($headerColor, 20%);
                     cursor: pointer;
                     &.cur {
-                        color: $white;
+                        color: $headerColor;
                     }
                 }
                 .user {
-                    display: block;
-                    height: $headerHeight;
-                    line-height: $headerHeight;
-                    color: $white;
+                    color: $headerColor;
                     cursor: pointer;
                 }
             }

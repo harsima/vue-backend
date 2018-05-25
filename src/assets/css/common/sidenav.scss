@@ -1,15 +1,21 @@
 /* 二三级菜单 */
 .el-menu--horizontal{
+    .el-menu{
+        background-color: $topSubNavBg;
+        .el-menu-item, .el-submenu__title{
+            color: $topSubNavItemColor;
+            background-color: $topSubNavBg;
+        } 
+    }
     .el-menu-item:not(.is-disabled):hover,
     .el-submenu__title:hover{
         color: $topSubNavItemColor;
-        background-color: $topNavItemActiveBg;
+        background-color: $topSubNavItemHover;
     }    
 }
 .side-nav {
     .el-menu{
         border-right: none;
-        background-color: $sidenavBgColor;
         z-index: 10;
     }
     .full-screen-navBg{
@@ -29,12 +35,21 @@
         bottom: 0;
         left: 0;
         width: $leftNavWidth;
-        background-color: $sidenavBgColor;
-        border-right: $sidenavBorder;
+        background-color: $leftNavBg;
+        border-right: $leftNavBorder;
         overflow: auto;
-        .el-menu-item.is-active{
-            background-color: $--menu-item-hover-fill;
-            color: $--menu-item-color;
+        .el-menu{
+            background-color: $leftNavBg;
+            .el-submenu__title{
+                color: $leftNavColor;
+            }
+        }
+        .el-menu-item{
+            color: $leftNavColor;
+            .is-active{
+                background-color: $--menu-item-hover-fill;
+                color: $--menu-item-color;
+            }
         }
         box-sizing: border-box;
     }

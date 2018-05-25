@@ -11,6 +11,6 @@
 // eg. pxTorem(20px) => 1rem
 @function pxTorem($px) {
     $px: dropUnit($px);
-    $base: dropUnit($baseRem);
+    $base: dropUnit($fontRem);
     @return #{$px / $base}rem;
 }

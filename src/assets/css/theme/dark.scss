@@ -1,69 +1,40 @@
-// 基础颜色
-//-------------------------------
-$white: #fff;
+$themeColor: #465873;
+$baseImageURL: '~sysStatic/images/dark/';
+
+/* 基础颜色
+-------------------------- */
 $lighterGray: #eee;
 $lightGray: #ccc;
-$neutralGray: #aaa;
-$gray: #999;
-$darkGray: #666;
-$darkerGray: #333;
-$red: #d45b5b;
 
-// 主题颜色
-//-------------------------------
-$themeColor: #324053;
 $themeColorLighter: lighten($themeColor, 5%);
-$themeGray: #f2f2f2;
-$fontColor: $darkerGray;
-$linkColor: #42b983;
-$borderColor: #d2d2d2;
-$pageColor: $white;
-$shadowColor: rgba(0,0,0,0);
+$themeColorDarken: darken($themeColor, 8%);
 
-// 字体及图片设置
-//-------------------------------
-// 设置1rem = 20px。需要与util/rem.js中的值相同
-$baseRem: 20px;
-// 非响应式基本字号大小
-$basicFontSize: 14px;
-// 响应式基本字号大小
-$baseResponseSize: 1.3rem;
-$basicFontFamily: "Helvetica", "Microsoft Yahei", san-serif;
-$basicFontColor: $fontColor;
-$basicMargin: 10px;
-$basicPadding: $basicMargin;
-// 图片主题路径
-$baseImageURL: '~sysStatic/images/green/';
 
-// 组件设置
-//-------------------------------
-
-// login
-$loginBg: $themeColor;
+/* 组件设置
+-------------------------- */
+/* login */
+$loginBg: url($baseImageURL+"login.jpg") center center no-repeat;
 $loginBtn: #424f60;
 $loginTextColor: $lightGray;
-$loginErrTextColor: $red;
-$loginInputErrBg: inherit;
 $loginInputBorderColor: rgba(255,255,255,.1);
 $loginInputBg: $themeColor;
+$loginInputErrBg: inherit;
 $loginInputColor: $loginTextColor;
 $loginLangCurBg: #ff6363;
 $loginLangCurColor: $themeColor;
 
-// header
-$headerHeight: 60px;
-$headerBgColor: darken($themeColor, 5%);
-$headerBorderColor: none;
-$headerShadow: $shadowColor;
-$headerColor: #c2c2c2;
-$headerFontSize: 20px;
+/* header */
+$headerBgColor: $themeColorDarken;
 
-// sidenav
-$leftNavWidth: 160px;
-$sidenavBgColor: $themeColor;
-$sidenavCurrent: #20a0ff;
-$sidenavBorder: none;
+/* nav */
+$leftNavBg: $themeColor;
+$leftNavColor: $lighterGray;
+$leftNavBorder: none;
 
-// sysNotes
-$notesBgColor: $lighterGray;
-$notesBorderColor: $themeColor;
+$topNavItemColor: $leftNavColor;
+$topNavItemHoverBg: darken($headerBgColor, 8%);
+$topNavItemActiveBg: #20a0ff;
+
+$topSubNavBg: $headerBgColor;
+$topSubNavItemColor: $topNavItemColor;
+$topSubNavItemHover: $topNavItemHoverBg;
