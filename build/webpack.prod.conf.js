@@ -7,8 +7,19 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+function recursiveIssuer(m) {
+    if (m.issuer) {
+      return recursiveIssuer(m.issuer);
+    } else if (m.name) {
+      return m.name;
+    } else {
+      return false;
+    }
+}
 
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
@@ -17,7 +28,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     },
     module: {
         rules: utils.styleLoaders({
-            sourceMap: config.build.productionSourceMap
+            sourceMap: config.build.productionSourceMap,
+            extract: true
         })
     },
     devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -31,13 +43,18 @@ const webpackConfig = merge(baseWebpackConfig, {
     // https://github.com/webpack/webpack/issues/6409
     // https://gist.github.com/sokra/1522d586b8e5c0f5072d7565c2bee693
     optimization: {
-        minimize: true,
-        runtimeChunk: true,
+        minimizer: [
+            // js mini
+            new UglifyJsPlugin({
+              cache: true,
+              parallel: true,
+              sourceMap: config.build.productionSourceMap // set to true if you want JS source maps
+            }),
+            // css mini
+            new OptimizeCSSPlugin({})
+        ],
         splitChunks: {
-            // chunks: "async",
-            // maxAsyncRequests: 5,
-            // maxInitialRequests: 3,
-            chunks: 'all',
+            chunks: 'async',
             minSize: 0,
             maxAsyncRequests: Infinity,
             maxInitialRequests: Infinity,
@@ -50,21 +67,26 @@ const webpackConfig = merge(baseWebpackConfig, {
                     priority: -20,
                     reuseExistingChunk: true,
                 },
-                css: {
-                    name: function(el){
-                        console.log(el)
-                        return utils.assetsPath('css/'+ el.name +'.'+ el.hash +'.css')
-                    },
-                    test: /\.(css|sass|scss|less)(\?.*)?$/,
-                    chunks: 'all'
+                themeDark: {
+                    name: 'theme-dark',
+                    test: (m,c,entry = 'theme-dark') => recursiveIssuer(m) === entry,
+                    chunks: 'all',
+                    enforce: true
+                },
+                themeDefault: {
+                    name: 'theme-default',
+                    test: (m,c,entry = 'theme-default') => recursiveIssuer(m) === entry,
+                    chunks: 'all',
+                    enforce: true
                 },
                 echarts: {
                     name: 'echarts',
-                    enforce: true,
+                    chunks: 'all',
                     test: function(module){
                         var context = module.context;
                         return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0)
-                    }
+                    },
+                    enforce: true
                 },
                 vendors: {
                     name: 'vendors',
@@ -80,26 +102,13 @@ const webpackConfig = merge(baseWebpackConfig, {
                     },
                     chunks: "all"
                 }
-                
-                // commons: {
-                //     test: /[\\/]node_modules[\\/]/,
-                //     name: "vendors",
-                //     chunks: "all"
-                // }
             }
         }
     },
     plugins: [
         // extract css into its own file
-        // new ExtractTextPlugin({
-        //     filename: utils.assetsPath('css/[name].[contenthash:7].css')
-        // }),
-        // Compress extracted CSS. We are using this plugin so that possible
-        // duplicated CSS from different components can be deduped.
-        new OptimizeCSSPlugin({
-            cssProcessorOptions: {
-                safe: true
-            }
+        new MiniCssExtractPlugin({
+            filename: utils.assetsPath('css/[name].[contenthash:7].css')
         }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
@@ -108,13 +117,6 @@ const webpackConfig = merge(baseWebpackConfig, {
             filename: config.build.index,
             template: './src/index.html',
             inject: true,
-            // minify: {
-            //   removeComments: true,
-            //   collapseWhitespace: true,
-            //   removeAttributeQuotes: true
-            //   // more options:
-            //   // https://github.com/kangax/html-minifier#options-quick-reference
-            // },
             minify: false,
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency',
@@ -122,34 +124,6 @@ const webpackConfig = merge(baseWebpackConfig, {
         }),
         // keep module.id stable when vender modules does not change
         new webpack.HashedModuleIdsPlugin(),
-        // split vendor js into its own file
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     minChunks: function(module) {
-        //         // any required modules inside node_modules are extracted to vendor
-        //         return (
-        //             module.resource &&
-        //             /\.js$/.test(module.resource) &&
-        //             module.resource.indexOf(
-        //                 path.join(__dirname, '../node_modules')
-        //             ) === 0
-        //         )
-        //     }
-        // }),
-        // split echarts into its own file
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     async: ['echarts'],
-        //     minChunks(module) {
-        //         var context = module.context;
-        //         return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0);
-        //     }
-        // }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'manifest',
-        //     chunks: ['vendor']
-        // }),
         // copy custom static assets
         new CopyWebpackPlugin([
           {

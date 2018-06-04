@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 exports.assetsPath = function(_path) {
     const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
@@ -34,35 +34,27 @@ exports.cssLoaders = function(options) {
 
     // generate loader string to be used with extract text plugin
     function generateLoaders(loader, loaderOptions) {
-        let loaders = cssLoader
+        let loaders = []
         if (loader) {
-            loaders = {
+            loaders = [{
                 loader: loader + '-loader',
                 options: Object.assign({}, loaderOptions, {
                     sourceMap: options.sourceMap
                 })
-            }
-            // loaders.push({
-            //     loader: loader + '-loader',
-            //     options: Object.assign({}, loaderOptions, {
-            //         sourceMap: options.sourceMap
-            //     })
-            // })
-        } else{
-            return []
+            }]
         }
 
-        // Extract CSS when that option is specified
-        // (which is the case during production build)
         if (options.extract) {
-            return ExtractTextPlugin.extract({
-                use: [loaders, 'postcss-loader'],
-                fallback: 'vue-style-loader',
-                publicPath: '../../'
-            })
+            let extractLoader = {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    // fallback: 'vue-style-loader',
+                    publicPath: '../../'
+                }
+            }
+            return [extractLoader, 'css-loader'].concat(['postcss-loader'], loaders)
         } else {
-            // return ['vue-style-loader'].concat(loaders)
-            return [loaders]
+            return ['vue-style-loader', 'css-loader'].concat(['postcss-loader'], loaders)
         }
     }
 
@@ -84,11 +76,9 @@ exports.styleLoaders = function(options) {
     const loaders = exports.cssLoaders(options)
     for (const extension in loaders) {
         const loader = loaders[extension]
-        const extLoader = ['vue-style-loader', 'css-loader']
-
         output.push({
             test: new RegExp('\\.' + extension + '$'),
-            use: extLoader.concat(loader, ['postcss-loader'])
+            use: loader
         })
     }
     return output
