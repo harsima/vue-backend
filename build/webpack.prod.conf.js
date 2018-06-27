@@ -55,52 +55,39 @@ const webpackConfig = merge(baseWebpackConfig, {
         ],
         splitChunks: {
             chunks: 'async',
-            minSize: 0,
-            maxAsyncRequests: Infinity,
-            maxInitialRequests: Infinity,
+            minSize: 30000,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
             name: true,
             cacheGroups: {
                 default: {
-                    chunks: 'async',
-                    maxAsyncRequests: 5,
-                    maxInitialRequests: 3,
                     priority: -20,
                     reuseExistingChunk: true,
+                },
+                vendors: {
+                    name: 'vendors',
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    chunks: "all"
                 },
                 themeDark: {
                     name: 'theme-dark',
                     test: (m,c,entry = 'theme-dark') => recursiveIssuer(m) === entry,
-                    chunks: 'all',
-                    enforce: true
+                    chunks: 'all'
                 },
                 themeDefault: {
                     name: 'theme-default',
                     test: (m,c,entry = 'theme-default') => recursiveIssuer(m) === entry,
-                    chunks: 'all',
-                    enforce: true
+                    chunks: 'all'
                 },
                 echarts: {
                     name: 'echarts',
                     chunks: 'all',
+                    priority: 20,
                     test: function(module){
                         var context = module.context;
                         return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0)
-                    },
-                    enforce: true
-                },
-                vendors: {
-                    name: 'vendors',
-                    enforce: true,
-                    test: function(module){
-                        return (
-                            module.resource &&
-                            /\.js$/.test(module.resource) &&
-                            module.resource.indexOf(
-                                path.join(__dirname, '../node_modules')
-                            ) === 0
-                        )
-                    },
-                    chunks: "all"
+                    }
                 }
             }
         }
