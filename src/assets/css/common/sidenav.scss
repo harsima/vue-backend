@@ -5,6 +5,10 @@
         .el-menu-item, .el-submenu__title{
             color: $topSubNavItemColor;
             background-color: $topSubNavBg;
+            &.is-active{
+                color: $topSubNavItemColor;
+                background-color: $topSubNavItemHover;
+            }
         } 
     }
     .el-menu-item:not(.is-disabled):hover,
@@ -46,7 +50,7 @@
         }
         .el-menu-item{
             color: $leftNavColor;
-            .is-active{
+            &.is-active{
                 background-color: $--menu-item-hover-fill;
                 color: $--menu-item-color;
             }
