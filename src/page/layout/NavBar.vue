@@ -53,13 +53,19 @@ export default {
              * 选择时获取点击菜单的父级index，并计算得到该index在已打开菜单中的索引值，
              * 关闭位于当前打开菜单中该索引值之后的全部菜单
              */
-            // 获取当前打开的所有菜单
             let openedMenus = this.$refs.navbar.openedMenus
-            let openMenu = openedMenus.slice(0, openedMenus.length-1)
+            let openMenuList
+            // 如果点击的是二级菜单，则获取其后已经打开的菜单
+            if(indexPath.length > 1){
+                let parentPath = indexPath[indexPath.length-2]
+                openMenuList = openedMenus.slice(openedMenus.indexOf(parentPath)+1)
+            } else{
+                openMenuList = openedMenus
+            }
             
             // 关闭菜单
-            openMenu = openMenu.reverse()
-            openMenu.forEach((ele) => {
+            openMenuList = openMenuList.reverse()
+            openMenuList.forEach((ele) => {
                 this.$refs.navbar.closeMenu(ele)
             })
             if(this.navMode == 'horizontal'){
