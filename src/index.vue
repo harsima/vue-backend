@@ -9,8 +9,9 @@ import setTheme from "@/util/setTheme"
 import Cookie from 'js-cookie'
 
 export default {
+    // TODO: 全局状态加载及变更。请根据实际情况改写
     beforeMount(){
-        // 首次加载/刷新时从Cookie中获取Token
+        // 首次加载/刷新时判断当前是否在登录状态
         if (Cookie.get('isLogin')) {
             console.log("重新登录")
             this.$store.dispatch('auth/relogin')
@@ -22,8 +23,8 @@ export default {
     // 初次加载时，可通过接口获取用户的主题信息，或者通过按钮触发，或者直接加载默认主题
     mounted() {
         this.$nextTick(() => {
-            setTheme("theme-dark")
-            this.$store.commit("setThemeColor", "theme-dark")
+            setTheme("theme-default")
+            this.$store.commit("setThemeColor", "theme-default")
         })
     }
 }

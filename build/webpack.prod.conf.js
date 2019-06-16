@@ -10,8 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-const env = config.build.env
-
 const webpackConfig = merge(baseWebpackConfig, {
     entry: {
         'theme-dark': './src/assets/css/theme-dark.scss',
@@ -29,11 +27,12 @@ const webpackConfig = merge(baseWebpackConfig, {
         filename: utils.assetsPath('js/[name].[chunkhash:7].js'),
         chunkFilename: utils.assetsPath('js/[name].[chunkhash:7].js')
     },
+    mode: "production",
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
-        new webpack.DefinePlugin({
-            'process.env': env
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': env
+        // }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

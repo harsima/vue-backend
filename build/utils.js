@@ -34,26 +34,35 @@ exports.cssLoaders = function(options) {
 
     // generate loader string to be used with extract text plugin
     function generateLoaders(loader, loaderOptions) {
-        const loaders = [cssLoader]
+        let loaders = cssLoader
         if (loader) {
-            loaders.push({
+            loaders = {
                 loader: loader + '-loader',
                 options: Object.assign({}, loaderOptions, {
                     sourceMap: options.sourceMap
                 })
-            })
+            }
+            // loaders.push({
+            //     loader: loader + '-loader',
+            //     options: Object.assign({}, loaderOptions, {
+            //         sourceMap: options.sourceMap
+            //     })
+            // })
+        } else{
+            return []
         }
 
         // Extract CSS when that option is specified
         // (which is the case during production build)
         if (options.extract) {
             return ExtractTextPlugin.extract({
-                use: loaders,
+                use: [loaders, 'postcss-loader'],
                 fallback: 'vue-style-loader',
                 publicPath: '../../'
             })
         } else {
-            return ['vue-style-loader'].concat(loaders)
+            // return ['vue-style-loader'].concat(loaders)
+            return [loaders]
         }
     }
 
@@ -75,9 +84,11 @@ exports.styleLoaders = function(options) {
     const loaders = exports.cssLoaders(options)
     for (const extension in loaders) {
         const loader = loaders[extension]
+        const extLoader = ['vue-style-loader', 'css-loader']
+
         output.push({
             test: new RegExp('\\.' + extension + '$'),
-            use: loader
+            use: extLoader.concat(loader, ['postcss-loader'])
         })
     }
     return output

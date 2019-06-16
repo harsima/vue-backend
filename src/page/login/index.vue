@@ -26,8 +26,8 @@
                 <span :class="{cur: lang=='en'}" @click="changeLang('en')">En</span>
             </div>
             <div class="lang-toggle">
-                <span :class="{cur: theme=='theme-dark'}" @click="changeTheme('theme-dark')">深</span> | 
-                <span :class="{cur: theme=='theme-green'}" @click="changeTheme('theme-green')">浅</span>
+                <span :class="{cur: theme=='theme-default'}" @click="changeTheme('theme-default')">浅</span> | 
+                <span :class="{cur: theme=='theme-dark'}" @click="changeTheme('theme-dark')">深</span>
             </div>
             <div class="tip">
                 <p>{{$t('global.loginTip')}}</p>

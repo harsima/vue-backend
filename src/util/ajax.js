@@ -1,5 +1,6 @@
 /**
  * axios全局配置
+ * TODO: 拦截器全局配置，根据实际情况修改
  */
 import axios from 'axios'
 import store from '../store'
@@ -40,7 +41,7 @@ function checkToken(cancel, callback){
         // 跳转授权Token
         if(Auth.tokenTimeoutMethod == "jumpAuthPage" && Auth.isLogin()){
             if(router.currentRoute.path != '/auth'){
-                // TODO 无法保证一定会中断所有请求
+                // BUG: 无法保证一定会中断所有请求
                 cancel()
                 router.push('/auth')
             }
@@ -70,7 +71,8 @@ function stopRepeatRequest(url, c){
 
 // 超时设置
 const service = axios.create({
-    timeout: 5000                  // 请求超时时间
+    // 请求超时时间
+    timeout: 5000                 
 });
 
 // baseURL

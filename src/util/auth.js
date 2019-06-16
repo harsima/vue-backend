@@ -21,7 +21,7 @@ const authToken = {
 
     // 设置Token
     setToken: function(token){
-        // 设置token，并填写有效期
+        // TODO: 设置token，并填写有效期
         var maxAge = new Date(new Date().getTime() + 30 * 1000)
         Cookies.set('token', token, {
             expires: maxAge
@@ -30,7 +30,7 @@ const authToken = {
 
     // 设置登录状态
     setLoginStatus: function(){
-        // 设置超时登录时间，在该时间范围内没有任何请求操作则自动删除
+        // TODO: 设置超时登录时间，在该时间范围内没有任何请求操作则自动删除
         var maxAge = new Date(new Date().getTime() + 30 * 60 * 1000)
         Cookies.set(this.loginKey, 'true', {
             expires: maxAge

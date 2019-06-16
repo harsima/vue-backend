@@ -11,12 +11,12 @@ $red: #d45b5b !default;
 
 // 主题颜色
 //-------------------------------
-$themeColor: #283443 !default;
-$themeColorLighter: lighten($themeColor, 5%) !default;
-$themeGray: #f2f2f2 !default;
+$themeColor: #52bab5 !default;
+$themeColorLighter: #60c4c3 !default;
+$themeGray: #f9f9f9 !default;
 $fontColor: $darkerGray !default;
-$linkColor: #42b983 !default;
-$borderColor: #d2d2d2 !default;
+$linkColor: #5cc2c1 !default;
+$borderColor: #5cc1c0 !default;
 $pageColor: $white !default;
 $shadowColor: rgba(0,0,0,0) !default;
 
@@ -40,15 +40,15 @@ $baseImageURL: '~sysStatic/images/default/' !default;
 
 // login
 $loginBg: url($baseImageURL+"login.jpg") center center no-repeat !default;
-$loginBtn: #424f60 !default;
-$loginTextColor: $lightGray !default;
-$loginErrTextColor: $red !default;
-$loginInputErrBg: inherit !default;
-$loginInputBorderColor: rgba(255,255,255,.1) !default;
-$loginInputBg: $themeColor !default;
-$loginInputColor: $loginTextColor !default;
-$loginLangCurBg: #ff6363 !default;
-$loginLangCurColor: $themeColorLighter !default;
+$loginBtn: #069e95 !default;
+$loginTextColor: darken($white, 12%) !default;
+$loginErrTextColor: #e5b989 !default;
+$loginInputBorderColor: none !default;
+$loginInputBg: $lighterGray !default;
+$loginInputErrBg: #ffdede !default;
+$loginInputColor: $darkGray !default;
+$loginLangCurBg: darken($loginBtn, 2%) !default;
+$loginLangCurColor: $lighterGray !default;
 
 // header
 $headerHeight: 60px !default;
@@ -60,9 +60,9 @@ $headerFontSize: 20px !default;
 
 // sidenav
 $leftNavWidth: 160px !default;
-$sidenavBgColor: $themeColorLighter !default;
+$sidenavBgColor: #f4f4f4 !default;
 $sidenavCurrent: #20a0ff !default;
-$sidenavBorder: none !default;
+$sidenavBorder: 1px solid $lightGray !default;
 
 // sysNotes
 $notesBgColor: $lighterGray !default;

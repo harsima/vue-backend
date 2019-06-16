@@ -1,6 +1,6 @@
 <template>
     <div class="side-nav" :class="layout">
-        <el-menu router ref="navbar" :default-active="defActive" :mode="navMode" menu-trigger="click" :theme="isDark" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
+        <el-menu router ref="navbar" :default-active="defActive" :mode="navMode" menu-trigger="click" @select="selectMenu" @open="openMenu" @close="closeMenu" unique-opened>
             <nav-bar-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-bar-item>
         </el-menu>
         <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
