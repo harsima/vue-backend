@@ -10,11 +10,11 @@
     "build": "node build/build.js && node build/themeExtract.js"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.21.1",
     "echarts": "^3.7.2",
     "element-ui": "^1.4.6",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",
     "vue": "^2.5.2",
@@ -56,7 +56,7 @@
     "http-proxy-middleware": "^0.17.3",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.14.1",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
